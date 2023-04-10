@@ -1,5 +1,10 @@
 import { useWindowDimensions } from "../../utils"
 import { StyledButton } from "./styles"
+import {
+    ButtonBigText,
+    ButtonMediumText
+} from "../Typography"
+
 
 interface IButtonProps{
     className: string
@@ -9,11 +14,10 @@ interface IButtonProps{
 function Button({className, text}:IButtonProps){
 
     const {width} = useWindowDimensions()
+    const ButtonText = width > 768? ButtonBigText : ButtonMediumText 
 
     return(
-        <StyledButton>
-            <button className={className}>{text} - {width}</button>
-        </StyledButton>
+        <ButtonText children = {text}></ButtonText>
     )
 }
 
