@@ -1,15 +1,17 @@
 import { StyledButton } from "./styles"
+import React from "react"
+
 
 interface IButtonProps{
     className: string
-    text: string
+    children: React.ReactNode
 }
 
-function Button({className, text}:IButtonProps){
+function Button(props:IButtonProps){
 
     return(
-        <StyledButton>
-            <button className={className}>{text}</button>
+        <StyledButton className={props.className}>
+            {props.children}
         </StyledButton>
     )
 }
