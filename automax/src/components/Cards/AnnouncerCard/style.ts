@@ -53,9 +53,6 @@ export const StyledAnnouncerCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    h3 {
-      margin: 0;
-    }
 
     p {
       text-align: left;
@@ -80,10 +77,6 @@ export const StyledAnnouncerCard = styled.div`
     div:first-child {
       gap: 20px;
       display: flex;
-    }
-
-    p {
-      margin: 0;
     }
   }
 

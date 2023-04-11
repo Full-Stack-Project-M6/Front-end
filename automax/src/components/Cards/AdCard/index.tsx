@@ -32,7 +32,7 @@ const AdCard = () => {
         <img src={annnounce.imgCar} alt="" />
       </div>
       <div className="divInfos">
-        <h3 className="Heading-7-600">{annnounce.title}</h3>
+        <h3 className="heading-7-600">{annnounce.title}</h3>
         <p className="body-2-400">{annnounce.description}</p>
       </div>
       <div className="divAnnouncer">
