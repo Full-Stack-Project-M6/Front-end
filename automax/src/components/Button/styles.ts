@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "../../style/globalStyles.css"
+// import "../../style/globalStyles.css"
 
 export const StyledButton = styled.button`
 
