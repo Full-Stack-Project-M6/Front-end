@@ -1,4 +1,3 @@
-import AdCard from "./components/Cards/AdCard/index";
 import { GlobalStyle } from "./style/globalStyles";
 
 function App() {
@@ -6,7 +5,6 @@ function App() {
     <div className="App">
       <link rel="stylesheet" href="" />
       <GlobalStyle />
-      <AdCard />
     </div>
   );
 }
