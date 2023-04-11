@@ -64,20 +64,11 @@ export const StyledAnnouncerCard = styled.div`
     margin-bottom: 16px;
   }
 
-  .divAnunciante {
+  .divAnnouncer {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: left;
-    gap: 8px;
-    img {
-      width: 32px;
-      height: 32px;
-      border-radius: 30px;
-    }
-    p {
-      margin: 0;
-    }
   }
 
   .divKmAndPrice {

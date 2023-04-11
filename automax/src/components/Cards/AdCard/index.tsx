@@ -1,3 +1,4 @@
+import Announcer from "../../Announcer";
 import { StyledAdCard } from "./style";
 import { BsCurrencyDollar } from "react-icons/bs";
 
@@ -34,11 +35,8 @@ const AdCard = () => {
         <h3 className="Heading-7-600">{annnounce.title}</h3>
         <p className="body-2-400">{annnounce.description}</p>
       </div>
-      <div className="divAnunciante">
-        <div className="divImgAnunciante">
-          <img src={annnounce.imgUser} alt="" />
-        </div>
-        <p className="body-2-500">{annnounce.nameUser}</p>
+      <div className="divAnnouncer">
+        <Announcer />
       </div>
       <div className="divKmAndPrice">
         <div>
