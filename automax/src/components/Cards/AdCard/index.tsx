@@ -1,4 +1,5 @@
 import Announcer from "../../Announcer";
+import { Body1, Body2 } from "../../Typography";
 import { StyledAdCard } from "./style";
 import { BsCurrencyDollar } from "react-icons/bs";
 
@@ -32,19 +33,19 @@ const AdCard = () => {
         <img src={annnounce.imgCar} alt="" />
       </div>
       <div className="divInfos">
-        <h3 className="heading-7-600">{annnounce.title}</h3>
-        <p className="body-2-400">{annnounce.description}</p>
+        <Body1 weight={600}>{annnounce.title}</Body1>
+        <Body2>{annnounce.description}</Body2>
       </div>
       <div className="divAnnouncer">
         <Announcer />
       </div>
       <div className="divKmAndPrice">
         <div>
-          <p className="body-2-500">{annnounce.km} KM</p>
-          <p className="body-2-500">{annnounce.year}</p>
+          <Body2 weight={500}>{annnounce.km} KM</Body2>
+          <Body2 weight={500}>{annnounce.year}</Body2>
         </div>
         <div>
-          <p className="Heading-7-500">R$ {annnounce.price}</p>
+          <Body1 weight={600}>R$ {annnounce.price}</Body1>
         </div>
       </div>
     </StyledAdCard>

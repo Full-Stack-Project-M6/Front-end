@@ -1,3 +1,4 @@
+import { Body1 } from "../Typography";
 import { StyledAnnouncer } from "./style";
 
 const annnounce = {
@@ -20,7 +21,7 @@ const Announcer = () => {
     <StyledAnnouncer>
       <div className="divAnnouncer">
         <div className="divTagAnnouncer">
-          <p>{annnounce.nameUser[0]}</p>
+          <Body1 weight={500}>{annnounce.nameUser[0]}</Body1>
         </div>
         <p className="body-2-500">{annnounce.nameUser}</p>
       </div>
