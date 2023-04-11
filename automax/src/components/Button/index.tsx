@@ -1,23 +1,18 @@
-import { useWindowDimensions } from "../../utils"
 import { StyledButton } from "./styles"
-import {
-    ButtonBigText,
-    ButtonMediumText
-} from "../Typography"
+import React from "react"
 
 
 interface IButtonProps{
     className: string
-    text: string
+    children: React.ReactNode
 }
 
-function Button({className, text}:IButtonProps){
-
-    const {width} = useWindowDimensions()
-    const ButtonText = width > 768? ButtonBigText : ButtonMediumText 
+function Button(props:IButtonProps){
 
     return(
-        <ButtonText children = {text}></ButtonText>
+        <StyledButton className={props.className}>
+            {props.children}
+        </StyledButton>
     )
 }
 

@@ -87,18 +87,6 @@ export const Body2 = ({ children, weight = 400, ...rest }:IProps) => (
   </p>
 );
 
-export const ButtonBigText = ({ children, ...rest }:IProps) => (
-  <button className="button-big-text" {...rest}>
-    {children}
-  </button>
-);
-
-export const ButtonMediumText = ({ children, ...rest }:IProps) => (
-  <button className="button-medium-text" {...rest}>
-    {children}
-  </button>
-);
-
 export const InputPlaceholder = ({ children, ...rest }:IPropsInput) => (
   <input className="input-placeholder" placeholder={children} {...rest} />
 );
