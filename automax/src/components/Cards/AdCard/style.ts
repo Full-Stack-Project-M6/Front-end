@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const StyledCardAnnounce = styled.div`
+export const StyledAdCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,15 +13,31 @@ export const StyledCardAnnounce = styled.div`
     justify-content: center;
     width: 100%;
     min-height: 150px;
-    border: 3px solid transparent;
+    border: 2.5px solid transparent;
     margin-bottom: 16px;
+    position: relative;
+
+    .goodBusiness {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 27px;
+      background-color: var(--colors-ramdom-7);
+      color: var(--colors-whiteFixed);
+      border-radius: 2px;
+
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
     img {
       width: 70%;
     }
 
     :hover {
-      border-color: purple;
+      border-color: var(--colors-brand-1);
       img {
         width: 80%;
       }
@@ -29,11 +45,15 @@ export const StyledCardAnnounce = styled.div`
   }
 
   .divInfos {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     h3 {
       margin: 0;
     }
 
     p {
+      text-align: left;
       margin: 16px 0 0;
     }
     margin-bottom: 16px;
@@ -62,11 +82,16 @@ export const StyledCardAnnounce = styled.div`
     margin-top: 20px;
 
     div:first-child {
+      gap: 20px;
       display: flex;
     }
 
     p {
       margin: 0;
     }
+  }
+
+  @media (max-width: 430px) {
+    width: 83%;
   }
 `;
