@@ -1,11 +1,14 @@
-import { Footer } from "./components/footer";
 
-function App() {
+import { GlobalStyle } from "./style/globalStyles";
+import Routes from "./routes";
+
+const App = () => {
   return (
-    <div className="App">
-      <Footer />
-    </div>
+    <>
+      <GlobalStyle />
+      <Routes />
+    </>
   );
-}
+};
 
 export default App;
