@@ -1,10 +1,9 @@
-import AdCard from "./components/Cards/AdCard";
+import { Footer } from "./components/footer";
 
 function App() {
   return (
     <div className="App">
-      <link rel="stylesheet" href="" />
-      <AdCard />
+      <Footer />
     </div>
   );
 }
