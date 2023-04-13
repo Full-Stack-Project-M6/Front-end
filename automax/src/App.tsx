@@ -9,13 +9,5 @@ const App = () => {
     </>
   );
 };
-// function App() {
-//   return (
-//     <div className="App">
-//       <link rel="stylesheet" href="" />
-//       <Routes />
-//     </div>
-//   );
-// }
 
 export default App;
