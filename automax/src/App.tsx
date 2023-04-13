@@ -1,10 +1,14 @@
 
-function App() {
+import { GlobalStyle } from "./style/globalStyles";
+import Routes from "./routes";
+
+const App = () => {
   return (
-    <div className="App">
-      <link rel="stylesheet" href="" />
-    </div>
+    <>
+      <GlobalStyle />
+      <Routes />
+    </>
   );
-}
+};
 
 export default App;
