@@ -306,10 +306,9 @@ export const StyleAnnoucePage = styled.div`
         bottom: 13px;
       }
     }
-  }
-
   .divPhotos,
   .divAnnoucer {
     display: none;
+    }
   }
 `;
