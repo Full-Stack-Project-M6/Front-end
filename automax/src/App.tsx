@@ -1,3 +1,4 @@
+
 import { GlobalStyle } from "./style/globalStyles";
 import Routes from "./routes";
 

@@ -3,7 +3,7 @@ import React from "react"
 
 
 interface IButtonProps{
-    className: string
+    className?: string
     children: React.ReactNode
 }
 
