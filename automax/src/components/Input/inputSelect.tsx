@@ -1,33 +1,35 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-// import { InputLabel } from '@mui/material';
-import { InputLabel, InputPlaceholder } from '../Typography';
+
 
 interface IPropsInputSelect{
   width: number
   placeholder: string
-  label: string
+  disabled?: boolean
 }
 
 export default function InputSelect(props:IPropsInputSelect) {
 
-  const {width, placeholder, label} = props
+  const {width, placeholder, disabled=false} = props
 
   return (
     <Autocomplete
-      // className="no-hover-effect"
+      className="no-hover-effect"
+      disabled={disabled}
       disablePortal
       id="combo-box-demo"
       options={top100Films}
       sx={{ 
         width: {width},
+        '& input::placeholder': {
+          color: 'var(--colors-grey-3)' 
+        },
         "& .MuiOutlinedInput-notchedOutline" : {
           borderColor: "var(--colors-grey-7)",
-          
         },
         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline" : {
-          borderColor: "var(--colors-brand-2)",
+          borderColor: "var(--colors-brand-2) !important",
         },
         "& .MuiOutlinedInput-root.Mui-focused": {
           backgroundColor: "var(--colors-grey-9)",
@@ -40,26 +42,33 @@ export default function InputSelect(props:IPropsInputSelect) {
         },
         "& .MuiInputBase-root-MuiOutlinedInput-root" : {
           height: 48,
+          borderColor: "var(--colors-grey-7)"
         },
         "& .MuiOutlinedInput-root" : {
           marginTop: 1,
+          height: 48,
+        },
+        "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+          borderColor: "var(--colors-grey-7)",
+        },
+        "& .Mui-disabled": {
+          backgroundColor: "var(--colors-grey-8)",
+          cursor: "not-allowed",
+          borderColor: "var(--colors-grey-8) ",
+        },
+        "& .Mui-disabled .MuiOutlinedInput-notchedOutline" : {
+          borderColor: "var(--colors-grey-8) !important"
+        },
+        "& > div > div > div > input:disabled" : {
+          WebkitTextFillColor: "var(--colors-grey-3) !important",
         }
       }}
       renderInput={(params) =>( 
       <div>
-        {/* <InputLabel shrink htmlFor="movie-select">
-          Movie
-        </InputLabel> */}
-        <InputLabel>
-          {label}
-        </InputLabel>
         <TextField 
         {...params} 
         label="" 
         variant='outlined'
-        // InputLabelProps={{
-        //   shrink: true,
-        // }}
         inputProps={{
           ...params.inputProps,
           placeholder: placeholder,
