@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
  --colors-brand-4: #EDEAFD;
 
  /* Grey Scale */
-
+ --colors-grey-opacity: #16161680;
  --colors-grey-0: #0B0D0D;
  --colors-grey-1:#212529;
  --colors-grey-2:#495057;
@@ -191,4 +191,4 @@ a {
     font-weight: 500;
     font-size: 14px;
 }
-`
+`;
