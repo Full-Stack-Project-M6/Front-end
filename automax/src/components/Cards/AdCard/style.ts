@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export const StyledAdCard = styled.div`
+export const StyledAdCard = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 312px;
   height: 350px;
+  background-color: white;
 
   .divImg {
     display: flex;

@@ -1,17 +1,14 @@
-
 import { GlobalStyle } from "./style/globalStyles";
 import Routes from "./routes";
-import Input from "./components/Inputs/Input/input";
-import InputSelect from "./components/Inputs/InputSelect/inputSelect";
-import TextArea from "./components/Inputs/TextArea/textArea";
+import ModalProvider  from "./context/modalContext"
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Routes />
-      <div>
-      </div>
+      <ModalProvider>
+        <Routes />
+      </ModalProvider>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { StyledInput } from "../style"
+import { StyledInput } from "./style"
 
 interface IPropsInput{
     width?: string
