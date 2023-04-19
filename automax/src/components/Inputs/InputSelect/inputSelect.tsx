@@ -4,14 +4,14 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 
 interface IPropsInputSelect{
-  width: number
+  width?: number
   placeholder: string
   disabled?: boolean
 }
 
 export default function InputSelect(props:IPropsInputSelect) {
 
-  const {width, placeholder, disabled=false} = props
+  const {width=0.8, placeholder, disabled=false} = props
 
   return (
     <Autocomplete

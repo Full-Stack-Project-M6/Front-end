@@ -1,7 +1,6 @@
 import { GlobalStyle } from "./style/globalStyles";
 import Routes from "./routes";
-import ModalProvider from "./context/modalContext";
-
+import ModalProvider  from "./context/modalContext"
 
 const App = () => {
   return (
