@@ -6,6 +6,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      
       <ModalProvider>
         <Routes />
       </ModalProvider>
