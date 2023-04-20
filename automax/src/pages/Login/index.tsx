@@ -6,8 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../schema";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
-import Input from "../../components/Input/input";
 import Button from "../../components/Button";
+import Input from "../../components/Inputs/Input";
+import { Footer } from "../../components/footer";
+import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
 
@@ -35,10 +37,13 @@ export const LoginPage = () => {
                     <blockquote>Esqueci minha senha</blockquote>
                     <Button className="brand1">{"Entrar"}</Button>
                     <p>Ainda não possui conta?</p>
-                    <Button className="outline1">{"Cadastrar"}</Button>
+                    <Link to="/register">
+                        <Button className="outline1">{"Cadastrar"}</Button>
+                    </Link>
                 </StyledForm>
 
             </StyledBackground>
+            <Footer />
         </>
     )
 }
