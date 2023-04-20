@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { IoCloseOutline } from "react-icons/io5";
 
+export const ModalContentImageCar = styled.div`
+  padding: 18px 30px 30px 30px;
+`;
+
 export const ModalImgCar = styled.div`
   display: flex;
   align-items: center;
@@ -30,4 +34,5 @@ export const ModalHeader = styled.header`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 30px;
 `;
