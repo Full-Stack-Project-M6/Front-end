@@ -95,71 +95,85 @@ a {
 .heading-1-700{
     font-weight: 700;   
     font-size: 44px;
+    color:var(--colors-grey-1);
 }
 
 .heading-2-600{
     font-weight: 600;
-    font-size: 36px;  
+    font-size: 36px;
+    color:var(--colors-grey-1);
 }
 
 .heading-3-600{
     font-weight: 600;
-    font-size: 32px; 
+    font-size: 32px;
+    color:var(--colors-grey-1);
 }
 
 .heading-3-500{
     font-weight: 500;
-    font-size: 32px;   
+    font-size: 32px;
+    color:var(--colors-grey-1);  
 }
 
 .heading-4-600{
     font-weight: 600;
     font-size: 28px;
+    color:var(--colors-grey-1);
 }
 
 .heading-4-500{
     font-weight: 500;
-    font-size: 28px;   
+    font-size: 28px;
+    color:var(--colors-grey-1);  
 }
 
 .heading-5-600{
     font-weight: 600;
-    font-size: 24px;   
+    font-size: 24px; 
+    color:var(--colors-grey-1);
 }
 
 .heading-5-500{
     font-weight: 500;
-    font-size: 24px;   
+    font-size: 24px;
+    color:var(--colors-grey-1);
 }
 
 .heading-6-600{
     font-weight: 600;
-    font-size: 20px;   
+    font-size: 20px;
+    color:var(--colors-grey-1); 
 }
 
 .heading-6-500{
     font-weight: 500;
-    font-size: 20px;   
+    font-size: 20px;
+    color:var(--colors-grey-1); 
 }
 
 .heading-7-600{
     font-weight: 600;
-    font-size: 16px;   
+    font-size: 16px;
+    color:var(--colors-grey-1); 
 }
 
 .heading-7-500{
     font-weight: 500;
-    font-size: 16px;   
+    font-size: 16px;
+    color:var(--colors-grey-1);  
 }
 
 .body-1-400{
     font-weight: 400;
     font-size: 16px;
+    color:var(--colors-grey-2);
 }
 
 .body-1-600{
     font-weight: 600;
     font-size: 16px;
+    color: var(--colors-grey-2)
 }
 
 .body-2-400{
@@ -170,25 +184,30 @@ a {
 .body-2-500{
     font-weight: 500;
     font-size: 14px;
+    color:var(--colors-grey-2);
 }
 
 .button-big-text{
     font-weight: 600;
     font-size: 16px;
+    color:var(--colors-grey-2);
 }
 
 .button-medium-text{
     font-weight: 600;
     font-size: 14px;
+    color:var(--colors-grey-2);
 }
 
 .input-placeholder{
     font-weight: 400;
     font-size: 16px;
+    color:var(--colors-grey-2);
 }
 
 .input-label{
     font-weight: 500;
     font-size: 14px;
+    color:var(--colors-grey-2);
 }
 `;
