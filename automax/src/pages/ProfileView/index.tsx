@@ -76,11 +76,11 @@ export const ProfileView = () => {
               <AnnouncerCard />
             </li>
           </ul>
-          <div>
+          <div className="pagination">
             <p>
               <strong>1</strong>de 2
             </p>
-            <h2>Seguinte</h2>
+            <button>Seguinte &gt;</button>
           </div>
         </StyledShopWindow>
       </StylePageProfileView>

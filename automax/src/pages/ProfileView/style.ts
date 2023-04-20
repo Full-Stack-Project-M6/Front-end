@@ -5,6 +5,10 @@ export const StylePageProfileView = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 720px) {
+    padding: 0 60px;
+  }
 `;
 
 export const StyleSectionBg = styled.section`
@@ -54,12 +58,17 @@ export const StyleAnnouncerInfo = styled.div`
   }
 `;
 export const StyledShopWindow = styled.section`
-  padding: 0 60px;
-
   & > ul {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+
+    li {
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .pagination {
@@ -87,5 +96,9 @@ export const StyledShopWindow = styled.section`
       color: var(--colors-grey-3);
       font-weight: 600;
     }
+  }
+
+  @media (max-width: 720px) {
+    padding: 0;
   }
 `;
