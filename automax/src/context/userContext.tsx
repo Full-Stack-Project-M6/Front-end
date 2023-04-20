@@ -7,7 +7,7 @@ import {
   iUserRequest,
 } from "../interfaces";
 import { useNavigate } from "react-router-dom";
-import { instance } from "../services";
+import { instance } from "../services/apiKenzie";
 
 export const UserContext = createContext({} as iUserContext);
 

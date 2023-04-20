@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { ICreateAnnounce } from "../../../interfaces/announce";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { announceSchema } from "../../../validations/createAnnounceSchema";
+import InputSelect from "../../Inputs/InputSelect/inputSelect";
 
 const FormCreateAnnounce = () => {
   const { closeModal, formAnnounceSetOpen } = useContext(ModalContext);
@@ -42,11 +43,7 @@ const FormCreateAnnounce = () => {
         <div className="divInputs">
           <div>
             <Body2 weight={500}>Marca</Body2>
-            <Input
-              placeholder="Digite aqui..."
-              register={register}
-              name="brand"
-            />
+            <InputSelect width={500} placeholder="Digite aqui..."/>
             {<p className="error">{errors.brand?.message}</p>}
           </div>
           <div>
