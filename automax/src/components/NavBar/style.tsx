@@ -47,6 +47,7 @@ export const StyledNav = styled.nav<INavBar>`
         position: absolute;
         top: 40px;
         left: 28px;
+        z-index: 1;
 
         background-color: var(--colors-grey-9);
 
@@ -82,7 +83,10 @@ export const StyledMenuMobile = styled.section`
     gap: 32px;
 
     position: absolute;
+    z-index: 1;
+    
     width: 100%;
+        
     background: #fff;
 
     box-shadow: 0px 16px 25px -18px var(--colors-grey-2);

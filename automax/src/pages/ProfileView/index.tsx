@@ -1,6 +1,7 @@
 import AnnouncerCard from "../../components/Cards/AnnouncerCard"
 import { NavBar } from "../../components/NavBar"
 import { Footer } from "../../components/footer"
+import { StyledShopWindow } from "./style"
 
 export const ProfileView = () => {
     return (
@@ -21,7 +22,7 @@ export const ProfileView = () => {
                 <button> Criar anuncio</button>
             </div>
         </div>
-        <section>
+        <StyledShopWindow>
             <ul>
                 <li>
                     <AnnouncerCard/>
@@ -66,11 +67,11 @@ export const ProfileView = () => {
                     <AnnouncerCard/>
                 </li>
             </ul>
-            <div>
-                <p>1 de 2</p>
-                <h2>Seguinte</h2>
+            <div className="pagination">
+                <p><strong>1</strong>de 2</p>
+                <button>Seguinte &gt;</button>
             </div>
-        </section>
+        </StyledShopWindow>
         <Footer/>
         </>
     )
