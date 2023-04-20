@@ -82,8 +82,8 @@ export default function InputSelect(props:IPropsInputSelect) {
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
-  { label: 'The Shawshank Redemption' },
-  { label: 'The Godfather', year: 1972 },
+  { label: 'chevrolet' },
+  { label: 'citroën' },
   { label: 'The Godfather: Part II', year: 1974 },
   { label: 'The Dark Knight', year: 2008 },
   { label: '12 Angry Men', year: 1957 },

@@ -7,6 +7,7 @@ import {
   StyleAnnouncerInfo,
   StylePageProfileView,
   StyleSectionBg,
+  StyledShopWindow,
 } from "./style";
 
 export const ProfileView = () => {
@@ -30,7 +31,7 @@ export const ProfileView = () => {
             <Button className="outlineBrand1"> Criar anuncio</Button>
           </div>
         </StyleAnnouncerInfo>
-        <section>
+        <StyledShopWindow>
           <ul>
             <li>
               <AnnouncerCard />
@@ -76,10 +77,12 @@ export const ProfileView = () => {
             </li>
           </ul>
           <div>
-            <p>1 de 2</p>
+            <p>
+              <strong>1</strong>de 2
+            </p>
             <h2>Seguinte</h2>
           </div>
-        </section>
+        </StyledShopWindow>
       </StylePageProfileView>
       <Footer />
     </>
