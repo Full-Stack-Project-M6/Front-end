@@ -12,3 +12,8 @@ export const instance = axios.create({
     timeout: 5000,
     headers
 })
+
+export const apiKars = axios.create({
+    baseURL:'https://kenzie-kars.herokuapp.com/',
+    timeout: 10000,
+})
