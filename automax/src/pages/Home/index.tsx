@@ -1,6 +1,6 @@
 import { NavBar } from "../../components/NavBar"
 import { StyledAnnounceList, StyledBannerDiv, StyledFilterDiv, StyledFiltersAside } from "./style"
-import blacklogo from '../../assets/blackLogo.png'
+import blacklogo from '../../assets/motorsShop.png'
 import AdCard from "../../components/Cards/AdCard"
 import { Footer } from "../../components/footer"
 import Button from "../../components/Button"
