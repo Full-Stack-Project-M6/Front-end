@@ -31,9 +31,9 @@ export const LoginPage = () => {
                 <StyledForm onSubmit={handleSubmit(userLogin)}>
                     <h1>Login</h1>
                     <label>Usuário</label>
-                    <Input placeholder="Digitar usuário"/>
+                    <Input register={register} name="usuario" placeholder="Digitar usuário"/>
                     <label>Usuário</label>
-                    <Input placeholder="Digitar senha"/>
+                    <Input register={register} name="senha" placeholder="Digitar senha"/>
                     <blockquote>Esqueci minha senha</blockquote>
                     <Button className="brand1">{"Entrar"}</Button>
                     <p>Ainda não possui conta?</p>
