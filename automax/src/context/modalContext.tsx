@@ -7,6 +7,18 @@ interface IModalContextProps {
 interface IModalContext {
   modalIsOpen: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  formAnnounceIsOpen: boolean;
+  formAnnounceSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  formUpdateAnnounceIsOpen: boolean;
+  formUpdateAnnounceSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteAnnounceIsOpen: boolean;
+  deleteAnnounceSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  formupdateUserIsOpen: boolean;
+  formupdateUserSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  formupdateAddressIsOpen: boolean;
+  formupdateAddressSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  successIsOpen: boolean;
+  successSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
   openModal: (set: Function) => void;
   closeModal: (set: Function) => void;
 }
@@ -15,6 +27,12 @@ export const ModalContext = createContext<IModalContext>({} as IModalContext);
 
 const ModalProvider = ({ children }: IModalContextProps) => {
   const [modalIsOpen, setOpen] = useState(false);
+  const [formAnnounceIsOpen, formAnnounceSetOpen] = useState(false);
+  const [formUpdateAnnounceIsOpen, formUpdateAnnounceSetOpen] = useState(false);
+  const [deleteAnnounceIsOpen, deleteAnnounceSetOpen] = useState(false);
+  const [formupdateUserIsOpen, formupdateUserSetOpen] = useState(false);
+  const [formupdateAddressIsOpen, formupdateAddressSetOpen] = useState(false);
+  const [successIsOpen, successSetOpen] = useState(false);
 
   const openModal = (set: Function) => set(true);
 
@@ -22,7 +40,24 @@ const ModalProvider = ({ children }: IModalContextProps) => {
 
   return (
     <ModalContext.Provider
-      value={{ modalIsOpen, setOpen, openModal, closeModal }}
+      value={{
+        modalIsOpen,
+        setOpen,
+        formAnnounceIsOpen,
+        formAnnounceSetOpen,
+        formUpdateAnnounceIsOpen,
+        formUpdateAnnounceSetOpen,
+        deleteAnnounceIsOpen,
+        deleteAnnounceSetOpen,
+        formupdateUserIsOpen,
+        formupdateUserSetOpen,
+        formupdateAddressIsOpen,
+        formupdateAddressSetOpen,
+        successIsOpen,
+        successSetOpen,
+        openModal,
+        closeModal,
+      }}
     >
       {children}
     </ModalContext.Provider>
