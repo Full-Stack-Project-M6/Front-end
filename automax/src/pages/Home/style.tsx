@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import banner from '../../assets/bannerOrange.png'
+import banner from '../../assets/bmwRoxa.png'
 
 export const StyledBannerDiv = styled.div`
     display: flex;
@@ -22,12 +22,13 @@ export const StyledBannerDiv = styled.div`
         right: 0px;
         bottom: 0px;
         left: 0px;
-        opacity: 0.80;
+        opacity: 0.75;
     }
     p {
         position: relative;
     }
     img {
+        margin-top: 2.5rem;
         position: relative;
     }
     @media(min-width: 720px) {

@@ -1,6 +1,6 @@
 import { StyledFooter } from "./style"
 import { BsFillCaretUpFill } from 'react-icons/bs'
-import whitelogo from '../../assets/whiteLogo.png'
+import whitelogo from '../../assets/motorsShop.png'
 
 export const Footer = () => {
     return (
