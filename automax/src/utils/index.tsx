@@ -28,7 +28,7 @@ export function useWindowDimensions() {
 export const annnounceMocked = {
   imgCar:
     "https://www.chevrolet.com.br/content/dam/chevrolet/mercosur/brazil/portuguese/index/cars/cars-subcontent/02-images/cruze-sport6-rs-carros.jpg?imwidth=960",
-  title: "Product title stays here - max 1 line",
+  title: "Maserati - Ghibl",
   description:
     " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...",
   imgUser:

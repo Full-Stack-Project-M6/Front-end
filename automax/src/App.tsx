@@ -1,6 +1,7 @@
 import { GlobalStyle } from "./style/globalStyles";
 import Routes from "./routes";
-import ModalProvider  from "./context/modalContext"
+import ModalProvider from "./context/modalContext";
+import { AnnounceProvider } from "./context/announceContext";
 import { UserProvider } from "./context/userContext";
 
 const App = () => {
@@ -8,11 +9,12 @@ const App = () => {
     <>
       <GlobalStyle />
       <UserProvider>
-        <ModalProvider>
-          <Routes />
-        </ModalProvider>
+        <AnnounceProvider>
+          <ModalProvider>
+            <Routes />
+          </ModalProvider>
+        </AnnounceProvider>
       </UserProvider>
-      
     </>
   );
 };
