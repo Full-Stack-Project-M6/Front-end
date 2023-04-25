@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledAdCard = styled.li`
+export const StyledAdCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,13 +39,11 @@ export const StyledAdCard = styled.li`
 
     :hover {
       border-color: var(--colors-brand-1);
-      img {
-        width: 80%;
-      }
     }
   }
 
   .divInfos {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -53,6 +51,7 @@ export const StyledAdCard = styled.li`
     p {
       text-align: left;
       margin: 16px 0 0;
+      color: var(--colors-grey-0);
     }
     margin-bottom: 16px;
   }
@@ -73,6 +72,13 @@ export const StyledAdCard = styled.li`
     div:first-child {
       gap: 20px;
       display: flex;
+      p {
+        color: var(--colors-brand-1);
+      }
+    }
+
+    p {
+      color: var(--colors-grey-0);
     }
   }
 
