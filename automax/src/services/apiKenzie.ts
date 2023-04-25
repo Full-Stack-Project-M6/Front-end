@@ -8,7 +8,7 @@ const headers = {
 }
 
 export const instance = axios.create({
-    baseURL: 'https://localhost:3000',
+    baseURL: 'http://localhost:3001',
     timeout: 5000,
     headers
 })

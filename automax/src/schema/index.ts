@@ -5,7 +5,7 @@ export const loginSchema = yup.object({
   password: yup
     .string()
     .required("A senha é obrigatória!")
-    .min(8, "A senha precisa ter no mínimo 8 caracteres")
+    // .min(8, "A senha precisa ter no mínimo 8 caracteres")
     .default(""),
 });
 

@@ -28,7 +28,7 @@ export const RegisterPage = () => {
         <>
             <NavBar />
             <StyledBackgroundRegister>
-                <StyledFormRegister>
+                <StyledFormRegister onSubmit={handleSubmit(userRegister)} >
                     <h1>Cadastro</h1>
                     <p>Informações pessoais</p>
                     <label htmlFor="name">Nome</label>
@@ -70,14 +70,14 @@ export const RegisterPage = () => {
                     </div>
                     <p>Tipo de conta</p>
                     <div className="divContain">
-                        <Button className="brand1">{"Comprador"}</Button>
-                        <Button className="outline1">{"Anunciante"}</Button>
+                        <Button type="button" className="brand1">{"Comprador"}</Button>
+                        <Button type="button" className="outline1">{"Anunciante"}</Button>
                     </div>
                     <label>Senha</label>
                     <Input register={register} name="senha" placeholder="Digitar senha" />
                     <label>Confirmar senha</label>
                     <Input register={register} name="confirmar senha" placeholder="Digitar senha" />
-                    <Button className="brand1">
+                    <Button type="submit" className="brand1">
                         {"Finalizar cadastro"}
                     </Button>
                 </StyledFormRegister>
