@@ -9,6 +9,7 @@ export const UserContext = createContext({} as iUserContext);
 export const UserProvider = ({ children }: iProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [listAnnounceUser, setListAnnounceUser] = useState<any>([]);
 
   const navigate = useNavigate();
 
@@ -60,6 +61,14 @@ export const UserProvider = ({ children }: iProviderProps) => {
     localStorage.removeItem("@MotorsToken");
     navigate("/");
   };
+
+  const renderListAnnounceUser = async () => {
+    const id_user = localStorage.getItem("@MotorsToken");
+    const { data } = await instance.get(`/announce/${id_user}`);
+
+    setListAnnounceUser(data);
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -69,6 +78,8 @@ export const UserProvider = ({ children }: iProviderProps) => {
         setUser,
         loading,
         userLogout,
+        renderListAnnounceUser,
+        listAnnounceUser,
       }}
     >
       {children}
