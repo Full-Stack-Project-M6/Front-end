@@ -13,8 +13,8 @@ const RoutesMain = () => {
   return (
     <Routes>
       <Route path="/announce" element={<Announce />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/" element={<LoginPage />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/create" element={<FormCreateAnnounce />} />
       <Route path="/profile" element={<ProfileView />} />
