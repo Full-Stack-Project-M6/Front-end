@@ -1,15 +1,17 @@
 import { GlobalStyle } from "./style/globalStyles";
 import Routes from "./routes";
-import ModalProvider  from "./context/modalContext"
+import ModalProvider from "./context/modalContext";
+import { AnnounceProvider } from "./context/announceContext";
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      
-      <ModalProvider>
-        <Routes />
-      </ModalProvider>
+      <AnnounceProvider>
+        <ModalProvider>
+          <Routes />
+        </ModalProvider>
+      </AnnounceProvider>
     </>
   );
 };

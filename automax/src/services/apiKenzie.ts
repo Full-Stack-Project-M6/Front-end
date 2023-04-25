@@ -1,19 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 
-const token = localStorage.getItem('@MotorsToken')
+const token = localStorage.getItem("@MotorsToken");
 
 const headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
-}
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${token}`,
+};
 
 export const instance = axios.create({
-    baseURL: 'https://localhost:3000',
-    timeout: 5000,
-    headers
-})
+  baseURL: "http://localhost:3001",
+  timeout: 10000,
+});
 
 export const apiKars = axios.create({
-    baseURL:'https://kenzie-kars.herokuapp.com/',
-    timeout: 10000,
-})
+  baseURL: "https://kenzie-kars.herokuapp.com/",
+  timeout: 10000,
+});

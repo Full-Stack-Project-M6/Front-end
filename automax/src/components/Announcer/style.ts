@@ -16,7 +16,9 @@ export const StyledAnnouncer = styled.div`
       height: 32px;
       border-radius: 30px;
       background-color: var(--colors-brand-1);
-      color: var(--colors-whiteFixed);
+      p {
+        color: var(--colors-whiteFixed);
+      }
     }
   }
 `;
