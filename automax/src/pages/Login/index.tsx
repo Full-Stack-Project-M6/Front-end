@@ -31,14 +31,16 @@ export const LoginPage = () => {
                 <StyledForm onSubmit={handleSubmit(userLogin)}>
                     <h1>Login</h1>
                     <label>Usuário</label>
-                    <Input register={register} name="usuario" placeholder="Digitar usuário"/>
-                    <label>Usuário</label>
-                    <Input register={register} name="senha" placeholder="Digitar senha"/>
+                    <Input register={register} name="email" placeholder="Digitar usuário"/>
+                    {errors.email && (<p>{errors.email.message}</p>)}
+                    <label>Senha</label>
+                    <Input type="password" register={register} name="password" placeholder="Digitar senha"/>
+                    {errors.password && (<p>{errors.password.message}</p>)}
                     <blockquote>Esqueci minha senha</blockquote>
-                    <Button className="brand1">{"Entrar"}</Button>
+                    <Button type="submit" className="brand1">{"Entrar"}</Button>
                     <p>Ainda não possui conta?</p>
                     <Link to="/register">
-                        <Button className="outline1">{"Cadastrar"}</Button>
+                        <Button type="button" className="outline1">{"Cadastrar"}</Button>
                     </Link>
                 </StyledForm>
 

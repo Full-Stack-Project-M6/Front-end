@@ -1,5 +1,8 @@
 import styled from "styled-components";
-// import "../../style/globalStyles.css"
+
+// interface IButtonProps {
+//   className?: string;
+// }
 
 export const StyledButton = styled.button`
 

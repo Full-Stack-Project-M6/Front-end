@@ -4,10 +4,10 @@ import {
   iUser,
   iUserContext,
   iUserLogin,
-  iUserRequest,
 } from "../interfaces";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../services/apiKenzie";
+import { IUserRequest } from "../interfaces/user";
 
 export const UserContext = createContext({} as iUserContext);
 
@@ -19,7 +19,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
 
   useEffect(() => {
     async function userLoad() {
-      const token = localStorage.getItem("@KenzieToken");
+      const token = localStorage.getItem("@MotorsToken");
       if (token) {
         try {
           const { data } = await instance.get("/profile");
@@ -34,11 +34,13 @@ export const UserProvider = ({ children }: iProviderProps) => {
     userLoad();
   }, []);
 
-  const userRegister = async (data: iUserRequest) => {
+  const userRegister = async (data: IUserRequest) => {
+    const {city, CEP, street, complement, number, state, ...user } = data
+    const address = {city, CEP, street, complement, number, state}
+    
     try {
-      await instance.post("/users", data);
+      await instance.post("/users", user);
       setLoading(true);
-    //   toast.success("Usuário cadastrado com sucesso");
     } catch (error) {
       console.log(error);
     } finally {
@@ -49,18 +51,18 @@ export const UserProvider = ({ children }: iProviderProps) => {
 
   const userLogin = async (data: iUserLogin) => {
     try {
-      const response = await instance.post("/sessions", data);
+      const response = await instance.post("/login", data);
+      
       setUser(response.data.user);
-      localStorage.setItem("@KenzieToken", response.data.token);
-      navigate("/Deashboard", { replace: true });
-    //   toast.success("Login efetuado com sucesso");
+      localStorage.setItem("@MotorsToken", response.data.token);
+      navigate("/home", { replace: true });
     } catch (error) {
       console.log(error);
     }
   };
 
   const userLogout = () => {
-    localStorage.removeItem("@KenzieToken");
+    localStorage.removeItem("@MotorsToken");
     navigate("/");
   };
   return (
