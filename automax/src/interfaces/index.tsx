@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { IUserRequest } from "./user";
 
 export interface iUserLogin {
     email: string;
@@ -17,20 +18,13 @@ export interface iUser {
     registered: Date;
 }
 
-export interface iUserRequest {
-    name: string;
-    email: string;
-    password: string;
-    phone: string;
-}
-
 export interface iUserLogin {
     email: string;
     password: string;
 }
 export interface iUserContext {
     userLogin: (data: iUserLogin) => void;
-    userRegister: (data: iUserRequest) => void;
+    userRegister: (data: IUserRequest) => void;
     user: iUser | null;
     setUser: React.Dispatch<React.SetStateAction<iUser | null>>;
     loading: boolean;

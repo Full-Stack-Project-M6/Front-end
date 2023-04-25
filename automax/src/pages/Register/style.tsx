@@ -64,11 +64,6 @@ export const StyledFormRegister = styled.form`
         width: 100%;
         margin-bottom: .8rem;
     }
-    
-    /* .outline1:active {
-        background-color: var(--colors-brand-1);
-        color: var(--colors-whiteFixed);
-    } */
 
     button:nth-child(1) {
         margin-right: .5rem;

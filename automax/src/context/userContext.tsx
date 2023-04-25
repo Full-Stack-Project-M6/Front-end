@@ -4,10 +4,10 @@ import {
   iUser,
   iUserContext,
   iUserLogin,
-  iUserRequest,
 } from "../interfaces";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../services/apiKenzie";
+import { IUserRequest } from "../interfaces/user";
 
 export const UserContext = createContext({} as iUserContext);
 
@@ -34,9 +34,12 @@ export const UserProvider = ({ children }: iProviderProps) => {
     userLoad();
   }, []);
 
-  const userRegister = async (data: iUserRequest) => {
+  const userRegister = async (data: IUserRequest) => {
+    const {city, CEP, street, complement, number, state, ...user } = data
+    const address = {city, CEP, street, complement, number, state}
+    
     try {
-      await instance.post("/users", data);
+      await instance.post("/users", user);
       setLoading(true);
     } catch (error) {
       console.log(error);
