@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { IUserRequest } from "./user";
+import { IUserRequest, IUserUpdate } from "./user";
 
 export interface iUserLogin {
   email: string;
@@ -31,4 +31,5 @@ export interface iUserContext {
   userLogout: () => void;
   renderListAnnounceUser: () => void;
   listAnnounceUser: [];
+  updateUser: (dateForm: IUserUpdate) => void;
 }

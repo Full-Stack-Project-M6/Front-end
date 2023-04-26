@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { iProviderProps, iUser, iUserContext, iUserLogin } from "../interfaces";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../services/apiKenzie";
-import { IUserRequest } from "../interfaces/user";
+import { IUserRequest, IUserUpdate } from "../interfaces/user";
 
 export const UserContext = createContext({} as iUserContext);
 
@@ -10,16 +10,16 @@ export const UserProvider = ({ children }: iProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [listAnnounceUser, setListAnnounceUser] = useState<any>([]);
+  const id_user = localStorage.getItem("@User_id");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function userLoad() {
       const token = localStorage.getItem("@MotorsToken");
-      const userID = localStorage.getItem("@User_id");
       if (token) {
         try {
-          const { data } = await instance.get(`/users/${userID}`);
+          const { data } = await instance.get(`/users/${id_user}`);
           setUser(data);
         } catch (error) {
           navigate("/", { replace: true });
@@ -65,10 +65,15 @@ export const UserProvider = ({ children }: iProviderProps) => {
   };
 
   const renderListAnnounceUser = async () => {
-    const id_user = localStorage.getItem("@User_id");
     const { data } = await instance.get(`/announce/all/${id_user}`);
 
     setListAnnounceUser(data);
+  };
+
+  const updateUser = async (dateForm: IUserUpdate) => {
+    const { data } = await instance.patch(`/users/${id_user}`, dateForm);
+
+    setUser(data);
   };
 
   return (
@@ -82,6 +87,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
         userLogout,
         renderListAnnounceUser,
         listAnnounceUser,
+        updateUser,
       }}
     >
       {children}

@@ -8,21 +8,24 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updateUserSchema } from "../../../validations/userSchema";
-import { IUser } from "../../../interfaces/user";
+import { IUserUpdate } from "../../../interfaces/user";
+import { UserContext } from "../../../context/userContext";
+import { StyledButton } from "../../Button/styles";
 
 const FormUpdateUser = () => {
   const { closeModal, formupdateUserSetOpen } = useContext(ModalContext);
+  const { updateUser } = useContext(UserContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IUser>({
+  } = useForm<IUserUpdate>({
     resolver: yupResolver(updateUserSchema),
   });
 
-  const submit = (data: IUser) => {
-    console.log(data);
+  const submit = (data: IUserUpdate) => {
+    updateUser(data);
   };
 
   return (
@@ -97,7 +100,14 @@ const FormUpdateUser = () => {
         </div>
       </div>
       <div className="divButton">
-        <Button className="light">Cancelar</Button>
+        <StyledButton
+          className="light"
+          onClick={() => {
+            closeModal(formupdateUserSetOpen);
+          }}
+        >
+          Cancelar
+        </StyledButton>
         <Button type="submit" className="brand1">
           Salvar alterações
         </Button>

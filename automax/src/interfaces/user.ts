@@ -25,3 +25,12 @@ export interface IUserRequest {
   number: string;
   complement?: string;
 }
+
+export interface IUserUpdate {
+  name?: string;
+  email?: string;
+  cpf?: string;
+  cellphone?: string;
+  date_birth?: string;
+  description?: string;
+}

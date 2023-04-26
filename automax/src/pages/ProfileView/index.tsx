@@ -1,6 +1,5 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Button from "../../components/Button";
-import AnnouncerCard from "../../components/Cards/AnnouncerCard";
 import { ListAnnounceUser } from "../../components/ListAnnounceUser";
 import { NavBar } from "../../components/NavBar";
 import { Body1, H5 } from "../../components/Typography";
