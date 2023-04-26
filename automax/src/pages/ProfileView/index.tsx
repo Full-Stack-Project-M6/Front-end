@@ -12,9 +12,13 @@ import {
   StyledShopWindow,
 } from "./style";
 import { UserContext } from "../../context/userContext";
+import { ModalContext } from "../../context/modalContext";
+import { StyledButton } from "../../components/Button/styles";
+import ModalFormCreateAnnounce from "../../components/Modal/FormCreateAnnounce";
 
 export const ProfileView = () => {
   const { getUSer, user } = useContext(UserContext);
+  const { formAnnounceSetOpen } = useContext(ModalContext);
 
   useEffect(() => {
     getUSer();
@@ -37,7 +41,7 @@ export const ProfileView = () => {
             ever since the 1500s
           </Body1>
           <div>
-            <Button className="outlineBrand1"> Criar anuncio</Button>
+            <StyledButton className="outlineBrand1" onClick={() => formAnnounceSetOpen(true)}> Criar anuncio</StyledButton>
           </div>
         </StyleAnnouncerInfo>
         <StyledShopWindow>
@@ -54,6 +58,7 @@ export const ProfileView = () => {
         </StyledShopWindow>
       </StylePageProfileView>
       <Footer />
+      <ModalFormCreateAnnounce/>
     </>
   );
 };
