@@ -53,10 +53,12 @@ export const StyledAnnouncerCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
+    width: 100%;
 
     p {
       text-align: left;
       margin: 16px 0 0;
+      color: var(--colors-grey-0);
     }
     margin-bottom: 16px;
   }
@@ -77,6 +79,15 @@ export const StyledAnnouncerCard = styled.div`
     div:first-child {
       gap: 20px;
       display: flex;
+      p {
+        color: var(--colors-brand-1);
+      }
+    }
+
+    div:nth-child(2) {
+      p {
+        color: var(--colors-grey-0);
+      }
     }
   }
 

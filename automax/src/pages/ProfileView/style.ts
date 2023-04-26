@@ -62,11 +62,11 @@ export const StyledShopWindow = styled.section`
     margin-bottom: 86px;
   }
 
-  & > ul {
+  ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 51px;
 
     li {
       max-width: 100%;

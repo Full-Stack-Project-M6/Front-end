@@ -37,7 +37,7 @@ const AnnouncerCard = (props: IAdCardProps) => {
           <Body2 weight={500}>{annnounceMocked.year}</Body2>
         </div>
         <div>
-          <Body1 weight={600}>R$ {props.data.price}</Body1>
+          <Body1 weight={600}>R$ {props.data.price},00</Body1>
         </div>
       </div>
     </StyledAnnouncerCard>
