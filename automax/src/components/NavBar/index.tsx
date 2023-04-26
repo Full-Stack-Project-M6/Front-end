@@ -5,17 +5,16 @@ import motorsShop from "../../assets/motorsShop.png";
 import Announcer from "../Announcer";
 import { IoMdClose } from "react-icons/io";
 import { Body1 } from "../Typography";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
+import { IUser } from "../../interfaces/user";
 
-export interface IPropsNavBar {
-  variant?: string;
-}
 
-export const NavBar = ({ variant }: IPropsNavBar) => {
+export const NavBar = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [menuMobileIsOpen, setMenuMobileIsOpen] = useState(false);
-
+  const {userLogout, user} = useContext(UserContext)
   return (
     <>
       <StyledNav responsive={menuMobileIsOpen}>
@@ -36,7 +35,7 @@ export const NavBar = ({ variant }: IPropsNavBar) => {
           </button>
         )}
         <div>
-          {variant == "logged" ? (
+          {user ? (
             <button
               className="menu"
               onClick={() => setMenuIsOpen((prev) => !prev)}
@@ -53,7 +52,7 @@ export const NavBar = ({ variant }: IPropsNavBar) => {
                   <StyledLink to={"/"}>
                     <Body1>Meus Anúncios</Body1>
                   </StyledLink>
-                  <button>
+                  <button onClick={userLogout}>
                     <Body1>Sair</Body1>
                   </button>
                 </div>

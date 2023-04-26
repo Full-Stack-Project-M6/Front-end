@@ -26,7 +26,7 @@ export const ProfileView = () => {
 
   return (
     <>
-      <NavBar variant="logged" />
+      <NavBar />
       <StyleSectionBg></StyleSectionBg>
       <StylePageProfileView>
         <StyleAnnouncerInfo>
