@@ -17,13 +17,13 @@ export const UserProvider = ({ children }: iProviderProps) => {
     async function userLoad() {
       const token = localStorage.getItem("@MotorsToken");
       if (token) {
-        try {
-          const { data } = await instance.get("/profile");
-          navigate("/Deashboard", { replace: true });
-          setUser(data);
-        } catch (error) {
-          console.error(error);
-        }
+        // try {
+        //   const { data } = await instance.get("/profile");
+        //   navigate("/Deashboard", { replace: true });
+        //   setUser(data);
+        // } catch (error) {
+        //   console.error(error);
+        // }
       }
       setLoading(false);
     }
@@ -50,6 +50,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
       const response = await instance.post("/login", data);
 
       setUser(response.data.user);
+      localStorage.setItem("@User_id", response.data.user.id);
       localStorage.setItem("@MotorsToken", response.data.token);
       navigate("/", { replace: true });
     } catch (error) {
@@ -63,8 +64,8 @@ export const UserProvider = ({ children }: iProviderProps) => {
   };
 
   const renderListAnnounceUser = async () => {
-    const id_user = localStorage.getItem("@MotorsToken");
-    const { data } = await instance.get(`/announce/${id_user}`);
+    const id_user = localStorage.getItem("@User_id");
+    const { data } = await instance.get(`/announce/all/${id_user}`);
 
     setListAnnounceUser(data);
   };

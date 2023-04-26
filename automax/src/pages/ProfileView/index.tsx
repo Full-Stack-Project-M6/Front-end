@@ -1,7 +1,8 @@
 import Button from "../../components/Button";
 import AnnouncerCard from "../../components/Cards/AnnouncerCard";
+import { ListAnnounceUser } from "../../components/ListAnnounceUser";
 import { NavBar } from "../../components/NavBar";
-import { Body1 } from "../../components/Typography";
+import { Body1, H5 } from "../../components/Typography";
 import { Footer } from "../../components/footer";
 import {
   StyleAnnouncerInfo,
@@ -32,50 +33,10 @@ export const ProfileView = () => {
           </div>
         </StyleAnnouncerInfo>
         <StyledShopWindow>
-          <ul>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-            <li>
-              <AnnouncerCard />
-            </li>
-          </ul>
+          <div className="title">
+            <H5>Anúncios</H5>
+          </div>
+          <ListAnnounceUser />
           <div className="pagination">
             <p>
               <strong>1</strong>de 2

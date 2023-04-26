@@ -58,6 +58,10 @@ export const StyleAnnouncerInfo = styled.div`
   }
 `;
 export const StyledShopWindow = styled.section`
+  .title {
+    margin-bottom: 86px;
+  }
+
   & > ul {
     display: flex;
     justify-content: center;
