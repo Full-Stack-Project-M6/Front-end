@@ -61,7 +61,7 @@ export const NavBar = ({ variant }: IPropsNavBar) => {
             </button>
           ) : (
             <>
-              <Link to="/">
+              <Link to="/login">
                 <Button className="ooutlineBrand1">{"Fazer Login"}</Button>
               </Link>
               <Link to="/register">

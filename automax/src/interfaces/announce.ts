@@ -72,3 +72,14 @@ export interface IAdCard {
   published: boolean;
   tag: boolean;
 }
+
+export interface IAnnounceCard {
+  id: string;
+  description: string;
+  image_cover: string;
+  kilometer: string;
+  price: string;
+  price_FIPE: string;
+  published: boolean;
+  tag: boolean;
+}

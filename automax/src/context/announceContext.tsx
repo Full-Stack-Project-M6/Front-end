@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { IAnnounce, IAnnounceProvider } from "../interfaces/announce";
+import { createContext, useState } from "react";
+import { IAnnounceProvider } from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
 
 interface IAnnounceProviderData {
