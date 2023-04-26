@@ -1,3 +1,4 @@
+
 import { useContext } from "react";
 import { annnounceMocked } from "../../utils";
 import { Body1 } from "../Typography";
@@ -5,7 +6,9 @@ import { StyledAnnouncer } from "./style";
 import { UserContext } from "../../context/userContext";
 
 const Announcer = () => {
+
   const {user} = useContext(UserContext)
+  
   return (
     <StyledAnnouncer>
       <div className="divAnnouncer">

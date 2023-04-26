@@ -58,11 +58,15 @@ export const StyleAnnouncerInfo = styled.div`
   }
 `;
 export const StyledShopWindow = styled.section`
-  & > ul {
+  .title {
+    margin-bottom: 86px;
+  }
+
+  ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 51px;
 
     li {
       max-width: 100%;
