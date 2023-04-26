@@ -41,6 +41,7 @@ export const StyledNav = styled.nav<INavBar>`
   .menu .menu__options {
     display: flex;
     flex-direction: column;
+    gap: 16px;
 
     position: absolute;
     top: 40px;
@@ -69,10 +70,6 @@ export const StyledNav = styled.nav<INavBar>`
       display: flex;
     }
   }
-`;
-
-export const StyledButtonMenu = styled.button`
-  padding-bottom: 16px;
 `;
 
 export const StyledMenuMobile = styled.section`
