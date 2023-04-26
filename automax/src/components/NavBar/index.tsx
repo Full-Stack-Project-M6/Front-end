@@ -1,5 +1,5 @@
 import Button from "../Button";
-import { StyledLink, StyledMenuMobile, StyledNav } from "./style";
+import { StyledButtonMenu, StyledMenuMobile, StyledNav } from "./style";
 import { FiMenu } from "react-icons/fi";
 import motorsShop from "../../assets/motorsShop.png";
 import Announcer from "../Announcer";
@@ -9,12 +9,15 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import { IUser } from "../../interfaces/user";
-
+import { ModalContext } from "../../context/modalContext";
+import ModalFormUpdateUser from "../Modal/FormUpdateUser";
 
 export const NavBar = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [menuMobileIsOpen, setMenuMobileIsOpen] = useState(false);
-  const {userLogout, user} = useContext(UserContext)
+  const { userLogout, user } = useContext(UserContext);
+  const { formupdateUserSetOpen } = useContext(ModalContext);
+
   return (
     <>
       <StyledNav responsive={menuMobileIsOpen}>
@@ -43,18 +46,22 @@ export const NavBar = () => {
               <Announcer />
               {menuIsOpen && (
                 <div className="menu__options">
-                  <StyledLink to={"/"}>
+                  <StyledButtonMenu
+                    onClick={() => {
+                      formupdateUserSetOpen(true);
+                    }}
+                  >
                     <Body1>Editar Perfil</Body1>
-                  </StyledLink>
-                  <StyledLink to={"/"}>
+                  </StyledButtonMenu>
+                  <StyledButtonMenu>
                     <Body1>Editar Endereço</Body1>
-                  </StyledLink>
-                  <StyledLink to={"/"}>
+                  </StyledButtonMenu>
+                  <StyledButtonMenu>
                     <Body1>Meus Anúncios</Body1>
-                  </StyledLink>
-                  <button onClick={userLogout}>
+                  </StyledButtonMenu>
+                  <StyledButtonMenu onClick={userLogout}>
                     <Body1>Sair</Body1>
-                  </button>
+                  </StyledButtonMenu>
                 </div>
               )}
             </button>
@@ -76,6 +83,7 @@ export const NavBar = () => {
           <Button className="outline2">Cadastrar</Button>
         </StyledMenuMobile>
       )}
+      <ModalFormUpdateUser />
     </>
   );
 };
