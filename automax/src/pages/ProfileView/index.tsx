@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import Button from "../../components/Button";
 import AnnouncerCard from "../../components/Cards/AnnouncerCard";
 import { ListAnnounceUser } from "../../components/ListAnnounceUser";
@@ -10,17 +11,24 @@ import {
   StyleSectionBg,
   StyledShopWindow,
 } from "./style";
+import { UserContext } from "../../context/userContext";
 
 export const ProfileView = () => {
+  const { getUSer, user } = useContext(UserContext);
+
+  useEffect(() => {
+    getUSer();
+  }, []);
+
   return (
     <>
       <NavBar variant="logged" />
       <StyleSectionBg></StyleSectionBg>
       <StylePageProfileView>
         <StyleAnnouncerInfo>
-          <p className="tag">SL</p>
+          <p className="tag">{user?.name[0].toUpperCase()}</p>
           <div className="divName">
-            <h4>Samuel Leão</h4>
+            <h4>{user?.name}</h4>
             <Button className="brandOpacity">Anunciante</Button>
           </div>
           <Body1>

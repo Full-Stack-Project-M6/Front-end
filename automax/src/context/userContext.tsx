@@ -13,22 +13,22 @@ export const UserProvider = ({ children }: iProviderProps) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function userLoad() {
-      const token = localStorage.getItem("@MotorsToken");
-      if (token) {
-        // try {
-        //   const { data } = await instance.get("/profile");
-        //   navigate("/Deashboard", { replace: true });
-        //   setUser(data);
-        // } catch (error) {
-        //   console.error(error);
-        // }
-      }
-      setLoading(false);
-    }
-    userLoad();
-  }, []);
+  // useEffect(() => {
+  //   async function userLoad() {
+  //     const token = localStorage.getItem("@MotorsToken");
+  //     if (token) {
+  //       try {
+  //         const { data } = await instance.get("/profile");
+  //         navigate("/Deashboard", { replace: true });
+  //         setUser(data);
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     }
+  //     setLoading(false);
+  //   }
+  //   userLoad();
+  // }, []);
 
   const userRegister = async (data: IUserRequest) => {
     const { city, CEP, street, complement, number, state, ...user } = data;
@@ -70,6 +70,16 @@ export const UserProvider = ({ children }: iProviderProps) => {
     setListAnnounceUser(data);
   };
 
+  const getUSer = async () => {
+    const id_user = localStorage.getItem("@User_id");
+    try {
+      const { data } = await instance.get(`/users/${id_user}`);
+      setUser(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -81,6 +91,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
         userLogout,
         renderListAnnounceUser,
         listAnnounceUser,
+        getUSer,
       }}
     >
       {children}

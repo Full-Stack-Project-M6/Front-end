@@ -14,7 +14,6 @@ export const ListAnnounceUser = () => {
     <>
       <ul>
         {listAnnounceUser.map((elm: IAnnounceCard) => {
-          console.log(elm);
           return (
             <li key={elm.id}>
               <AnnouncerCard data={elm} />

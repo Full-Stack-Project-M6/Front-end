@@ -31,4 +31,5 @@ export interface iUserContext {
   userLogout: () => void;
   renderListAnnounceUser: () => void;
   listAnnounceUser: [];
+  getUSer: () => void;
 }
