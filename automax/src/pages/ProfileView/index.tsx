@@ -14,11 +14,7 @@ import {
 import { UserContext } from "../../context/userContext";
 
 export const ProfileView = () => {
-  const { getUSer, user } = useContext(UserContext);
-
-  useEffect(() => {
-    getUSer();
-  }, []);
+  const { user } = useContext(UserContext);
 
   return (
     <>

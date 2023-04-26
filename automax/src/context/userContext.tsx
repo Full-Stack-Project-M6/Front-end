@@ -20,9 +20,9 @@ export const UserProvider = ({ children }: iProviderProps) => {
       if (token) {
         try {
           const { data } = await instance.get(`/users/${userID}`);
-          // navigate("/", { replace: true });
           setUser(data);
         } catch (error) {
+          navigate("/", { replace: true });
           console.error(error);
         }
       }
@@ -71,16 +71,6 @@ export const UserProvider = ({ children }: iProviderProps) => {
     setListAnnounceUser(data);
   };
 
-  const getUSer = async () => {
-    const id_user = localStorage.getItem("@User_id");
-    try {
-      const { data } = await instance.get(`/users/${id_user}`);
-      setUser(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <UserContext.Provider
       value={{
@@ -92,7 +82,6 @@ export const UserProvider = ({ children }: iProviderProps) => {
         userLogout,
         renderListAnnounceUser,
         listAnnounceUser,
-        getUSer,
       }}
     >
       {children}
