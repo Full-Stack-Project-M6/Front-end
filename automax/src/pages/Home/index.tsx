@@ -4,8 +4,11 @@ import blacklogo from '../../assets/motorsShop.png'
 import AdCard from "../../components/Cards/AdCard"
 import { Footer } from "../../components/footer"
 import Button from "../../components/Button"
+import { useContext } from "react"
+import { UserContext } from "../../context/userContext"
 
 export const Home = () => {
+
     return (
         <>
             <NavBar />
