@@ -13,27 +13,27 @@ export const UserProvider = ({ children }: iProviderProps) => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   async function userLoad() {
-  //     const token = localStorage.getItem("@MotorsToken");
-  //     if (token) {
-  //       try {
-  //         const { data } = await instance.get("/profile");
-  //         navigate("/Deashboard", { replace: true });
-  //         setUser(data);
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     }
-  //     setLoading(false);
-  //   }
-  //   userLoad();
-  // }, []);
+  useEffect(() => {
+    async function userLoad() {
+      const token = localStorage.getItem("@MotorsToken");
+      const userID = localStorage.getItem("@UserId");
+      if (token) {
+        try {
+          const { data } = await instance.get(`/users/${userID}`);
+          navigate("/", { replace: true });
+          setUser(data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      setLoading(false);
+    }
+    userLoad();
+  }, [navigate]);
 
   const userRegister = async (data: IUserRequest) => {
-    const { city, CEP, street, complement, number, state, ...user } = data;
-    const address = { city, CEP, street, complement, number, state };
-
+    const {city, CEP, street, complement, number, state, ...user } = data
+    const address = {city, CEP, street, complement, number, state}
     try {
       await instance.post("/users", user);
       setLoading(true);
@@ -48,10 +48,11 @@ export const UserProvider = ({ children }: iProviderProps) => {
   const userLogin = async (data: iUserLogin) => {
     try {
       const response = await instance.post("/login", data);
-
       setUser(response.data.user);
       localStorage.setItem("@User_id", response.data.user.id);
       localStorage.setItem("@MotorsToken", response.data.token);
+
+      localStorage.setItem("@UserId", response.data.user.id);
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
@@ -60,7 +61,8 @@ export const UserProvider = ({ children }: iProviderProps) => {
 
   const userLogout = () => {
     localStorage.removeItem("@MotorsToken");
-    navigate("/");
+    localStorage.removeItem("@UserId");
+    navigate("/login");
   };
 
   const renderListAnnounceUser = async () => {
