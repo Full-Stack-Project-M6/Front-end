@@ -9,9 +9,8 @@ export const UserContext = createContext({} as iUserContext);
 export const UserProvider = ({ children }: iProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(true);
-  const [listAnnounceUser, setListAnnounceUser] = useState<any>([]);
+
   const id_user = localStorage.getItem("@User_id");
-  const [idAnnounce, setIdAnnounce] = useState("");
 
   const navigate = useNavigate();
 
@@ -65,12 +64,6 @@ export const UserProvider = ({ children }: iProviderProps) => {
     navigate("/login");
   };
 
-  const renderListAnnounceUser = async () => {
-    const { data } = await instance.get(`/announce/all/${id_user}`);
-
-    setListAnnounceUser(data);
-  };
-
   const updateUser = async (dateForm: IUserUpdate) => {
     const { data } = await instance.patch(`/users/${id_user}`, dateForm);
 
@@ -86,11 +79,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
         setUser,
         loading,
         userLogout,
-        renderListAnnounceUser,
-        listAnnounceUser,
         updateUser,
-        idAnnounce,
-        setIdAnnounce,
       }}
     >
       {children}

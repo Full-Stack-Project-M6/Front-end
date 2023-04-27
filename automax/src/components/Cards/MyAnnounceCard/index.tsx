@@ -6,7 +6,7 @@ import { IAnnounceCard } from "../../../interfaces/announce";
 import { StyledButton } from "../../Button/styles";
 import { useContext } from "react";
 import { ModalContext } from "../../../context/modalContext";
-import { UserContext } from "../../../context/userContext";
+import { AnnounceContext } from "../../../context/announceContext";
 
 interface IAdCardProps {
   data: IAnnounceCard;
@@ -14,7 +14,7 @@ interface IAdCardProps {
 
 const MyAnnounceCard = (props: IAdCardProps) => {
   const { formUpdateAnnounceSetOpen } = useContext(ModalContext);
-  const { setIdAnnounce } = useContext(UserContext);
+  const { setIdAnnounce } = useContext(AnnounceContext);
 
   return (
     <StyledMyAnnounceCard>

@@ -29,9 +29,5 @@ export interface iUserContext {
   setUser: React.Dispatch<React.SetStateAction<iUser | null>>;
   loading: boolean;
   userLogout: () => void;
-  renderListAnnounceUser: () => void;
-  listAnnounceUser: [];
   updateUser: (dateForm: IUserUpdate) => void;
-  idAnnounce: string;
-  setIdAnnounce: React.Dispatch<React.SetStateAction<string>>;
 }

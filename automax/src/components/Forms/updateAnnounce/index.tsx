@@ -9,12 +9,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { updateAnnounceSchema } from "../../../validations/createAnnounceSchema";
 import { IUpdateAnnounce } from "../../../interfaces/announce";
 import { StyledButton } from "../../Button/styles";
-import { UserContext } from "../../../context/userContext";
+import { AnnounceContext } from "../../../context/announceContext";
 
 const FormUpdateAnnounce = () => {
   const { closeModal, formUpdateAnnounceSetOpen, deleteAnnounceSetOpen } =
     useContext(ModalContext);
-  const { idAnnounce } = useContext(UserContext);
+  const { idAnnounce } = useContext(AnnounceContext);
 
   const {
     register,
