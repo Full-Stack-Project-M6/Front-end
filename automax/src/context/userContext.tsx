@@ -7,7 +7,7 @@ import { IUserRequest, IUserUpdate } from "../interfaces/user";
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iProviderProps) => {
-  const [user, setUser] = useState<iUser | null>(null);
+  const [user, setUser] = useState<iUser | undefined>();
   const [loading, setLoading] = useState(true);
 
   const id_user = localStorage.getItem("@User_id");
@@ -60,7 +60,6 @@ export const UserProvider = ({ children }: iProviderProps) => {
   const userLogout = () => {
     localStorage.removeItem("@MotorsToken");
     localStorage.removeItem("@User_id");
-    setUser(null);
     navigate("/login");
   };
 

@@ -30,7 +30,7 @@ function Input(props: IPropsInput) {
       placeholder={placeholder}
       type={type}
       {...register(name)}
-      defautValue={defautValue}
+      defaultValue={defautValue}
     />
   );
 }
