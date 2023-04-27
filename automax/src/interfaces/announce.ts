@@ -25,7 +25,6 @@ export interface ICreateAnnounce {
 }
 
 export interface IUpdateAnnounce {
-  id: string;
   brand?: string;
   model?: string;
   year?: string;

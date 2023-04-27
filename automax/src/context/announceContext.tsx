@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { IAnnounceProvider } from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
+import { IUpdateAnnounce } from "../interfaces/announce";
 
 interface IAnnounceProviderData {
   listAllAnnounce: () => void;
@@ -10,6 +11,10 @@ interface IAnnounceProviderData {
   deleteAnnounce: (idAnnounce: string) => Promise<void>;
   idAnnounce: string;
   setIdAnnounce: React.Dispatch<React.SetStateAction<string>>;
+  updateAnnounce: (
+    idAnnounce: string,
+    dataForm: IUpdateAnnounce
+  ) => Promise<void>;
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -39,6 +44,13 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
     renderListAnnounceUser();
   };
 
+  const updateAnnounce = async (
+    idAnnounce: string,
+    dataForm: IUpdateAnnounce
+  ) => {
+    await instance.patch(`/announce/${idAnnounce}`, dataForm);
+  };
+
   return (
     <AnnounceContext.Provider
       value={{
@@ -49,6 +61,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         deleteAnnounce,
         idAnnounce,
         setIdAnnounce,
+        updateAnnounce,
       }}
     >
       {children}

@@ -14,7 +14,7 @@ import { AnnounceContext } from "../../../context/announceContext";
 const FormUpdateAnnounce = () => {
   const { closeModal, formUpdateAnnounceSetOpen, deleteAnnounceSetOpen } =
     useContext(ModalContext);
-  const { idAnnounce } = useContext(AnnounceContext);
+  const { idAnnounce, updateAnnounce } = useContext(AnnounceContext);
 
   const {
     register,
@@ -25,7 +25,7 @@ const FormUpdateAnnounce = () => {
   });
 
   const submit = (data: IUpdateAnnounce) => {
-    data.id = idAnnounce;
+    updateAnnounce(idAnnounce, data);
     console.log(data);
   };
 
