@@ -11,7 +11,7 @@ const Announcer = () => {
     <StyledAnnouncer>
       <div className="divAnnouncer">
         <div className="divTagAnnouncer">
-          <Body1 weight={500}>{user?.name[0]}</Body1>
+          <Body1 weight={500}>{user?.name[0].toUpperCase()}</Body1>
         </div>
         <p className="body-2-500">{user?.name}</p>
       </div>

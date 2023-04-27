@@ -5,6 +5,8 @@ import { AnnounceProvider } from "./context/announceContext";
 import { UserProvider } from "./context/userContext";
 import ModalFormUpdateUser from "./components/Modal/FormUpdateUser";
 import ModalFormUpdateAdrress from "./components/Modal/FormUpdateAdress";
+import ModalFormUpdateAnnounce from "./components/Modal/FormUpdateAnnounce";
+import ModalDeleteAnnounce from "./components/Modal/DeleteAnnounce";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
             <Routes />
             <ModalFormUpdateUser />
             <ModalFormUpdateAdrress />
+            <ModalFormUpdateAnnounce />
+            <ModalDeleteAnnounce />
           </ModalProvider>
         </AnnounceProvider>
       </UserProvider>

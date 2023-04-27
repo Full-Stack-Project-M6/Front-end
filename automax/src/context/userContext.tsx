@@ -11,6 +11,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
   const [loading, setLoading] = useState(true);
   const [listAnnounceUser, setListAnnounceUser] = useState<any>([]);
   const id_user = localStorage.getItem("@User_id");
+  const [idAnnounce, setIdAnnounce] = useState("");
 
   const navigate = useNavigate();
 
@@ -88,6 +89,8 @@ export const UserProvider = ({ children }: iProviderProps) => {
         renderListAnnounceUser,
         listAnnounceUser,
         updateUser,
+        idAnnounce,
+        setIdAnnounce,
       }}
     >
       {children}

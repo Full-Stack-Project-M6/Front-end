@@ -5,6 +5,7 @@ import { ModalContext } from "../../../context/modalContext";
 import { Body1 } from "../../Typography";
 import Button from "../../Button";
 import { CloseIcon, StyleModalDeleteAnnounce } from "./style";
+import { StyledButton } from "../../Button/styles";
 
 const ModalDeleteAnnounce = () => {
   const { deleteAnnounceIsOpen, closeModal, deleteAnnounceSetOpen } =
@@ -35,8 +36,15 @@ const ModalDeleteAnnounce = () => {
           </Body1>
         </div>
         <div className="divButton">
-          <Button className="link">Cancelar</Button>
-          <Button className="alert">Sim, excluir anúncio</Button>
+          <StyledButton
+            className="link"
+            onClick={() => {
+              closeModal(deleteAnnounceSetOpen);
+            }}
+          >
+            Cancelar
+          </StyledButton>
+          <StyledButton className="alert">Sim, excluir anúncio</StyledButton>
         </div>
       </StyleModalDeleteAnnounce>
     </Modal>

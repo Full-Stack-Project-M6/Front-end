@@ -1,7 +1,6 @@
 import { CloseIcon, StyledFormUpdateAnnounce } from "./style";
 import { Body1, Body2 } from "../../Typography";
 import Input from "../../Inputs/Input";
-import Button from "../../Button";
 import TextArea from "../../Inputs/TextArea";
 import { ModalContext } from "../../../context/modalContext";
 import { useContext } from "react";
@@ -9,9 +8,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updateAnnounceSchema } from "../../../validations/createAnnounceSchema";
 import { IUpdateAnnounce } from "../../../interfaces/announce";
+import { StyledButton } from "../../Button/styles";
+import { UserContext } from "../../../context/userContext";
 
 const FormUpdateAnnounce = () => {
-  const { closeModal, formUpdateAnnounceSetOpen } = useContext(ModalContext);
+  const { closeModal, formUpdateAnnounceSetOpen, deleteAnnounceSetOpen } =
+    useContext(ModalContext);
+  const { idAnnounce } = useContext(UserContext);
 
   const {
     register,
@@ -22,6 +25,7 @@ const FormUpdateAnnounce = () => {
   });
 
   const submit = (data: IUpdateAnnounce) => {
+    data.id = idAnnounce;
     console.log(data);
   };
 
@@ -129,8 +133,8 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>Publicado</Body2>
             <div className="divButtonPublish">
-              <Button className="brand1Hover">Sim</Button>
-              <Button className="brand1Hover">Não</Button>
+              <StyledButton className="brand1Hover">Sim</StyledButton>
+              <StyledButton className="brand1Hover">Não</StyledButton>
             </div>
           </div>
           <div>
@@ -166,10 +170,18 @@ const FormUpdateAnnounce = () => {
         </div>
       </div>
       <div className="divButton">
-        <Button className="light">Excluir anúncio</Button>
-        <Button type="submit" className="brand1">
+        <StyledButton
+          className="light"
+          onClick={() => {
+            deleteAnnounceSetOpen(true);
+            formUpdateAnnounceSetOpen(false);
+          }}
+        >
+          Excluir anúncio
+        </StyledButton>
+        <StyledButton type="submit" className="brand1">
           Salvar alterações
-        </Button>
+        </StyledButton>
       </div>
     </StyledFormUpdateAnnounce>
   );

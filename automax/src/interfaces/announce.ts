@@ -25,6 +25,7 @@ export interface ICreateAnnounce {
 }
 
 export interface IUpdateAnnounce {
+  id: string;
   brand?: string;
   model?: string;
   year?: string;
@@ -35,9 +36,7 @@ export interface IUpdateAnnounce {
   price?: string;
   description?: string;
   image_cover?: string;
-  //   published?: boolean;
-  //   tag?: boolean;
-  //   user?: string;
+  published?: boolean;
   image_one?: string;
   image_two?: string;
 }

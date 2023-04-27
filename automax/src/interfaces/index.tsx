@@ -32,4 +32,6 @@ export interface iUserContext {
   renderListAnnounceUser: () => void;
   listAnnounceUser: [];
   updateUser: (dateForm: IUserUpdate) => void;
+  idAnnounce: string;
+  setIdAnnounce: React.Dispatch<React.SetStateAction<string>>;
 }
