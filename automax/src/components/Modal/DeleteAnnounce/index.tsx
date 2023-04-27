@@ -11,7 +11,7 @@ import { AnnounceContext } from "../../../context/announceContext";
 const ModalDeleteAnnounce = () => {
   const { deleteAnnounceIsOpen, closeModal, deleteAnnounceSetOpen } =
     useContext(ModalContext);
-  const { deleteAnnounce, idAnnounce } = useContext(AnnounceContext);
+  const { deleteAnnounce, announce } = useContext(AnnounceContext);
 
   return (
     <Modal
@@ -49,7 +49,7 @@ const ModalDeleteAnnounce = () => {
           <StyledButton
             className="alert"
             onClick={() => {
-              deleteAnnounce(idAnnounce);
+              deleteAnnounce(announce?.id);
               closeModal(deleteAnnounceSetOpen);
             }}
           >

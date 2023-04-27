@@ -1,3 +1,4 @@
+import { IAnnounceCard } from "../../../interfaces/announce";
 import { StyledInput } from "./style";
 
 interface IPropsInput {
@@ -7,12 +8,20 @@ interface IPropsInput {
   type?: string;
   register: Function;
   name?: string;
+  defautValue?: string | undefined;
 }
 
 function Input(props: IPropsInput) {
   const register = props.register;
 
-  const { width, placeholder, disabled = false, type = "text", name } = props;
+  const {
+    width,
+    placeholder,
+    disabled = false,
+    type = "text",
+    name,
+    defautValue,
+  } = props;
 
   return (
     <StyledInput
@@ -21,6 +30,7 @@ function Input(props: IPropsInput) {
       placeholder={placeholder}
       type={type}
       {...register(name)}
+      defautValue={defautValue}
     />
   );
 }

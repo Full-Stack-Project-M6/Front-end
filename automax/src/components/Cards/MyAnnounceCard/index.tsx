@@ -14,7 +14,7 @@ interface IAdCardProps {
 
 const MyAnnounceCard = (props: IAdCardProps) => {
   const { formUpdateAnnounceSetOpen } = useContext(ModalContext);
-  const { setIdAnnounce } = useContext(AnnounceContext);
+  const { setAnnounce } = useContext(AnnounceContext);
 
   return (
     <StyledMyAnnounceCard>
@@ -41,7 +41,7 @@ const MyAnnounceCard = (props: IAdCardProps) => {
         <StyledButton
           className="outline1"
           onClick={() => {
-            setIdAnnounce(props.data.id);
+            setAnnounce(props.data);
 
             formUpdateAnnounceSetOpen(true);
           }}

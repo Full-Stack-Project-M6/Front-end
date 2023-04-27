@@ -3,7 +3,7 @@ import { Body1, Body2 } from "../../Typography";
 import Input from "../../Inputs/Input";
 import TextArea from "../../Inputs/TextArea";
 import { ModalContext } from "../../../context/modalContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updateAnnounceSchema } from "../../../validations/createAnnounceSchema";
@@ -14,10 +14,13 @@ import { AnnounceContext } from "../../../context/announceContext";
 const FormUpdateAnnounce = () => {
   const { closeModal, formUpdateAnnounceSetOpen, deleteAnnounceSetOpen } =
     useContext(ModalContext);
-  const { idAnnounce, updateAnnounce } = useContext(AnnounceContext);
+  const { announce, updateAnnounce } = useContext(AnnounceContext);
+  const [classNameActvie, setClassNameActive] = useState("brand1");
+  const [classNameDeactvie, setClassNameDeactive] = useState("outline1");
 
   const {
     register,
+    unregister,
     handleSubmit,
     formState: { errors },
   } = useForm<IUpdateAnnounce>({
@@ -25,7 +28,7 @@ const FormUpdateAnnounce = () => {
   });
 
   const submit = (data: IUpdateAnnounce) => {
-    updateAnnounce(idAnnounce, data);
+    // updateAnnounce(announce.id, data);
     console.log(data);
   };
 
@@ -47,6 +50,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>Marca</Body2>
             <Input
+              // defautValue={announce?.brand}
               placeholder="Digite aqui..."
               register={register}
               name="brand"
@@ -56,6 +60,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>Modelo</Body2>
             <Input
+              // defautValue={announce?.model}
               placeholder="Digite aqui..."
               register={register}
               name="model"
@@ -66,6 +71,7 @@ const FormUpdateAnnounce = () => {
             <div>
               <Body2 weight={500}>Ano</Body2>
               <Input
+                // defautValue={announce?.year}
                 placeholder="Digite aqui..."
                 register={register}
                 name="year"
@@ -75,6 +81,7 @@ const FormUpdateAnnounce = () => {
             <div>
               <Body2 weight={500}>Combustível</Body2>
               <Input
+                // defautValue={announce?.fuel}
                 placeholder="Digite aqui..."
                 register={register}
                 name="fuel"
@@ -86,6 +93,7 @@ const FormUpdateAnnounce = () => {
             <div>
               <Body2 weight={500}>Quilometragem</Body2>
               <Input
+                defautValue={announce?.kilometer}
                 placeholder="Digite aqui..."
                 register={register}
                 name="kilometer"
@@ -95,6 +103,7 @@ const FormUpdateAnnounce = () => {
             <div>
               <Body2 weight={500}>Cor</Body2>
               <Input
+                // defautValue={announce?.color}
                 placeholder="Digite aqui..."
                 register={register}
                 name="color"
@@ -114,6 +123,7 @@ const FormUpdateAnnounce = () => {
             <div>
               <Body2 weight={500}>Preço</Body2>
               <Input
+                defautValue={announce?.price}
                 placeholder="Digite aqui..."
                 register={register}
                 name="price"
@@ -124,6 +134,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>Descrição</Body2>
             <TextArea
+              defautValue={announce?.description}
               placeholder="Digite aqui..."
               register={register}
               name="description"
@@ -133,8 +144,30 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>Publicado</Body2>
             <div className="divButtonPublish">
-              <StyledButton className="brand1Hover">Sim</StyledButton>
-              <StyledButton className="brand1Hover">Não</StyledButton>
+              <StyledButton
+                type="button"
+                className={classNameActvie}
+                onClick={() => {
+                  setClassNameActive(() => "brand1");
+                  setClassNameDeactive(() => "outline1");
+                  unregister("published", {});
+                  register("published", { value: true });
+                }}
+              >
+                Sim
+              </StyledButton>
+              <StyledButton
+                type="button"
+                className={classNameDeactvie}
+                onClick={() => {
+                  setClassNameActive(() => "outline1");
+                  setClassNameDeactive(() => "brand1");
+                  unregister("published", {});
+                  register("published", { value: false });
+                }}
+              >
+                Não
+              </StyledButton>
             </div>
           </div>
           <div>
