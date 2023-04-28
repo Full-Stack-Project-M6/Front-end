@@ -54,12 +54,22 @@ export const UserProvider = ({ children }: IProviderProps) => {
     }
   };
 
-  const userLogin = async (data: IUserLogin) => {
+  const getUser = async (idUser: string) => {
     try {
-      const response = await instance.post("/login", data);
-      setUser(response.data.user);
-      localStorage.setItem("@User_id", response.data.user.id);
-      localStorage.setItem("@MotorsToken", response.data.token);
+      const { data } = await instance.get(`/users/${idUser}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const userLogin = async (dataForm: IUserLogin) => {
+    try {
+      const { data } = await instance.post("/login", dataForm);
+
+      setUser(data.user);
+      localStorage.setItem("@User_id", data.user.id);
+      localStorage.setItem("@MotorsToken", data.token);
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);

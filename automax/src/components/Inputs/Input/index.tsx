@@ -1,4 +1,3 @@
-import { IAnnounceCard } from "../../../interfaces/announce";
 import { StyledInput } from "./style";
 
 interface IPropsInput {

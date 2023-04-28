@@ -26,8 +26,7 @@ const FormUpdateUser = () => {
 
   const submit = (data: IUserUpdate) => {
     console.log(user);
-
-    // updateUser(data);
+    updateUser(data);
   };
 
   return (
