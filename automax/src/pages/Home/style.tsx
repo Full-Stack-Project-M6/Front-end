@@ -22,7 +22,7 @@ export const StyledBannerDiv = styled.div`
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.75;
+    opacity: 0.8;
   }
   p {
     position: relative;

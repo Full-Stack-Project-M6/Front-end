@@ -5,13 +5,13 @@ import { ModalContext } from "../../../context/modalContext";
 import FormUpdateAnnounce from "../../Forms/updateAnnounce";
 
 const ModalFormUpdateAnnounce = () => {
-  const { formUpdateAnnounceIsOpen, closeModal, formAnnounceSetOpen } =
+  const { formUpdateAnnounceIsOpen, closeModal, formUpdateAnnounceSetOpen } =
     useContext(ModalContext);
 
   return (
     <Modal
       isOpen={formUpdateAnnounceIsOpen}
-      onRequestClose={() => closeModal(formAnnounceSetOpen)}
+      onRequestClose={() => closeModal(formUpdateAnnounceSetOpen)}
       contentLabel="Example Modal"
       className="modalContent"
       overlayClassName="modalOverlay"

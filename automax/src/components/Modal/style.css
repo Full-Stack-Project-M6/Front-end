@@ -9,10 +9,12 @@
   gap: 49px;
   max-width: 100%;
   border: none;
+  position: relative;
+  z-index: 7;
 }
 .modalOverlay {
   width: 100vw;
-  min-height: 100vh;
+  min-height: 100%;
   padding: 0px 17px;
   display: flex;
   align-items: center;
@@ -20,4 +22,5 @@
   position: absolute;
   top: 0;
   background-color: var(--colors-grey-opacity);
+  z-index: 6;
 }

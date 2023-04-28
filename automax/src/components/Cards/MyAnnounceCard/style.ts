@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-export const StyledAdCard = styled.div`
+export const StyledMyAnnounceCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 312px;
   height: 350px;
-  background-color: white;
 
   .divImg {
     display: flex;
@@ -14,40 +13,19 @@ export const StyledAdCard = styled.div`
     justify-content: center;
     width: 100%;
     min-height: 150px;
-    border: 2.5px solid transparent;
     margin-bottom: 16px;
     position: relative;
-    cursor: pointer;
-
-    .goodBusiness {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 27px;
-      background-color: var(--colors-ramdom-7);
-      color: var(--colors-whiteFixed);
-      border-radius: 2px;
-
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
 
     img {
       width: 70%;
     }
-
-    :hover {
-      border-color: var(--colors-brand-1);
-    }
   }
 
   .divInfos {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
+    width: 100%;
 
     p {
       text-align: left;
@@ -78,8 +56,25 @@ export const StyledAdCard = styled.div`
       }
     }
 
-    p {
-      color: var(--colors-grey-0);
+    div:nth-child(2) {
+      p {
+        color: var(--colors-grey-0);
+      }
+    }
+  }
+
+  .divButton {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    width: 100%;
+    margin-top: 20px;
+
+    button {
+      width: max-content;
+      height: max-content;
+      padding: 8px 15px;
     }
   }
 

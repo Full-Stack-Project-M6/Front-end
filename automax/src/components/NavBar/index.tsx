@@ -1,24 +1,33 @@
 import Button from "../Button";
-import { StyledLink, StyledMenuMobile, StyledNav } from "./style";
+import { StyledMenuMobile, StyledNav } from "./style";
 import { FiMenu } from "react-icons/fi";
 import motorsShop from "../../assets/motorsShop.png";
 import Announcer from "../Announcer";
 import { IoMdClose } from "react-icons/io";
 import { Body1 } from "../Typography";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
-import { IUser } from "../../interfaces/user";
-
+import { ModalContext } from "../../context/modalContext";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [menuMobileIsOpen, setMenuMobileIsOpen] = useState(false);
-  const {userLogout, user} = useContext(UserContext)
+  const { userLogout, user } = useContext(UserContext);
+  const { formupdateUserSetOpen, formupdateAddressSetOpen } =
+    useContext(ModalContext);
+  const navigate = useNavigate();
+
   return (
     <>
       <StyledNav responsive={menuMobileIsOpen}>
-        <img src={motorsShop} alt="logo" />
+        <img
+          src={motorsShop}
+          alt="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
         {menuMobileIsOpen ? (
           <button
             className="mobile"
@@ -43,15 +52,27 @@ export const NavBar = () => {
               <Announcer />
               {menuIsOpen && (
                 <div className="menu__options">
-                  <StyledLink to={"/"}>
+                  <button
+                    onClick={() => {
+                      formupdateUserSetOpen(true);
+                    }}
+                  >
                     <Body1>Editar Perfil</Body1>
-                  </StyledLink>
-                  <StyledLink to={"/"}>
+                  </button>
+                  <button
+                    onClick={() => {
+                      formupdateAddressSetOpen(true);
+                    }}
+                  >
                     <Body1>Editar Endereço</Body1>
-                  </StyledLink>
-                  <StyledLink to={"/"}>
-                    <Body1>Meus Anúncios</Body1>
-                  </StyledLink>
+                  </button>
+                  {user.account_type == true ? (
+                    <Link to={"/profile"}>
+                      <Body1>Meus Anúncios</Body1>
+                    </Link>
+                  ) : (
+                    <></>
+                  )}
                   <button onClick={userLogout}>
                     <Body1>Sair</Body1>
                   </button>

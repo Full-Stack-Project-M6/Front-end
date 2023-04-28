@@ -5,10 +5,13 @@ import { ModalContext } from "../../../context/modalContext";
 import { Body1 } from "../../Typography";
 import Button from "../../Button";
 import { CloseIcon, StyleModalDeleteAnnounce } from "./style";
+import { StyledButton } from "../../Button/styles";
+import { AnnounceContext } from "../../../context/announceContext";
 
 const ModalDeleteAnnounce = () => {
   const { deleteAnnounceIsOpen, closeModal, deleteAnnounceSetOpen } =
     useContext(ModalContext);
+  const { deleteAnnounce, announce } = useContext(AnnounceContext);
 
   return (
     <Modal
@@ -35,8 +38,23 @@ const ModalDeleteAnnounce = () => {
           </Body1>
         </div>
         <div className="divButton">
-          <Button className="link">Cancelar</Button>
-          <Button className="alert">Sim, excluir anúncio</Button>
+          <StyledButton
+            className="link"
+            onClick={() => {
+              closeModal(deleteAnnounceSetOpen);
+            }}
+          >
+            Cancelar
+          </StyledButton>
+          <StyledButton
+            className="alert"
+            onClick={() => {
+              deleteAnnounce(announce?.id);
+              closeModal(deleteAnnounceSetOpen);
+            }}
+          >
+            Sim, excluir anúncio
+          </StyledButton>
         </div>
       </StyleModalDeleteAnnounce>
     </Modal>
