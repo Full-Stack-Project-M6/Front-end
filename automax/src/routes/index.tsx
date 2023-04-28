@@ -7,6 +7,7 @@ import { RegisterPage } from "../pages/Register";
 import FormCreateAnnounce from "../components/Forms/createAnnounce";
 
 import { ProfileView } from "../pages/ProfileView";
+import { RecoverPassword } from "../pages/forgotPassword/idnex";
 
 
 const RoutesMain = () => {
@@ -18,7 +19,7 @@ const RoutesMain = () => {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/create" element={<FormCreateAnnounce />} />
       <Route path="/profile" element={<ProfileView />} />
-
+      <Route path="/recuperar-senha" element={<RecoverPassword />} />
     </Routes>
   );
 };

@@ -1,35 +1,30 @@
 import { ReactNode } from "react";
-import { IUserRequest } from "./user";
-
-export interface iUserLogin {
-  email: string;
-  password: string;
-}
+import { IUser, IUserLogin, IUserRequest } from "./user";
 
 export interface iProviderProps {
   children: ReactNode;
 }
 
-export interface iUser {
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
-  registered: Date;
-}
-
-export interface iUserLogin {
-  email: string;
-  password: string;
-}
 export interface iUserContext {
-  userLogin: (data: iUserLogin) => void;
+  userLogin: (data: IUserLogin) => void;
   userRegister: (data: IUserRequest) => void;
-  user: iUser | null;
-  setUser: React.Dispatch<React.SetStateAction<iUser | null>>;
+  user: IUser | null;
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
   loading: boolean;
   userLogout: () => void;
   renderListAnnounceUser: () => void;
   listAnnounceUser: [];
-  getUSer: () => void;
+  recoverUser: (data: IRecoverUser) => void;
+  recoverPassword: (data: IRecoverPassword) => void;
+  successRecover: boolean;
+  userRecovering: IUser | null
+}
+
+export interface IRecoverUser {
+  email: string;
+}
+
+export interface IRecoverPassword {
+  password: string;
+  confirmPassword: string;
 }

@@ -1,15 +1,17 @@
 import { createContext, useEffect, useState } from "react";
-import { iProviderProps, iUser, iUserContext, iUserLogin } from "../interfaces";
+import { IRecoverUser, IRecoverPassword, iProviderProps, iUserContext } from "../interfaces";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../services/apiKenzie";
-import { IUserRequest } from "../interfaces/user";
+import { IUser, IUserLogin, IUserRequest } from "../interfaces/user";
 
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iProviderProps) => {
-  const [user, setUser] = useState<iUser | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [listAnnounceUser, setListAnnounceUser] = useState<any>([]);
+  const [userRecovering, setUserRecovering] = useState<IUser | null>(null);
+  const [successRecover, setSuccessRecover] = useState(false)
 
   const navigate = useNavigate();
 
@@ -45,7 +47,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
     }
   };
 
-  const userLogin = async (data: iUserLogin) => {
+  const userLogin = async (data: IUserLogin) => {
     try {
       const response = await instance.post("/login", data);
       setUser(response.data.user);
@@ -72,15 +74,26 @@ export const UserProvider = ({ children }: iProviderProps) => {
     setListAnnounceUser(data);
   };
 
-  const getUSer = async () => {
-    const id_user = localStorage.getItem("@User_id");
+  const recoverUser = async (email: IRecoverUser ) => {
+    setUserRecovering(null)
     try {
-      const { data } = await instance.get(`/users/${id_user}`);
-      setUser(data);
+     const { data }  = await instance.get(`/users/recover_user/${email.email}`)
+      setUserRecovering(data)
+    } catch (error) {
+      setUserRecovering(null)
+      console.log(error);
+    }
+  }
+
+  const recoverPassword = async (password: IRecoverPassword) => {
+    try {
+      const newPassword = {password: password.password}
+      await instance.patch(`/users/recover_password/${userRecovering?.id}`, newPassword)
+      setSuccessRecover(true)
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   return (
     <UserContext.Provider
@@ -93,7 +106,10 @@ export const UserProvider = ({ children }: iProviderProps) => {
         userLogout,
         renderListAnnounceUser,
         listAnnounceUser,
-        getUSer,
+        recoverUser,
+        recoverPassword,
+        successRecover,
+        userRecovering
       }}
     >
       {children}
