@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { IAnnounce, IAnnounceProvider, ICreateAnnounce } from "../interfaces/announce";
+import { IAnnounce, IAnnounceProvider, ICreateAnnounce, ICreateResponse } from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
 import { IUpdateAnnounce } from "../interfaces/announce";
 import { IAnnounceCard } from "../interfaces/announce";
@@ -20,7 +20,7 @@ interface IAnnounceProviderData {
   setIdAnnouncer: React.Dispatch<React.SetStateAction<string>>;
   listAnnouncer: [];
   renderListAnnouncer: (id: string | undefined) => Promise<void>;
-  createAnnounce: (announceData: ICreateAnnounce) => Promise<IAnnounce> 
+  createAnnounce: (announceData: ICreateAnnounce) => Promise<ICreateResponse> 
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -54,7 +54,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   };
 
   const createAnnounce = async (announceData:ICreateAnnounce) =>{
-    const {data} = await instance.post<IAnnounce>(`/announce`, announceData)
+    const {data} = await instance.post<ICreateResponse>(`/announce`, announceData)
 
     return data
 }

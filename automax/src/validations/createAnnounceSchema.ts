@@ -11,8 +11,9 @@ export const announceSchema = yup.object().shape({
   price: yup.string().required("Preço obrigatório"),
   description: yup.string().required("Descrição obrigatória"),
   image_cover: yup.string().required("Imagem de capa obrigatória"),
-  image_one: yup.string().required("Imagem obrigatória"),
-  image_two: yup.string().required("Imagem obrigatória"),
+  image1: yup.string().required("Imagem obrigatória"),
+  image2: yup.string().required("Imagem obrigatória"),
+  image3: yup.string().required("Imagem obrigatória"),
 });
 
 export const updateAnnounceSchema = yup.object().shape({
