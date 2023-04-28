@@ -31,6 +31,12 @@ export const StyledFormCreateAnnounce = styled.form`
     .divTwoInputs {
       display: flex;
       justify-content: space-between;
+      //Adicionado por Fernando para fazer a responsividade
+      width: 100%;
+    }
+    //Adicionado por Fernando para fazer a responsividade
+    .divTwoInputs > div {
+      width: 50%;
     }
 
     .divAddImg {

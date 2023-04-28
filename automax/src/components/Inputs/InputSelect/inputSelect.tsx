@@ -7,19 +7,24 @@ interface IPropsInputSelect{
   width?: number
   placeholder: string
   disabled?: boolean
+  arraySelect?: any[]
+  register: Function 
+  name: string
 }
 
 export default function InputSelect(props:IPropsInputSelect) {
 
-  const {width=0.8, placeholder, disabled=false} = props
+  const {width=0.8, placeholder, disabled=false, arraySelect=brands, register, name} = props
+
 
   return (
     <Autocomplete
+      {...register(name)}
       className="no-hover-effect"
       disabled={disabled}
       disablePortal
       id="combo-box-demo"
-      options={brands}
+      options={arraySelect}
       sx={{ 
         width: {width},
         '& input::placeholder': {

@@ -30,8 +30,8 @@ export interface IUserRequest {
   description: string;
   account_type: boolean;
   password: string;
-  CEP: string;
-  state: string;
+  cep: string;
+  estate: string;
   city: string;
   street: string;
   number: string;
