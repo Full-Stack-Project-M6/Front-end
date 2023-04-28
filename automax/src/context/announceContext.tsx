@@ -16,6 +16,8 @@ interface IAnnounceProviderData {
     idAnnounce: string,
     dataForm: IUpdateAnnounce
   ) => Promise<void>;
+  idAnnouncer: string;
+  setIdAnnouncer: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -26,6 +28,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [listAnnounce, setListAnnounce] = useState<any>([]);
   const [listAnnounceUser, setListAnnounceUser] = useState<any>([]);
   const [announce, setAnnounce] = useState<IAnnounceCard>();
+  const [idAnnouncer, setIdAnnouncer] = useState("");
   const id_user = localStorage.getItem("@User_id");
 
   const listAllAnnounce = async () => {
@@ -63,6 +66,8 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         announce,
         setAnnounce,
         updateAnnounce,
+        idAnnouncer,
+        setIdAnnouncer,
       }}
     >
       {children}

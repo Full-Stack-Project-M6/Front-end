@@ -20,6 +20,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
   const [userRecovering, setUserRecovering] = useState<IUser | null>(null);
   const [successRecover, setSuccessRecover] = useState(false);
   const id_user = localStorage.getItem("@User_id");
+  const token = localStorage.getItem("@MotorsToken");
 
   const navigate = useNavigate();
 

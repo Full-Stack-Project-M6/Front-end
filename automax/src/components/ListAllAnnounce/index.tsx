@@ -14,6 +14,7 @@ export const ListAllAnnounce = () => {
     <>
       <ul>
         {listAnnounce.map((elm: IAdCard) => {
+          console.log(elm);
           return (
             <li key={elm.id}>
               <AdCard data={elm} />
