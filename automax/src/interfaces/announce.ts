@@ -19,11 +19,46 @@ export interface ICreateAnnounce {
   price: string;
   description: string;
   image_cover: string;
-  //   published: boolean;
-  //   tag: boolean;
-  //   user: string;
-  image_one: string;
-  image_two: string;
+  images: {
+    image1: string;
+    image2: string;
+    image3: string;
+  }
+}
+
+export interface ICreateAnnounceData {
+  brand: string;
+  model: string;
+  year: string;
+  fuel: string;
+  kilometer: string;
+  color: string;
+  price_FIPE: string;
+  price: string;
+  description: string;
+  image_cover: string;
+  image1: string;
+  image2: string;
+  image3: string;
+}
+
+export interface ICreateResponse {
+  id: string;
+  brand: string;
+  model: string;
+  year: string;
+  fuel: string;
+  kilometer: string;
+  color: string;
+  price_FIPE: string;
+  price: string;
+  description: string;
+  image_cover: string;
+  images: {
+    image1: string;
+    image2: string;
+    image3: string;
+  }
 }
 
 export interface IUpdateAnnounce {

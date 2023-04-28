@@ -6,18 +6,20 @@
   import { ModalContext } from "../../../context/modalContext";
   import { useContext, useEffect, useState } from "react";
   import { useForm } from "react-hook-form";
-  import { ICreateAnnounce } from "../../../interfaces/announce";
+  import { ICreateAnnounce, ICreateAnnounceData } from "../../../interfaces/announce";
   import { yupResolver } from "@hookform/resolvers/yup";
   import { announceSchema } from "../../../validations/createAnnounceSchema";
   import { getBrands } from "../../../services/getBrand";
   import { StyledSelect } from "../../Inputs/InputSelect/style";
   import { getKars } from "../../../services/getCars";
   import { IBrand } from "../../../interfaces/apiCars";
+import { AnnounceContext } from "../../../context/announceContext";
 
   const FormCreateAnnounce = () => {
     const fuel = ["", "Flex", "Híbrido", "Életrico"]
 
-    const { closeModal, formAnnounceSetOpen, } = useContext(ModalContext);
+    const { closeModal, formAnnounceSetOpen } = useContext(ModalContext);
+    const { createAnnounce } = useContext(AnnounceContext);
 
     const [listCars, setListCars] = useState<any[]>([])
     const [allCarsOfThisModel, setAllCarsOfThisModel] = useState<IBrand[]>([])
@@ -71,16 +73,26 @@
       handleSubmit,
       formState: { errors },
       watch
-    } = useForm<ICreateAnnounce>({
+    } = useForm<ICreateAnnounceData>({
       resolver: yupResolver(announceSchema),
       mode: "onChange"
     });
 
-    const watchView = watch()
-    console.log(watchView)
+    const submit = async (data: ICreateAnnounceData) => {
 
-    const submit = (data: ICreateAnnounce) => {
-      console.log(data);
+      const { image1, image2, image3, ...rest } = data
+      const images = { image1, image2, image3 }
+      const announceData = {images, ...rest}
+      
+      try {
+
+        await createAnnounce(announceData)
+
+        closeModal(formAnnounceSetOpen);
+        
+      } catch (error) {
+        console.log(error)
+      }
     };
 
     return (
@@ -262,10 +274,10 @@
               <Input
                 placeholder="Digite aqui..."
                 register={register}
-                name="image_one"
+                name="image1"
                 disabled={!allCarsOfThisModel.length}
               />
-              {<p className="error">{errors.image_one?.message}</p>}
+              {<p className="error">{errors.image1?.message}</p>}
             </div>
 
             <div>
@@ -273,10 +285,21 @@
               <Input
                 placeholder="Digite aqui..."
                 register={register}
-                name="image_two"
+                name="image2"
                 disabled={!allCarsOfThisModel.length}
               />
-              {<p className="error">{errors.image_two?.message}</p>} 
+              {<p className="error">{errors.image2?.message}</p>} 
+            </div>
+
+            <div>
+              <Body2 weight={500}>3° Imagem da galeria</Body2>
+              <Input
+                placeholder="Digite aqui..."
+                register={register}
+                name="image3"
+                disabled={!allCarsOfThisModel.length}
+              />
+              {<p className="error">{errors.image3?.message}</p>} 
             </div>
 
             <div className="divAddImg">

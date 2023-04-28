@@ -69,6 +69,8 @@ export const UserProvider = ({ children }: IProviderProps) => {
     try {
       const { data } = await instance.post("/login", dataForm);
 
+      instance.defaults.headers.common.authorization = `Bearer ${token}`
+
       setUser(data.user);
       localStorage.setItem("@User_id", data.user.id);
       localStorage.setItem("@MotorsToken", data.token);
