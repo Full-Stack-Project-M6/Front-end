@@ -5,6 +5,8 @@ import { IColorResponce } from "./color";
 import { IYearResponce } from "./year";
 import { IModelResponce } from "./model";
 import { IImagemResponse } from "./image";
+import { IBrand } from "./apiCars";
+import { IUser } from "./user";
 
 export interface ICreateAnnounce {
   brand: string;
@@ -69,6 +71,13 @@ export interface IAdCard {
   price_FIPE: string;
   published: boolean;
   tag: boolean;
+  brand: IBrandResponce;
+  color: IColorResponce;
+  fuel: IFuelResponce;
+  image: IImagemResponse;
+  model: IModelResponce;
+  year: IYearResponce;
+  user: IUser;
 }
 
 export interface IAnnounceCard {
@@ -80,4 +89,11 @@ export interface IAnnounceCard {
   price_FIPE: string;
   published: boolean;
   tag: boolean;
+  brand: IBrandResponce;
+  color: IColorResponce;
+  fuel: IFuelResponce;
+  image: IImagemResponse;
+  model: IModelResponce;
+  year: IYearResponce;
+  user: IUser;
 }

@@ -16,6 +16,10 @@ interface IAnnounceProviderData {
     idAnnounce: string,
     dataForm: IUpdateAnnounce
   ) => Promise<void>;
+  idAnnouncer: string;
+  setIdAnnouncer: React.Dispatch<React.SetStateAction<string>>;
+  listAnnouncer: [];
+  renderListAnnouncer: (id: string | undefined) => Promise<void>;
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -26,12 +30,20 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [listAnnounce, setListAnnounce] = useState<any>([]);
   const [listAnnounceUser, setListAnnounceUser] = useState<any>([]);
   const [announce, setAnnounce] = useState<IAnnounceCard>();
+  const [idAnnouncer, setIdAnnouncer] = useState("");
+  const [listAnnouncer, setListAnnouncer] = useState<any>([]);
   const id_user = localStorage.getItem("@User_id");
 
   const listAllAnnounce = async () => {
     const { data } = await instance.get("/announce");
 
     setListAnnounce(data);
+  };
+
+  const renderListAnnouncer = async (id: string | undefined) => {
+    const { data } = await instance.get(`/announce/all/${id}`);
+
+    setListAnnouncer(data.announce);
   };
 
   const renderListAnnounceUser = async () => {
@@ -63,6 +75,10 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         announce,
         setAnnounce,
         updateAnnounce,
+        idAnnouncer,
+        setIdAnnouncer,
+        listAnnouncer,
+        renderListAnnouncer,
       }}
     >
       {children}

@@ -9,9 +9,14 @@ import { Footer } from "../../components/footer";
 import ModalImageCar from "../../components/Modal/ImageCar";
 import { useContext } from "react";
 import { ModalContext } from "../../context/modalContext";
+import { AnnounceContext } from "../../context/announceContext";
+import { StyledButton } from "../../components/Button/styles";
+import { useNavigate } from "react-router-dom";
 
 export const Announce = () => {
   const { openModal, setOpen } = useContext(ModalContext);
+  const { announce } = useContext(AnnounceContext);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -20,17 +25,17 @@ export const Announce = () => {
         <div className="backGround" />
         <div className="body">
           <div className="divImgCard">
-            <img src={annnounceMocked.imgCar} alt="" />
+            <img src={announce?.image_cover} alt="" />
           </div>
           <div className="divInfosCar">
-            <H6>Mercedes Benz A 200 CGI ADVANCE SEDAN</H6>
+            <H6>{announce?.model.model}</H6>
             <div className="divInfoNumbers">
               <div>
-                <Body2>2013</Body2>
-                <Body2>0 KM</Body2>
+                <Body2>{announce?.year.year}</Body2>
+                <Body2>{announce?.kilometer} KM</Body2>
               </div>
               <div>
-                <Body1 weight={600}>R$ 00.000,00</Body1>
+                <Body1 weight={600}>R$ {announce?.price},00</Body1>
               </div>
             </div>
             <div>
@@ -39,12 +44,7 @@ export const Announce = () => {
           </div>
           <div className="divDescription">
             <H6>Descrição</H6>
-            <Body1>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </Body1>
+            <Body1>{announce?.description}</Body1>
           </div>
           <div>
             <div className="divPhotos">
@@ -80,15 +80,19 @@ export const Announce = () => {
           <div className="divAnnoucer">
             <div className="divTagName">
               <div>
-                <H5 weight={500}>SL</H5>
+                <H5 weight={500}>{announce?.user.name[0].toUpperCase()}</H5>
               </div>
-              <H6>Samuel Leão</H6>
+              <H6>{announce?.user.name}</H6>
             </div>
-            <Body1>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's
-            </Body1>
-            <Button className="grey1">Ver todos anuncios</Button>
+            <Body1>{announce?.user.description}</Body1>
+            <StyledButton
+              className="grey1"
+              onClick={() => {
+                navigate("/announce/public");
+              }}
+            >
+              Ver todos anuncios
+            </StyledButton>
           </div>
           <div className="divComments">
             <div>
@@ -148,15 +152,19 @@ export const Announce = () => {
           <div className="divAnnoucerDesck">
             <div className="divTagName">
               <div>
-                <H5 weight={500}>SL</H5>
+                <H5 weight={500}>{announce?.user.name[0].toUpperCase()}</H5>
               </div>
-              <H6>Samuel Leão</H6>
+              <H6>{announce?.user.name}</H6>
             </div>
-            <Body1>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's
-            </Body1>
-            <Button className="grey1">Ver todos anuncios</Button>
+            <Body1>{announce?.user.description}</Body1>
+            <StyledButton
+              className="grey1"
+              onClick={() => {
+                navigate("/announce/public");
+              }}
+            >
+              Ver todos anuncios
+            </StyledButton>
           </div>
         </aside>
       </StyleAnnoucePage>

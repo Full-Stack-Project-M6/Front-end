@@ -1,7 +1,6 @@
 import { StyledAnnouncerCard } from "./style";
 import Announcer from "../../Announcer";
 import { Body1, Body2 } from "../../Typography";
-import { annnounceMocked } from "../../../utils";
 import { IAnnounceCard } from "../../../interfaces/announce";
 
 interface IAdCardProps {
@@ -25,16 +24,16 @@ const AnnouncerCard = (props: IAdCardProps) => {
         <img src={props.data.image_cover} alt="" />
       </div>
       <div className="divInfos">
-        <Body1 weight={600}>{annnounceMocked.title}</Body1>
+        <Body1 weight={600}>{props.data.model.model}</Body1>
         <Body2>{props.data.description}</Body2>
       </div>
       <div className="divAnnouncer">
-        <Announcer />
+        <Announcer type="announce" />
       </div>
       <div className="divKmAndPrice">
         <div>
           <Body2 weight={500}>{props.data.kilometer} KM</Body2>
-          <Body2 weight={500}>{annnounceMocked.year}</Body2>
+          <Body2 weight={500}>{props.data.year.year}</Body2>
         </div>
         <div>
           <Body1 weight={600}>R$ {props.data.price},00</Body1>

@@ -17,6 +17,7 @@ export const StyledAdCard = styled.div`
     border: 2.5px solid transparent;
     margin-bottom: 16px;
     position: relative;
+    cursor: pointer;
 
     .goodBusiness {
       display: flex;
