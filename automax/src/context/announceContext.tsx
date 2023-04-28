@@ -37,7 +37,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const renderListAnnounceUser = async () => {
     const { data } = await instance.get(`/announce/all/${id_user}`);
 
-    setListAnnounceUser(data);
+    setListAnnounceUser(data.announce);
   };
 
   const deleteAnnounce = async (idAnnounce: string | undefined) => {
