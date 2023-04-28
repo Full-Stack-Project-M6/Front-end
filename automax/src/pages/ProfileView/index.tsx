@@ -16,16 +16,8 @@ import { StyledButton } from "../../components/Button/styles";
 import ModalFormCreateAnnounce from "../../components/Modal/FormCreateAnnounce";
 
 export const ProfileView = () => {
-<<<<<<< HEAD
-  const { getUSer, user } = useContext(UserContext);
-  const { formAnnounceSetOpen } = useContext(ModalContext);
-
-  useEffect(() => {
-    getUSer();
-  }, []);
-=======
   const { user } = useContext(UserContext);
->>>>>>> 82af7685fc4a4def244640e8a817a2fb1a1de2f8
+  const { formAnnounceSetOpen } = useContext(ModalContext);
 
   return (
     <>

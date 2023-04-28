@@ -62,8 +62,8 @@ export const RegisterPage = () => {
 
                     <p>Informações de endereço</p>
                     <label>CEP</label>
-                    <Input register={register} name="CEP" placeholder="00000.000" />
-                    {errors.CEP && (<p>{errors.CEP.message}</p>)}
+                    <Input register={register} name="cep" placeholder="00000.000" />
+                    {errors.cep && (<p>{errors.cep.message}</p>)}
 
                     <div className="divContain">
                         <div>
@@ -73,8 +73,8 @@ export const RegisterPage = () => {
                         </div>
                         <div>
                             <label>Estado</label>
-                            <Input register={register} name="state" placeholder="Digitar estado" />
-                            {errors.state && (<p>{errors.state.message}</p>)}
+                            <Input register={register} name="estate" placeholder="Digitar estado" />
+                            {errors.estate && (<p>{errors.estate.message}</p>)}
                         </div>
                     </div>
                     <label>Rua</label>

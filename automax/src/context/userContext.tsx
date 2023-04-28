@@ -42,10 +42,11 @@ export const UserProvider = ({ children }: IProviderProps) => {
   }, []);
 
   const userRegister = async (data: IUserRequest) => {
-    const { city, CEP, street, complement, number, state, ...user } = data;
-    const address = { city, CEP, street, complement, number, state };
+    const { city, cep, street, complement, number, estate, ...user } = data;
+    const address = { city, cep, street, complement, number, estate };
+    const userDataRegister = {...user, address}
     try {
-      await instance.post("/users", user);
+      await instance.post("/users", userDataRegister);
       setLoading(true);
     } catch (error) {
       console.log(error);
@@ -80,6 +81,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
   const userLogout = () => {
     localStorage.removeItem("@MotorsToken");
     localStorage.removeItem("@User_id");
+    setUser(undefined);
     navigate("/login");
   };
 
