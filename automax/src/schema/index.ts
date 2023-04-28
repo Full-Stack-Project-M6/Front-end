@@ -25,3 +25,12 @@ export const registerSchema = yup.object({
   street: yup.string().required('Rua é obrigatório'),
   number: yup.string().required('Numero é obrigatório'),
 });
+
+export const recoverUserSchema = yup.object({
+  email: yup.string().required()
+})
+
+export const recoverPasswordSchema = yup.object({
+  password: yup.string().required(),
+  confirmPassword: yup.string().oneOf([yup.ref('password')], 'Senhas não são iguais').required('Confirme a senha')
+})

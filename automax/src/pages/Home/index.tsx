@@ -1,11 +1,8 @@
 import { NavBar } from "../../components/NavBar"
 import { StyledAnnounceList, StyledBannerDiv, StyledFilterDiv, StyledFiltersAside } from "./style"
 import blacklogo from '../../assets/motorsShop.png'
-import AdCard from "../../components/Cards/AdCard"
 import { Footer } from "../../components/footer"
 import Button from "../../components/Button"
-import { useContext } from "react"
-import { UserContext } from "../../context/userContext"
 
 export const Home = () => {
 
@@ -92,9 +89,6 @@ export const Home = () => {
                     </div>
                 </StyledFiltersAside>
                 <ul>
-                    <AdCard />
-                    <AdCard />
-                    <AdCard />
                 </ul>
             </StyledAnnounceList>
             <StyledFilterDiv>
@@ -107,6 +101,7 @@ export const Home = () => {
                         {"Seguinte >"}
                     </Button>
                 </div>
+                
             </StyledFilterDiv>
             <Footer />
         </>

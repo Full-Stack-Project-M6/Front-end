@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const StyledBackground = styled.section`
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--colors-grey-6);
-    padding-top: 3.5rem;
-`
-export const StyledForm = styled.form`
+export const StyledSuccessRecover = styled.div`
     display: flex;
     flex-direction: column;
     width: 75%;
@@ -15,6 +9,29 @@ export const StyledForm = styled.form`
     padding: 2.5rem 1.5rem 2.1rem 1.5rem;
     background-color: var(--colors-grey-10);
     border-radius: 4px;
+    p {
+        align-self: center;
+        margin: 2rem 0;
+    }
+    img {
+        opacity: .9;
+    }
+    button {
+        width: 100%;
+    }
+`
+export const StyledFormRecover = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 2.1rem 1.5rem;
+    background-color: var(--colors-grey-10);
+    border-radius: 4px;
+    position: relative;
+    animation-name: recover;
+    animation-duration: .8s;
 
     h1 {
         margin-bottom: 1.6rem;
@@ -59,5 +76,9 @@ export const StyledForm = styled.form`
         margin-top: 3rem;
         margin: 0;
         width: 100%;
+    }
+    @keyframes recover {
+        0% {transform: translate(0, -100%); opacity: 0;}
+        100% {transform: translate(0); opacity: 1;}
     }
 `
