@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StylePageProfileView = styled.div`
+export const StylePageAnnouncePublic = styled.div`
   padding: 0 16px;
   display: flex;
   flex-direction: column;
@@ -20,6 +20,7 @@ export const StyleSectionBg = styled.section`
 `;
 
 export const StyleAnnouncerInfo = styled.div`
+  width: 100%;
   padding: 40px 29px;
   display: flex;
   flex-direction: column;

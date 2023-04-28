@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import Button from "../../components/Button";
-import { ListMyAnnounceUser } from "../../components/ListMyAnnounceUser";
 import { NavBar } from "../../components/NavBar";
 import { Body1, H5 } from "../../components/Typography";
 import { Footer } from "../../components/footer";
 import {
   StyleAnnouncerInfo,
-  StylePageProfileView,
+  StylePageAnnouncePublic,
   StyleSectionBg,
   StyledShopWindow,
 } from "./style";
 import { AnnounceContext } from "../../context/announceContext";
+import { ListAnnouncer } from "../../components/ListAnnouncer";
 
 export const AnnouncePublic = () => {
   const { announce } = useContext(AnnounceContext);
@@ -19,7 +19,7 @@ export const AnnouncePublic = () => {
     <>
       <NavBar />
       <StyleSectionBg></StyleSectionBg>
-      <StylePageProfileView>
+      <StylePageAnnouncePublic>
         <StyleAnnouncerInfo>
           <p className="tag">{announce?.user.name[0].toUpperCase()}</p>
           <div className="divName">
@@ -27,15 +27,12 @@ export const AnnouncePublic = () => {
             <Button className="brandOpacity">Anunciante</Button>
           </div>
           <Body1>{announce?.user.description}</Body1>
-          <div>
-            <Button className="outlineBrand1"> Criar anuncio</Button>
-          </div>
         </StyleAnnouncerInfo>
         <StyledShopWindow>
           <div className="title">
             <H5>Anúncios</H5>
           </div>
-          <ListMyAnnounceUser />
+          <ListAnnouncer />
           <div className="pagination">
             <p>
               <strong>1</strong>de 2
@@ -43,7 +40,7 @@ export const AnnouncePublic = () => {
             <button>Seguinte &gt;</button>
           </div>
         </StyledShopWindow>
-      </StylePageProfileView>
+      </StylePageAnnouncePublic>
       <Footer />
     </>
   );
