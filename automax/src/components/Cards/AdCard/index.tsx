@@ -39,7 +39,7 @@ const AdCard = (props: IAdCardProps) => {
         <Body2>{props.data.description}</Body2>
       </div>
       <div className="divAnnouncer">
-        <Announcer type="announcer" />
+        <Announcer data={props.data} />
       </div>
       <div className="divKmAndPrice">
         <div>
