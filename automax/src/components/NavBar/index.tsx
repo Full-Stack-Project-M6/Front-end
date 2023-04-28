@@ -66,9 +66,13 @@ export const NavBar = () => {
                   >
                     <Body1>Editar Endereço</Body1>
                   </button>
-                  <Link to={"/profile"}>
-                    <Body1>Meus Anúncios</Body1>
-                  </Link>
+                  {user.account_type == true ? (
+                    <Link to={"/profile"}>
+                      <Body1>Meus Anúncios</Body1>
+                    </Link>
+                  ) : (
+                    <></>
+                  )}
                   <button onClick={userLogout}>
                     <Body1>Sair</Body1>
                   </button>
