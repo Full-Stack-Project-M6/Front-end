@@ -8,7 +8,7 @@ import { Body1 } from "../Typography";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
 import { ModalContext } from "../../context/modalContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -16,11 +16,18 @@ export const NavBar = () => {
   const { userLogout, user } = useContext(UserContext);
   const { formupdateUserSetOpen, formupdateAddressSetOpen } =
     useContext(ModalContext);
+  const navigate = useNavigate();
 
   return (
     <>
       <StyledNav responsive={menuMobileIsOpen}>
-        <img src={motorsShop} alt="logo" />
+        <img
+          src={motorsShop}
+          alt="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
         {menuMobileIsOpen ? (
           <button
             className="mobile"
