@@ -7,12 +7,20 @@ interface IPropsTextArea {
   disabled?: boolean;
   register: Function;
   name?: string;
+  defautValue?: string | undefined;
 }
 
 function TextArea(props: IPropsTextArea) {
   const register = props.register;
 
-  const { width, height, placeholder, disabled = false, name } = props;
+  const {
+    width,
+    height,
+    placeholder,
+    disabled = false,
+    name,
+    defautValue,
+  } = props;
 
   return (
     <StyledTextArea
@@ -21,6 +29,7 @@ function TextArea(props: IPropsTextArea) {
       placeholder={placeholder}
       disabled={disabled}
       {...register(name)}
+      defautValue={defautValue}
     />
   );
 }

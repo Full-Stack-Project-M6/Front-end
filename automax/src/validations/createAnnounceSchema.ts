@@ -30,8 +30,6 @@ export const updateAnnounceSchema = yup.object().shape({
   description: yup.string().notRequired(),
   image_cover: yup.string().notRequired(),
   //   published: yup.boolean().notRequired(),
-  //   tag: yup.boolean().notRequired(),
-  //   user: yup.string().notRequired(),
   image_one: yup.string().notRequired(),
   image_two: yup.string().notRequired(),
 });

@@ -1,7 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Button from "../../components/Button";
-import AnnouncerCard from "../../components/Cards/AnnouncerCard";
-import { ListAnnounceUser } from "../../components/ListAnnounceUser";
+import { ListMyAnnounceUser } from "../../components/ListMyAnnounceUser";
 import { NavBar } from "../../components/NavBar";
 import { Body1, H5 } from "../../components/Typography";
 import { Footer } from "../../components/footer";
@@ -40,7 +39,7 @@ export const ProfileView = () => {
           <div className="title">
             <H5>Anúncios</H5>
           </div>
-          <ListAnnounceUser />
+          <ListMyAnnounceUser />
           <div className="pagination">
             <p>
               <strong>1</strong>de 2

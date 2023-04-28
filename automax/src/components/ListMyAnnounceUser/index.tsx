@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
 import { IAnnounceCard } from "../../interfaces/announce";
-import AnnouncerCard from "../Cards/AnnouncerCard";
-import { UserContext } from "../../context/userContext";
+import MyAnnounceCard from "../Cards/MyAnnounceCard";
+import { AnnounceContext } from "../../context/announceContext";
 
-export const ListAnnounceUser = () => {
-  const { listAnnounceUser, renderListAnnounceUser } = useContext(UserContext);
+export const ListMyAnnounceUser = () => {
+  const { listAnnounceUser, renderListAnnounceUser } =
+    useContext(AnnounceContext);
 
   useEffect(() => {
     renderListAnnounceUser();
@@ -16,7 +17,7 @@ export const ListAnnounceUser = () => {
         {listAnnounceUser.map((elm: IAnnounceCard) => {
           return (
             <li key={elm.id}>
-              <AnnouncerCard data={elm} />
+              <MyAnnounceCard data={elm} />
             </li>
           );
         })}

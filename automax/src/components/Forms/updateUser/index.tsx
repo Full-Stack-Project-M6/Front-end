@@ -8,21 +8,25 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updateUserSchema } from "../../../validations/userSchema";
-import { IUser } from "../../../interfaces/user";
+import { IUserUpdate } from "../../../interfaces/user";
+import { UserContext } from "../../../context/userContext";
+import { StyledButton } from "../../Button/styles";
 
 const FormUpdateUser = () => {
   const { closeModal, formupdateUserSetOpen } = useContext(ModalContext);
+  const { updateUser, user } = useContext(UserContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IUser>({
+  } = useForm<IUserUpdate>({
     resolver: yupResolver(updateUserSchema),
   });
 
-  const submit = (data: IUser) => {
-    console.log(data);
+  const submit = (data: IUserUpdate) => {
+    console.log(user);
+    updateUser(data);
   };
 
   return (
@@ -43,6 +47,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Nome</Body2>
             <Input
+              defautValue={user?.name}
               placeholder="Digite aqui..."
               register={register}
               name="name"
@@ -52,6 +57,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Email</Body2>
             <Input
+              defautValue={user?.email}
               placeholder="Digite aqui..."
               register={register}
               name="email"
@@ -61,6 +67,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>CPF</Body2>
             <Input
+              defautValue={user?.cpf}
               placeholder="Digite aqui..."
               register={register}
               name="cpf"
@@ -70,6 +77,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Celular</Body2>
             <Input
+              defautValue={user?.cellphone}
               placeholder="Digite aqui..."
               register={register}
               name="cellphone"
@@ -79,6 +87,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Data de nascimento</Body2>
             <Input
+              defautValue={user?.date_birth}
               placeholder="Digite aqui..."
               register={register}
               name="date_birth"
@@ -88,6 +97,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Descrição</Body2>
             <TextArea
+              defautValue={user?.description}
               placeholder="Digite aqui..."
               register={register}
               name="description"
@@ -97,7 +107,14 @@ const FormUpdateUser = () => {
         </div>
       </div>
       <div className="divButton">
-        <Button className="light">Cancelar</Button>
+        <StyledButton
+          className="light"
+          onClick={() => {
+            closeModal(formupdateUserSetOpen);
+          }}
+        >
+          Cancelar
+        </StyledButton>
         <Button type="submit" className="brand1">
           Salvar alterações
         </Button>

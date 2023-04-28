@@ -2,16 +2,17 @@ import { CloseIcon, StyledFormUpdateAddress } from "./style";
 import { Body1, Body2 } from "../../Typography";
 import Input from "../../Inputs/Input";
 import Button from "../../Button";
-import TextArea from "../../Inputs/TextArea";
 import { ModalContext } from "../../../context/modalContext";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addressSchema } from "../../../validations/updateAddressSchema";
 import { IAddress } from "../../../interfaces/address";
+import { UserContext } from "../../../context/userContext";
 
 const FormUpdateAddress = () => {
   const { closeModal, formupdateAddressSetOpen } = useContext(ModalContext);
+  const { user } = useContext(UserContext);
 
   const {
     register,
@@ -43,6 +44,7 @@ const FormUpdateAddress = () => {
           <div>
             <Body2 weight={500}>CEP</Body2>
             <Input
+              defautValue={user?.address.cep}
               placeholder="Digite aqui..."
               register={register}
               name="CEP"
@@ -53,6 +55,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Estado</Body2>
               <Input
+                defautValue={user?.address.estate}
                 placeholder="Digite aqui..."
                 register={register}
                 name="state"
@@ -62,6 +65,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Cidade</Body2>
               <Input
+                defautValue={user?.address.city}
                 placeholder="Digite aqui..."
                 register={register}
                 name="city"
@@ -72,6 +76,7 @@ const FormUpdateAddress = () => {
           <div>
             <Body2 weight={500}>Rua</Body2>
             <Input
+              defautValue={user?.address.street}
               placeholder="Digite aqui..."
               register={register}
               name="street"
@@ -82,6 +87,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Número</Body2>
               <Input
+                defautValue={user?.address.number}
                 placeholder="Digite aqui..."
                 register={register}
                 name="number"
@@ -91,6 +97,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Complemento </Body2>
               <Input
+                defautValue={user?.address.complement}
                 placeholder="Digite aqui..."
                 register={register}
                 name="complement"
