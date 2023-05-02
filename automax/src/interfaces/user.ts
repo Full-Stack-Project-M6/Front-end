@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { IAddress } from "./address";
 
 export interface IUser {
   id: string;
@@ -76,4 +77,5 @@ export interface IUserContext {
   recoverPassword: (data: IRecoverPassword) => void;
   successRecover: boolean;
   userRecovering: IUser | null;
+  updateAddress: (dateForm: IAddress) => Promise<void>;
 }
