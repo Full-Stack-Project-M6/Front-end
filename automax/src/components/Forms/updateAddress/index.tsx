@@ -12,7 +12,7 @@ import { UserContext } from "../../../context/userContext";
 
 const FormUpdateAddress = () => {
   const { closeModal, formupdateAddressSetOpen } = useContext(ModalContext);
-  const { user } = useContext(UserContext);
+  const { user, updateAddress } = useContext(UserContext);
 
   const {
     register,
@@ -23,7 +23,8 @@ const FormUpdateAddress = () => {
   });
 
   const submit = (data: IAddress) => {
-    console.log(data);
+    updateAddress(data);
+    closeModal(formupdateAddressSetOpen);
   };
 
   return (
@@ -47,9 +48,9 @@ const FormUpdateAddress = () => {
               defaultValue={user?.address.cep}
               placeholder="Digite aqui..."
               register={register}
-              name="CEP"
+              name="cep"
             />
-            {<p className="error">{errors.CEP?.message}</p>}
+            {<p className="error">{errors.cep?.message}</p>}
           </div>
           <div className="divTwoInputs">
             <div>
@@ -58,9 +59,9 @@ const FormUpdateAddress = () => {
                 defaultValue={user?.address.estate}
                 placeholder="Digite aqui..."
                 register={register}
-                name="state"
+                name="estate"
               />
-              {<p className="error">{errors.state?.message}</p>}
+              {<p className="error">{errors.estate?.message}</p>}
             </div>
             <div>
               <Body2 weight={500}>Cidade</Body2>

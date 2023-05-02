@@ -11,6 +11,7 @@ import {
   IProviderProps,
   IUserContext,
 } from "../interfaces/user";
+import { IAddress } from "../interfaces/address";
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -44,7 +45,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
   const userRegister = async (data: IUserRequest) => {
     const { city, cep, street, complement, number, estate, ...user } = data;
     const address = { city, cep, street, complement, number, estate };
-    const userDataRegister = {...user, address}
+    const userDataRegister = { ...user, address };
     try {
       await instance.post("/users", userDataRegister);
       setLoading(true);
@@ -69,7 +70,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
     try {
       const { data } = await instance.post("/login", dataForm);
 
-      instance.defaults.headers.common.authorization = `Bearer ${token}`
+      instance.defaults.headers.common.authorization = `Bearer ${token}`;
 
       setUser(data.user);
       localStorage.setItem("@User_id", data.user.id);
@@ -91,6 +92,12 @@ export const UserProvider = ({ children }: IProviderProps) => {
     const { data } = await instance.patch(`/users/${id_user}`, dateForm);
 
     setUser(data);
+  };
+
+  const updateAddress = async (dateForm: IAddress) => {
+    const id_address = user?.address.id;
+
+    await instance.patch(`/address/${id_address}`, dateForm);
   };
 
   const recoverUser = async (email: IRecoverUser) => {
@@ -131,6 +138,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
         recoverPassword,
         successRecover,
         userRecovering,
+        updateAddress,
       }}
     >
       {children}
