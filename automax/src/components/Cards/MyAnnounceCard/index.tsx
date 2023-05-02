@@ -51,10 +51,8 @@ const MyAnnounceCard = (props: IAdCardProps) => {
         <StyledButton
           className="outline1"
           onClick={() => {
-            // console.log(props.data);
-
+            navigate("/announce");
             setAnnounce(props.data);
-            navigate("/announce", { replace: true });
           }}
         >
           Ver detalhes
