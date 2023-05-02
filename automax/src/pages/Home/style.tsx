@@ -59,6 +59,16 @@ export const StyledAnnounceList = styled.section`
   ul li:last-child {
     margin-right: 0;
   }
+  button {
+    text-align: inherit;
+    color: var(--colors-grey-3);
+
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 6px;
+
+    cursor: pointer;
+  }
   @media (min-width: 720px) {
     aside {
       display: flex;

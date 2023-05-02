@@ -15,11 +15,10 @@ import { IBrand } from "../../../interfaces/apiCars";
 import { AnnounceContext } from "../../../context/announceContext";
 import { StyledButton } from "../../Button/styles";
 
-const FormCreateAnnounce = () => {
-  const fuel = ["", "Flex", "Híbrido", "Életrico"];
+  const FormCreateAnnounce = () => {
 
-  const { closeModal, formAnnounceSetOpen } = useContext(ModalContext);
-  const { createAnnounce } = useContext(AnnounceContext);
+    const { closeModal, formAnnounceSetOpen } = useContext(ModalContext);
+    const { createAnnounce, fuel } = useContext(AnnounceContext);
 
   const [listCars, setListCars] = useState<any[]>([]);
   const [allCarsOfThisModel, setAllCarsOfThisModel] = useState<IBrand[]>([]);

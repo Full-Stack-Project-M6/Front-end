@@ -4,8 +4,7 @@ import { AnnounceContext } from "../../context/announceContext";
 import { IAdCard } from "../../interfaces/announce";
 
 export const ListAllAnnounce = () => {
-  const { listAllAnnounce, listAnnounce } = useContext(AnnounceContext);
-
+  const { listAllAnnounce, listAnnounce, filteredList } = useContext(AnnounceContext);
   useEffect(() => {
     listAllAnnounce();
   }, []);
@@ -13,8 +12,8 @@ export const ListAllAnnounce = () => {
   return (
     <>
       <ul>
-        {listAnnounce.map((elm: IAdCard) => {
-          console.log(elm);
+        {filteredList.map((elm: any) => {
+          // console.log(elm);
           return (
             <li key={elm.id}>
               <AdCard data={elm} />
