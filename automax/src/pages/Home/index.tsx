@@ -12,8 +12,21 @@ import Button from "../../components/Button";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { ListAllAnnounce } from "../../components/ListAllAnnounce";
+import { AnnounceContext } from "../../context/announceContext";
+import { IAdCard } from "../../interfaces/announce";
+import { removeDuplicateItems } from "../../utils/filter";
 
 export const Home = () => {
+
+  const { listAnnounce, fuel , setKeyFilter, setElemToCompare, filteredList} = useContext(AnnounceContext);
+
+
+  const listBrand = removeDuplicateItems(filteredList, "brand")
+  const listModel = removeDuplicateItems(filteredList, "model")
+  const listColor = removeDuplicateItems(filteredList, "color")
+  const listYear  = removeDuplicateItems(filteredList, "year")
+  const listFuel  = removeDuplicateItems(filteredList, "fuel")
+
   return (
     <>
       <NavBar />
@@ -25,51 +38,75 @@ export const Home = () => {
         <StyledFiltersAside>
           <div>
             <h2>Marca</h2>
-            <a href="">Geberal Motors</a>
-            <a href="">Fiat</a>
-            <a href="">Honda</a>
-            <a href="">Ford</a>
-            <a href="">Porsche</a>
-            <a href="">BMW</a>
-            <a href="">Volkswagen</a>
-            <a href="">Mercedez Benz</a>
-            <a href="">Audi</a>
+            {listBrand && listBrand.map((elem:IAdCard, index: number) => {
+              return (
+                <button key={index}>{elem.brand.brand}</button>
+              )
+            })}
           </div>
           <div>
             <h2>Modelo</h2>
-            <a href="">Hatch</a>
-            <a href="">Sedan</a>
-            <a href="">SUV</a>
-            <a href="">Caminhonete</a>
-            <a href="">Coupé</a>
-            <a href="">Conversível</a>
+            {listModel && listModel.map((elem:IAdCard, index: number) => {
+              return (
+                <button
+                onClick={() => {
+                  setKeyFilter("model")
+                  setElemToCompare(elem.model.model)
+                }}
+                key={index}
+                >
+                {elem.model.model}
+                </button>
+              )
+            })}
           </div>
           <div>
             <h2>Cor</h2>
-            <a href="">Azul</a>
-            <a href="">Branco</a>
-            <a href="">Cinza</a>
-            <a href="">Prata</a>
-            <a href="">Preto</a>
-            <a href="">Vermelho</a>
+            {listColor && listColor.map((elem:IAdCard, index: number) => {
+              return (
+                <button
+                key={index}
+                onClick={() => {
+                  setKeyFilter("color")
+                  setElemToCompare(elem.color.color)
+                }}
+                >
+                {elem.color.color}
+                </button>
+              )
+            })}
           </div>
           <div>
             <h2>Ano</h2>
-            <a href="">2023</a>
-            <a href="">2022</a>
-            <a href="">2021</a>
-            <a href="">2020</a>
-            <a href="">2019</a>
-            <a href="">2018</a>
-            <a href="">2017</a>
+            {listYear && listYear.map((elem:IAdCard) => {
+              return (
+                <button
+                key={elem.id}
+                onClick={() => {
+                  setKeyFilter("year")
+                  setElemToCompare(elem.year.year)
+                }}
+                >
+                {elem.year.year}
+                </button>
+              )
+            })}
           </div>
           <div>
             <h2>Combustível</h2>
-            <a href="">Diesel</a>
-            <a href="">Etanol</a>
-            <a href="">Gasolina</a>
-            <a href="">Flex</a>
-            <a href="">Elétrico</a>
+            {listFuel && listFuel.map((elem:IAdCard) => {
+              return (
+                <button
+                key={elem.id}
+                onClick={() => {
+                  setKeyFilter("fuel")
+                  setElemToCompare(elem.fuel.fuel)
+                }}
+                >
+                {fuel[+elem.fuel.fuel]}
+                </button>
+              )
+            })}
           </div>
           <div className="km">
             <h2>Km</h2>

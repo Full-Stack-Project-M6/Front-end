@@ -90,10 +90,15 @@ a {
   text-decoration: none;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+}
+
 
 //typography
 .heading-1-700{
-    font-weight: 700;   
+    font-weight: 700;
     font-size: 44px;
     color:var(--colors-grey-1);
 }
@@ -113,7 +118,7 @@ a {
 .heading-3-500{
     font-weight: 500;
     font-size: 32px;
-    color:var(--colors-grey-1);  
+    color:var(--colors-grey-1);
 }
 
 .heading-4-600{
@@ -125,12 +130,12 @@ a {
 .heading-4-500{
     font-weight: 500;
     font-size: 28px;
-    color:var(--colors-grey-1);  
+    color:var(--colors-grey-1);
 }
 
 .heading-5-600{
     font-weight: 600;
-    font-size: 24px; 
+    font-size: 24px;
     color:var(--colors-grey-1);
 }
 
@@ -143,25 +148,25 @@ a {
 .heading-6-600{
     font-weight: 600;
     font-size: 20px;
-    color:var(--colors-grey-1); 
+    color:var(--colors-grey-1);
 }
 
 .heading-6-500{
     font-weight: 500;
     font-size: 20px;
-    color:var(--colors-grey-1); 
+    color:var(--colors-grey-1);
 }
 
 .heading-7-600{
     font-weight: 600;
     font-size: 16px;
-    color:var(--colors-grey-1); 
+    color:var(--colors-grey-1);
 }
 
 .heading-7-500{
     font-weight: 500;
     font-size: 16px;
-    color:var(--colors-grey-1);  
+    color:var(--colors-grey-1);
 }
 
 .body-1-400{

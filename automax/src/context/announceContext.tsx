@@ -1,12 +1,14 @@
-import { createContext, useState } from "react";
-import { IAnnounce, IAnnounceProvider, ICreateAnnounce, ICreateResponse } from "../interfaces/announce";
+import { createContext, useEffect, useState } from "react";
+import { IAdCard, IAnnounce, IAnnounceProvider, ICreateAnnounce, ICreateResponse } from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
 import { IUpdateAnnounce } from "../interfaces/announce";
 import { IAnnounceCard } from "../interfaces/announce";
+import { filterArray } from "../utils/filter";
 
 interface IAnnounceProviderData {
   listAllAnnounce: () => void;
   listAnnounce: [];
+  setListAnnounce: React.Dispatch<any>;
   renderListAnnounceUser: () => void;
   listAnnounceUser: [];
   deleteAnnounce: (idAnnounce: string | undefined) => Promise<void>;
@@ -20,7 +22,14 @@ interface IAnnounceProviderData {
   setIdAnnouncer: React.Dispatch<React.SetStateAction<string>>;
   listAnnouncer: [];
   renderListAnnouncer: (id: string | undefined) => Promise<void>;
-  createAnnounce: (announceData: ICreateAnnounce) => Promise<ICreateResponse> 
+  createAnnounce: (announceData: ICreateAnnounce) => Promise<ICreateResponse>;
+  fuel: string[];
+  keyFilter: string;
+  setKeyFilter: React.Dispatch<React.SetStateAction<string>>;
+  elemToCompare: string;
+  setElemToCompare: React.Dispatch<React.SetStateAction<string>>;
+  filteredList: IAdCard[] | object[];
+  setFilteredList: React.Dispatch<React.SetStateAction<IAdCard[] | object[]>>;
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -33,12 +42,23 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [announce, setAnnounce] = useState<IAnnounceCard>();
   const [idAnnouncer, setIdAnnouncer] = useState("");
   const [listAnnouncer, setListAnnouncer] = useState<any>([]);
+  const [ keyFilter, setKeyFilter ] = useState<string>("")
+  const [ elemToCompare, setElemToCompare ] = useState<string>("")
+  const [ filteredList, setFilteredList ] = useState<IAdCard[] | object[]>([])
+  const fuel = ["", "Flex", "Híbrido", "Életrico"]
+
+  useEffect(() => {
+    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare)
+    setFilteredList(filteredList)
+  }, [keyFilter, elemToCompare])
+
   const id_user = localStorage.getItem("@User_id");
 
   const listAllAnnounce = async () => {
     const { data } = await instance.get("/announce");
 
     setListAnnounce(data);
+    setFilteredList(data)
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
@@ -85,8 +105,16 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         idAnnouncer,
         setIdAnnouncer,
         listAnnouncer,
+        setListAnnounce,
         renderListAnnouncer,
-        createAnnounce
+        createAnnounce,
+        fuel,
+        keyFilter,
+        setKeyFilter,
+        elemToCompare,
+        setElemToCompare,
+        filteredList,
+        setFilteredList
       }}
     >
       {children}

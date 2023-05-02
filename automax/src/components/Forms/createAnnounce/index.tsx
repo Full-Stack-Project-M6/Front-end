@@ -16,10 +16,9 @@
 import { AnnounceContext } from "../../../context/announceContext";
 
   const FormCreateAnnounce = () => {
-    const fuel = ["", "Flex", "Híbrido", "Életrico"]
 
     const { closeModal, formAnnounceSetOpen } = useContext(ModalContext);
-    const { createAnnounce } = useContext(AnnounceContext);
+    const { createAnnounce, fuel } = useContext(AnnounceContext);
 
     const [listCars, setListCars] = useState<any[]>([])
     const [allCarsOfThisModel, setAllCarsOfThisModel] = useState<IBrand[]>([])
