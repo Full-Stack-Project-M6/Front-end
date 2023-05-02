@@ -1,5 +1,10 @@
 import { createContext, useState } from "react";
-import { IAnnounce, IAnnounceProvider, ICreateAnnounce, ICreateResponse } from "../interfaces/announce";
+import {
+  IAnnounce,
+  IAnnounceProvider,
+  ICreateAnnounce,
+  ICreateResponse,
+} from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
 import { IUpdateAnnounce } from "../interfaces/announce";
 import { IAnnounceCard } from "../interfaces/announce";
@@ -13,14 +18,14 @@ interface IAnnounceProviderData {
   announce: IAnnounceCard | undefined;
   setAnnounce: React.Dispatch<React.SetStateAction<IAnnounceCard | undefined>>;
   updateAnnounce: (
-    idAnnounce: string,
+    idAnnounce: string | undefined,
     dataForm: IUpdateAnnounce
   ) => Promise<void>;
   idAnnouncer: string;
   setIdAnnouncer: React.Dispatch<React.SetStateAction<string>>;
   listAnnouncer: [];
   renderListAnnouncer: (id: string | undefined) => Promise<void>;
-  createAnnounce: (announceData: ICreateAnnounce) => Promise<ICreateResponse> 
+  createAnnounce: (announceData: ICreateAnnounce) => Promise<ICreateResponse>;
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -53,11 +58,14 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
     setListAnnounceUser(data.announce);
   };
 
-  const createAnnounce = async (announceData:ICreateAnnounce) =>{
-    const {data} = await instance.post<ICreateResponse>(`/announce`, announceData)
+  const createAnnounce = async (announceData: ICreateAnnounce) => {
+    const { data } = await instance.post<ICreateResponse>(
+      `/announce`,
+      announceData
+    );
 
-    return data
-}
+    return data;
+  };
 
   const deleteAnnounce = async (idAnnounce: string | undefined) => {
     await instance.delete(`/announce/${idAnnounce}`);
@@ -65,10 +73,11 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   };
 
   const updateAnnounce = async (
-    idAnnounce: string,
+    idAnnounce: string | undefined,
     dataForm: IUpdateAnnounce
   ) => {
     await instance.patch(`/announce/${idAnnounce}`, dataForm);
+    renderListAnnounceUser();
   };
 
   return (
@@ -86,7 +95,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         setIdAnnouncer,
         listAnnouncer,
         renderListAnnouncer,
-        createAnnounce
+        createAnnounce,
       }}
     >
       {children}

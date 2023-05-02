@@ -77,11 +77,9 @@ const FormUpdateAnnounce = () => {
     mode: "onChange",
   });
 
-  const watchView = watch();
-  console.log(watchView);
-
   const submit = (data: IUpdateAnnounce) => {
-    console.log(data);
+    updateAnnounce(announce?.id, data);
+    closeModal(formUpdateAnnounceSetOpen);
   };
 
   return (
@@ -190,6 +188,7 @@ const FormUpdateAnnounce = () => {
             <div>
               <Body2 weight={500}>Quilometragem</Body2>
               <Input
+                defaultValue={announce?.kilometer}
                 placeholder="Digite aqui..."
                 register={register}
                 name="kilometer"
@@ -245,6 +244,7 @@ const FormUpdateAnnounce = () => {
             <div>
               <Body2 weight={500}>Preço</Body2>
               <Input
+                defaultValue={announce?.price}
                 placeholder="Digite aqui..."
                 register={register}
                 name="price"
@@ -258,6 +258,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>Descrição</Body2>
             <TextArea
+              defaultValue={announce?.description}
               placeholder="Digite aqui..."
               register={register}
               name="description"
@@ -299,6 +300,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>Imagem da capa</Body2>
             <Input
+              defaultValue={announce?.image_cover}
               placeholder="Digite aqui..."
               register={register}
               name="image_cover"
@@ -311,6 +313,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>1° Imagem da galeria</Body2>
             <Input
+              defaultValue={announce?.image.image1}
               placeholder="Digite aqui..."
               register={register}
               name="image_one"
@@ -322,6 +325,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>2° Imagem da galeria</Body2>
             <Input
+              defaultValue={announce?.image.image2}
               placeholder="Digite aqui..."
               register={register}
               name="image_two"
@@ -333,6 +337,7 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>3° Imagem da galeria</Body2>
             <Input
+              defaultValue={announce?.image.image3}
               placeholder="Digite aqui..."
               register={register}
               name="image3"
