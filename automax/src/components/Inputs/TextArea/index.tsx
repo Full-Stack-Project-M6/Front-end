@@ -7,7 +7,7 @@ interface IPropsTextArea {
   disabled?: boolean;
   register: Function;
   name?: string;
-  defautValue?: string | undefined;
+  defaultValue?: string | undefined;
 }
 
 function TextArea(props: IPropsTextArea) {
@@ -19,7 +19,7 @@ function TextArea(props: IPropsTextArea) {
     placeholder,
     disabled = false,
     name,
-    defautValue,
+    defaultValue,
   } = props;
 
   return (
@@ -29,7 +29,7 @@ function TextArea(props: IPropsTextArea) {
       placeholder={placeholder}
       disabled={disabled}
       {...register(name)}
-      defautValue={defautValue}
+      defaultValue={defaultValue}
     />
   );
 }

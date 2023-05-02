@@ -44,7 +44,7 @@ const FormUpdateAddress = () => {
           <div>
             <Body2 weight={500}>CEP</Body2>
             <Input
-              defautValue={user?.address.cep}
+              defaultValue={user?.address.cep}
               placeholder="Digite aqui..."
               register={register}
               name="CEP"
@@ -55,7 +55,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Estado</Body2>
               <Input
-                defautValue={user?.address.estate}
+                defaultValue={user?.address.estate}
                 placeholder="Digite aqui..."
                 register={register}
                 name="state"
@@ -65,7 +65,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Cidade</Body2>
               <Input
-                defautValue={user?.address.city}
+                defaultValue={user?.address.city}
                 placeholder="Digite aqui..."
                 register={register}
                 name="city"
@@ -76,7 +76,7 @@ const FormUpdateAddress = () => {
           <div>
             <Body2 weight={500}>Rua</Body2>
             <Input
-              defautValue={user?.address.street}
+              defaultValue={user?.address.street}
               placeholder="Digite aqui..."
               register={register}
               name="street"
@@ -87,7 +87,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Número</Body2>
               <Input
-                defautValue={user?.address.number}
+                defaultValue={user?.address.number}
                 placeholder="Digite aqui..."
                 register={register}
                 name="number"
@@ -97,7 +97,7 @@ const FormUpdateAddress = () => {
             <div>
               <Body2 weight={500}>Complemento </Body2>
               <Input
-                defautValue={user?.address.complement}
+                defaultValue={user?.address.complement}
                 placeholder="Digite aqui..."
                 register={register}
                 name="complement"
