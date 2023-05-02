@@ -20,6 +20,7 @@ export const StyleSectionBg = styled.section`
 `;
 
 export const StyleAnnouncerInfo = styled.div`
+  width: 100%;
   padding: 40px 29px;
   display: flex;
   flex-direction: column;

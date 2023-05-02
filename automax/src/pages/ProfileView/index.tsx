@@ -30,13 +30,15 @@ export const ProfileView = () => {
             <h4>{user?.name}</h4>
             <Button className="brandOpacity">Anunciante</Button>
           </div>
-          <Body1>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </Body1>
+          <Body1>{user?.description}</Body1>
           <div>
-            <StyledButton className="outlineBrand1" onClick={() => formAnnounceSetOpen(true)}> Criar anuncio</StyledButton>
+            <StyledButton
+              className="outlineBrand1"
+              onClick={() => formAnnounceSetOpen(true)}
+            >
+              {" "}
+              Criar anuncio
+            </StyledButton>
           </div>
         </StyleAnnouncerInfo>
         <StyledShopWindow>
@@ -53,7 +55,7 @@ export const ProfileView = () => {
         </StyledShopWindow>
       </StylePageProfileView>
       <Footer />
-      <ModalFormCreateAnnounce/>
+      <ModalFormCreateAnnounce />
     </>
   );
 };
