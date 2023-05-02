@@ -25,8 +25,8 @@ const FormUpdateUser = () => {
   });
 
   const submit = (data: IUserUpdate) => {
-    console.log(user);
     updateUser(data);
+    closeModal(formupdateUserSetOpen);
   };
 
   return (
@@ -47,7 +47,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Nome</Body2>
             <Input
-              defautValue={user?.name}
+              defaultValue={user?.name}
               placeholder="Digite aqui..."
               register={register}
               name="name"
@@ -57,7 +57,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Email</Body2>
             <Input
-              defautValue={user?.email}
+              defaultValue={user?.email}
               placeholder="Digite aqui..."
               register={register}
               name="email"
@@ -67,7 +67,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>CPF</Body2>
             <Input
-              defautValue={user?.cpf}
+              defaultValue={user?.cpf}
               placeholder="Digite aqui..."
               register={register}
               name="cpf"
@@ -77,7 +77,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Celular</Body2>
             <Input
-              defautValue={user?.cellphone}
+              defaultValue={user?.cellphone}
               placeholder="Digite aqui..."
               register={register}
               name="cellphone"
@@ -87,7 +87,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Data de nascimento</Body2>
             <Input
-              defautValue={user?.date_birth}
+              defaultValue={user?.date_birth}
               placeholder="Digite aqui..."
               register={register}
               name="date_birth"
@@ -97,7 +97,7 @@ const FormUpdateUser = () => {
           <div>
             <Body2 weight={500}>Descrição</Body2>
             <TextArea
-              defautValue={user?.description}
+              defaultValue={user?.description}
               placeholder="Digite aqui..."
               register={register}
               name="description"

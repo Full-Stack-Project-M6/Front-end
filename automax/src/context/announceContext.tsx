@@ -1,5 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { IAdCard, IAnnounce, IAnnounceProvider, ICreateAnnounce, ICreateResponse } from "../interfaces/announce";
+import {
+  IAdCard,
+  IAnnounce,
+  IAnnounceProvider,
+  ICreateAnnounce,
+  ICreateResponse
+} from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
 import { IUpdateAnnounce } from "../interfaces/announce";
 import { IAnnounceCard } from "../interfaces/announce";
@@ -15,7 +21,7 @@ interface IAnnounceProviderData {
   announce: IAnnounceCard | undefined;
   setAnnounce: React.Dispatch<React.SetStateAction<IAnnounceCard | undefined>>;
   updateAnnounce: (
-    idAnnounce: string,
+    idAnnounce: string | undefined,
     dataForm: IUpdateAnnounce
   ) => Promise<void>;
   idAnnouncer: string;
@@ -73,11 +79,14 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
     setListAnnounceUser(data.announce);
   };
 
-  const createAnnounce = async (announceData:ICreateAnnounce) =>{
-    const {data} = await instance.post<ICreateResponse>(`/announce`, announceData)
+  const createAnnounce = async (announceData: ICreateAnnounce) => {
+    const { data } = await instance.post<ICreateResponse>(
+      `/announce`,
+      announceData
+    );
 
-    return data
-}
+    return data;
+  };
 
   const deleteAnnounce = async (idAnnounce: string | undefined) => {
     await instance.delete(`/announce/${idAnnounce}`);
@@ -85,10 +94,11 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   };
 
   const updateAnnounce = async (
-    idAnnounce: string,
+    idAnnounce: string | undefined,
     dataForm: IUpdateAnnounce
   ) => {
     await instance.patch(`/announce/${idAnnounce}`, dataForm);
+    renderListAnnounceUser();
   };
 
   return (

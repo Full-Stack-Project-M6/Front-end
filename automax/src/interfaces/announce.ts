@@ -23,7 +23,7 @@ export interface ICreateAnnounce {
     image1: string;
     image2: string;
     image3: string;
-  }
+  };
 }
 
 export interface ICreateAnnounceData {
@@ -58,7 +58,7 @@ export interface ICreateResponse {
     image1: string;
     image2: string;
     image3: string;
-  }
+  };
 }
 
 export interface IUpdateAnnounce {
@@ -73,8 +73,11 @@ export interface IUpdateAnnounce {
   description?: string;
   image_cover?: string;
   published: boolean;
-  image_one?: string;
-  image_two?: string;
+  images: {
+    image1: string;
+    image2: string;
+    image3: string;
+  };
 }
 
 export interface IAnnounce {

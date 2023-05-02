@@ -7,7 +7,7 @@ interface IPropsInput {
   type?: string;
   register: Function;
   name?: string;
-  defautValue?: string | undefined;
+  defaultValue?: string | undefined;
 }
 
 function Input(props: IPropsInput) {
@@ -19,7 +19,7 @@ function Input(props: IPropsInput) {
     disabled = false,
     type = "text",
     name,
-    defautValue,
+    defaultValue,
   } = props;
 
   return (
@@ -29,7 +29,7 @@ function Input(props: IPropsInput) {
       placeholder={placeholder}
       type={type}
       {...register(name)}
-      defaultValue={defautValue}
+      defaultValue={defaultValue}
     />
   );
 }
