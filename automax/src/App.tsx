@@ -7,6 +7,7 @@ import ModalFormUpdateUser from "./components/Modal/FormUpdateUser";
 import ModalFormUpdateAdrress from "./components/Modal/FormUpdateAdress";
 import ModalFormUpdateAnnounce from "./components/Modal/FormUpdateAnnounce";
 import ModalDeleteAnnounce from "./components/Modal/DeleteAnnounce";
+import { CommentsProvider } from "./context/commentsContext";
 
 const App = () => {
   return (
@@ -14,13 +15,15 @@ const App = () => {
       <GlobalStyle />
       <UserProvider>
         <AnnounceProvider>
-          <ModalProvider>
-            <Routes />
-            <ModalFormUpdateUser />
-            <ModalFormUpdateAdrress />
-            <ModalFormUpdateAnnounce />
-            <ModalDeleteAnnounce />
-          </ModalProvider>
+          <CommentsProvider>
+            <ModalProvider>
+              <Routes />
+              <ModalFormUpdateUser />
+              <ModalFormUpdateAdrress />
+              <ModalFormUpdateAnnounce />
+              <ModalDeleteAnnounce />
+            </ModalProvider>
+          </CommentsProvider>
         </AnnounceProvider>
       </UserProvider>
     </>

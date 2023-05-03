@@ -139,3 +139,7 @@ export interface IAnnounceCard {
   year: IYearResponce;
   user: IUser;
 }
+
+export interface IComment {
+  comment: string;
+}

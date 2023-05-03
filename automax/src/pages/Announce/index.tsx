@@ -11,11 +11,33 @@ import { ModalContext } from "../../context/modalContext";
 import { AnnounceContext } from "../../context/announceContext";
 import { StyledButton } from "../../components/Button/styles";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { IComment } from "../../interfaces/announce";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { createCommentSchema } from "../../validations/createCommentSchema";
+import { CommentsContext } from "../../context/commentsContext";
 
 export const Announce = () => {
   const { openModal, setOpen, setIndexImg } = useContext(ModalContext);
   const { announce } = useContext(AnnounceContext);
+  const { createComment } = useContext(CommentsContext);
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IComment>({
+    resolver: yupResolver(createCommentSchema),
+  });
+
+  const submit = async (data: IComment) => {
+    try {
+      await createComment(announce?.id, data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -98,10 +120,17 @@ export const Announce = () => {
             <div>
               <Announcer />
             </div>
-            <div className="divInputButton">
-              <input type="text" className="inputComment" />
-              <Button className="brand1">Comentar</Button>
-            </div>
+            <form className="divInputButton" onSubmit={handleSubmit(submit)}>
+              <input
+                type="text"
+                className="inputComment"
+                {...register("comment")}
+              />
+              <StyledButton className="brand1" type="submit">
+                Comentar
+              </StyledButton>
+            </form>
+            {<p className="error">{errors.comment?.message}</p>}
 
             <div className="divDirt">
               <p>Gostei muito</p>
