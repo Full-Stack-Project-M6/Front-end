@@ -40,7 +40,15 @@ export const Home = () => {
             <h2>Marca</h2>
             {listBrand && listBrand.map((elem:IAdCard, index: number) => {
               return (
-                <button key={index}>{elem.brand.brand}</button>
+                <button
+                key={index}
+                onClick={() => {
+                  setKeyFilter("brand")
+                  setElemToCompare(elem.brand.brand)
+                }}
+                >
+                {elem.brand.brand}
+                </button>
               )
             })}
           </div>
