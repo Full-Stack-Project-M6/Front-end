@@ -4,7 +4,6 @@ import { Body1, Body2, H5, H6 } from "../../components/Typography";
 import Button from "../../components/Button";
 import Comment from "../../components/Coments/index";
 import Announcer from "../../components/Announcer";
-import { annnounceMocked } from "../../utils";
 import { Footer } from "../../components/footer";
 import ModalImageCar from "../../components/Modal/ImageCar";
 import { useContext } from "react";
@@ -14,7 +13,7 @@ import { StyledButton } from "../../components/Button/styles";
 import { useNavigate } from "react-router-dom";
 
 export const Announce = () => {
-  const { openModal, setOpen } = useContext(ModalContext);
+  const { openModal, setOpen, setIndexImg } = useContext(ModalContext);
   const { announce } = useContext(AnnounceContext);
   const navigate = useNavigate();
 
@@ -53,26 +52,18 @@ export const Announce = () => {
               </div>
               <div className="divImgs">
                 <div>
-                  <div onClick={() => openModal(setOpen)}>
-                    <img src={annnounceMocked.imgCar} alt="" />
-                  </div>
-                  <div onClick={() => openModal(setOpen)}>
-                    <img src={annnounceMocked.imgCar} alt="" />
-                  </div>
-                  <div onClick={() => openModal(setOpen)}>
-                    <img src={annnounceMocked.imgCar} alt="" />
-                  </div>
-                </div>
-                <div>
-                  <div onClick={() => openModal(setOpen)}>
-                    <img src={annnounceMocked.imgCar} alt="" />
-                  </div>
-                  <div onClick={() => openModal(setOpen)}>
-                    <img src={annnounceMocked.imgCar} alt="" />
-                  </div>
-                  <div onClick={() => openModal(setOpen)}>
-                    <img src={annnounceMocked.imgCar} alt="" />
-                  </div>
+                  {announce?.images.map((elm, index) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          openModal(setOpen);
+                          setIndexImg(index);
+                        }}
+                      >
+                        <img src={elm} alt="" />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -126,26 +117,18 @@ export const Announce = () => {
             </div>
             <div className="divImgs">
               <div>
-                <div onClick={() => openModal(setOpen)}>
-                  <img src={annnounceMocked.imgCar} alt="" />
-                </div>
-                <div onClick={() => openModal(setOpen)}>
-                  <img src={annnounceMocked.imgCar} alt="" />
-                </div>
-                <div onClick={() => openModal(setOpen)}>
-                  <img src={annnounceMocked.imgCar} alt="" />
-                </div>
-              </div>
-              <div>
-                <div onClick={() => openModal(setOpen)}>
-                  <img src={annnounceMocked.imgCar} alt="" />
-                </div>
-                <div onClick={() => openModal(setOpen)}>
-                  <img src={annnounceMocked.imgCar} alt="" />
-                </div>
-                <div onClick={() => openModal(setOpen)}>
-                  <img src={annnounceMocked.imgCar} alt="" />
-                </div>
+                {announce?.images.map((elm, index) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        openModal(setOpen);
+                        setIndexImg(index);
+                      }}
+                    >
+                      <img src={elm} alt="" />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
