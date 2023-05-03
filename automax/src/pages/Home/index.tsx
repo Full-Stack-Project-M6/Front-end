@@ -20,6 +20,10 @@ import { StyledInput } from "../../components/Inputs/Input/style";
 export const Home = () => {
 
   const { listAnnounce, fuel , setKeyFilter, setElemToCompare, filteredList} = useContext(AnnounceContext);
+  const { disable } = useContext(UserContext);
+
+  const token = localStorage.getItem("@MotorsToken")
+  console.log(!token, "disable")
 
 
   const listBrand = removeDuplicateItems(filteredList, "brand")
@@ -120,15 +124,15 @@ export const Home = () => {
           <div className="km">
             <h2>Km</h2>
             <div>
-              <StyledInput placeholder="Mínimo" disabled={true}/>
-              <StyledInput placeholder="Máximo" disabled={true}/>
+              <StyledInput placeholder="Mínimo" disabled={!token} type="number"/>
+              <StyledInput placeholder="Máximo" disabled={!token} type="number"/>
             </div>
           </div>
           <div className="km">
             <h2>Preço</h2>
             <div>
-              <StyledInput placeholder="Mínimo" disabled={true}/>
-              <StyledInput placeholder="Máximo" disabled={true}/>
+              <StyledInput placeholder="Mínimo" disabled={!token} type="number"/>
+              <StyledInput placeholder="Máximo" disabled={!token} type="number"/>
             </div>
           </div>
         </StyledFiltersAside>

@@ -20,6 +20,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
   const [loading, setLoading] = useState(true);
   const [userRecovering, setUserRecovering] = useState<IUser | null>(null);
   const [successRecover, setSuccessRecover] = useState(false);
+  const [disable, setDisable] = useState(true);
   const id_user = localStorage.getItem("@User_id");
   const token = localStorage.getItem("@MotorsToken");
 
@@ -73,6 +74,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
       instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
 
       setUser(data.user);
+      setDisable(false)
       localStorage.setItem("@User_id", data.user.id);
       localStorage.setItem("@MotorsToken", data.token);
       navigate("/", { replace: true });
@@ -139,6 +141,8 @@ export const UserProvider = ({ children }: IProviderProps) => {
         successRecover,
         userRecovering,
         updateAddress,
+        disable,
+        setDisable
       }}
     >
       {children}
