@@ -21,6 +21,8 @@ interface IModalContext {
   successSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
   openModal: (set: Function) => void;
   closeModal: (set: Function) => void;
+  indexImg: number;
+  setIndexImg: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const ModalContext = createContext<IModalContext>({} as IModalContext);
@@ -33,6 +35,7 @@ const ModalProvider = ({ children }: IModalContextProps) => {
   const [formupdateUserIsOpen, formupdateUserSetOpen] = useState(false);
   const [formupdateAddressIsOpen, formupdateAddressSetOpen] = useState(false);
   const [successIsOpen, successSetOpen] = useState(false);
+  const [indexImg, setIndexImg] = useState(0);
 
   const openModal = (set: Function) => set(true);
 
@@ -57,6 +60,8 @@ const ModalProvider = ({ children }: IModalContextProps) => {
         successSetOpen,
         openModal,
         closeModal,
+        indexImg,
+        setIndexImg,
       }}
     >
       {children}
