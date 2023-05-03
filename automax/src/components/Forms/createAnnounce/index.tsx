@@ -15,10 +15,9 @@ import { IBrand } from "../../../interfaces/apiCars";
 import { AnnounceContext } from "../../../context/announceContext";
 import { StyledButton } from "../../Button/styles";
 
-  const FormCreateAnnounce = () => {
-
-    const { closeModal, formAnnounceSetOpen } = useContext(ModalContext);
-    const { createAnnounce, fuel } = useContext(AnnounceContext);
+const FormCreateAnnounce = () => {
+  const { closeModal, formAnnounceSetOpen } = useContext(ModalContext);
+  const { createAnnounce, fuel } = useContext(AnnounceContext);
 
   const [listCars, setListCars] = useState<any[]>([]);
   const [allCarsOfThisModel, setAllCarsOfThisModel] = useState<IBrand[]>([]);
@@ -65,7 +64,6 @@ import { StyledButton } from "../../Button/styles";
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm<ICreateAnnounceData>({
     resolver: yupResolver(announceSchema),
     mode: "onChange",
@@ -73,7 +71,7 @@ import { StyledButton } from "../../Button/styles";
 
   const submit = async (data: ICreateAnnounceData) => {
     const { image1, image2, image3, ...rest } = data;
-    const images = { image1, image2, image3 };
+    const images = [image1, image2, image3];
     const announceData = { images, ...rest };
 
     try {

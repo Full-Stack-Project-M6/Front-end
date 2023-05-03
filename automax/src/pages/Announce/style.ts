@@ -176,10 +176,26 @@ export const StyleAnnoucePage = styled.div`
       display: flex;
       flex-direction: column;
       gap: 24px;
-    }
 
-    input {
-      height: 130px;
+      .inputComment {
+        height: 130px;
+        border-radius: 4px;
+        border: 1.5px solid var(--colors-grey-0);
+        padding: 0 10px;
+
+        font-weight: 400;
+        font-size: 16px;
+
+        text-align: initial;
+
+        &:focus {
+          border: 2px solid var(--colors-brand-2);
+          outline: none;
+          background-color: var(--colors-grey-9);
+          font-weight: 400;
+          font-size: 16px;
+        }
+      }
     }
 
     .divDirt {

@@ -1,13 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import {
   IAdCard,
-  IAnnounce,
   IAnnounceProvider,
   ICreateAnnounce,
-  ICreateResponse
+  ICreateResponse,
+  IUpdateAnnounceResponse,
 } from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
-import { IUpdateAnnounce } from "../interfaces/announce";
 import { IAnnounceCard } from "../interfaces/announce";
 import { filterArray, filterArrayByRange } from "../utils/filter";
 
@@ -22,7 +21,7 @@ interface IAnnounceProviderData {
   setAnnounce: React.Dispatch<React.SetStateAction<IAnnounceCard | undefined>>;
   updateAnnounce: (
     idAnnounce: string | undefined,
-    dataForm: IUpdateAnnounce
+    dataForm: IUpdateAnnounceResponse
   ) => Promise<void>;
   idAnnouncer: string;
   setIdAnnouncer: React.Dispatch<React.SetStateAction<string>>;
@@ -89,7 +88,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
     const { data } = await instance.get("/announce");
 
     setListAnnounce(data);
-    setFilteredList(data)
+    setFilteredList(data);
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
@@ -110,6 +109,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
       announceData
     );
 
+    renderListAnnounceUser();
     return data;
   };
 
@@ -120,7 +120,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
 
   const updateAnnounce = async (
     idAnnounce: string | undefined,
-    dataForm: IUpdateAnnounce
+    dataForm: IUpdateAnnounceResponse
   ) => {
     await instance.patch(`/announce/${idAnnounce}`, dataForm);
     renderListAnnounceUser();

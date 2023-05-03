@@ -6,7 +6,7 @@ import { ModalContext } from "../../../context/modalContext";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { updateAnnounceSchema } from "../../../validations/createAnnounceSchema";
+import { announceSchema } from "../../../validations/createAnnounceSchema";
 import { IUpdateAnnounce } from "../../../interfaces/announce";
 import { StyledButton } from "../../Button/styles";
 import { AnnounceContext } from "../../../context/announceContext";
@@ -19,8 +19,7 @@ import Button from "../../Button";
 const FormUpdateAnnounce = () => {
   const fuel = ["", "Flex", "Híbrido", "Életrico"];
 
-  const { closeModal, formUpdateAnnounceSetOpen, deleteAnnounceSetOpen } =
-    useContext(ModalContext);
+  const { closeModal, formUpdateAnnounceSetOpen } = useContext(ModalContext);
 
   const [listCars, setListCars] = useState<any[]>([]);
   const [allCarsOfThisModel, setAllCarsOfThisModel] = useState<IBrand[]>([]);
@@ -73,12 +72,16 @@ const FormUpdateAnnounce = () => {
     formState: { errors },
     watch,
   } = useForm<IUpdateAnnounce>({
-    resolver: yupResolver(updateAnnounceSchema),
+    resolver: yupResolver(announceSchema),
     mode: "onChange",
   });
 
   const submit = (data: IUpdateAnnounce) => {
-    updateAnnounce(announce?.id, data);
+    const { image1, image2, image3, ...rest } = data;
+    const images = [image1, image2, image3];
+    const announceData = { images, ...rest };
+
+    updateAnnounce(announce?.id, announceData);
     closeModal(formUpdateAnnounceSetOpen);
   };
 
@@ -313,37 +316,37 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>1° Imagem da galeria</Body2>
             <Input
-              defaultValue={announce?.image.image1}
+              defaultValue={announce?.images[0]}
               placeholder="Digite aqui..."
               register={register}
-              name="image_one"
+              name="image1"
               disabled={!allCarsOfThisModel.length}
             />
-            {<p className="error">{errors.images?.image1?.message}</p>}
+            {<p className="error">{errors.image1?.message}</p>}
           </div>
 
           <div>
             <Body2 weight={500}>2° Imagem da galeria</Body2>
             <Input
-              defaultValue={announce?.image.image2}
+              defaultValue={announce?.images[1]}
               placeholder="Digite aqui..."
               register={register}
-              name="image_two"
+              name="image2"
               disabled={!allCarsOfThisModel.length}
             />
-            {<p className="error">{errors.images?.image2?.message}</p>}
+            {<p className="error">{errors.image2?.message}</p>}
           </div>
 
           <div>
             <Body2 weight={500}>3° Imagem da galeria</Body2>
             <Input
-              defaultValue={announce?.image.image3}
+              defaultValue={announce?.images[2]}
               placeholder="Digite aqui..."
               register={register}
               name="image3"
               disabled={!allCarsOfThisModel.length}
             />
-            {<p className="error">{errors.images?.image3?.message}</p>}
+            {<p className="error">{errors.image3?.message}</p>}
           </div>
 
           <div className="divAddImg">

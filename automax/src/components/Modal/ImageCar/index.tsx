@@ -8,12 +8,14 @@ import {
   ModalImgCar,
 } from "./style";
 import { useContext } from "react";
-import { annnounceMocked } from "../../../utils/index";
 import "../style.css";
 import { ModalContext } from "../../../context/modalContext";
+import { AnnounceContext } from "../../../context/announceContext";
 
 const ModalImageCar = () => {
-  const { modalIsOpen, closeModal, setOpen } = useContext(ModalContext);
+  const { modalIsOpen, closeModal, setOpen, indexImg } =
+    useContext(ModalContext);
+  const { announce } = useContext(AnnounceContext);
 
   return (
     <Modal
@@ -31,7 +33,7 @@ const ModalImageCar = () => {
           </ModalClose>
         </ModalHeader>
         <ModalImgCar>
-          <img src={annnounceMocked.imgCar} alt="" />
+          <img src={announce?.images[indexImg]} alt="" />
         </ModalImgCar>
       </ModalContentImageCar>
     </Modal>
