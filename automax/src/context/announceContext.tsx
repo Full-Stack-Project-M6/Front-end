@@ -9,7 +9,7 @@ import {
 import { instance } from "../services/apiKenzie";
 import { IUpdateAnnounce } from "../interfaces/announce";
 import { IAnnounceCard } from "../interfaces/announce";
-import { filterArray } from "../utils/filter";
+import { filterArray, filterArrayByRange } from "../utils/filter";
 
 interface IAnnounceProviderData {
   listAllAnnounce: () => void;
@@ -36,6 +36,14 @@ interface IAnnounceProviderData {
   setElemToCompare: React.Dispatch<React.SetStateAction<string>>;
   filteredList: IAdCard[] | object[];
   setFilteredList: React.Dispatch<React.SetStateAction<IAdCard[] | object[]>>;
+  setMinPrice: React.Dispatch<React.SetStateAction<string>>;
+  setMinKm: React.Dispatch<React.SetStateAction<string>>;
+  rangeKm: string[];
+  setRangeKm: React.Dispatch<React.SetStateAction<string[]>>;
+  minPrice: string;
+  minKm: string;
+  setRangePrice: React.Dispatch<React.SetStateAction<string[]>>;
+  rangePrice: string[];
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -51,12 +59,29 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [ keyFilter, setKeyFilter ] = useState<string>("")
   const [ elemToCompare, setElemToCompare ] = useState<string>("")
   const [ filteredList, setFilteredList ] = useState<IAdCard[] | object[]>([])
+  const [minKm, setMinKm] = useState("0")
+  const [minPrice, setMinPrice] = useState("0")
+  const [rangeKm, setRangeKm] = useState<string[]>(["0", "0"])
+  const [rangePrice, setRangePrice] = useState<string[]>(["0", "0"])
   const fuel = ["", "Flex", "Híbrido", "Életrico"]
 
   useEffect(() => {
     const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare)
     setFilteredList(filteredList)
+
   }, [keyFilter, elemToCompare])
+
+  useEffect(() => {
+    const filteredListByRangeKm = filterArrayByRange(filteredList, "kilometer", rangeKm)
+    setFilteredList(filteredListByRangeKm)
+
+  }, [rangeKm])
+
+  useEffect(() => {
+    const filteredListByRangePrice = filterArrayByRange(filteredList, "price", rangePrice)
+    setFilteredList(filteredListByRangePrice)
+
+  }, [rangePrice])
 
   const id_user = localStorage.getItem("@User_id");
 
@@ -124,7 +149,15 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         elemToCompare,
         setElemToCompare,
         filteredList,
-        setFilteredList
+        setFilteredList,
+        setMinPrice,
+        setMinKm,
+        setRangeKm,
+        rangeKm,
+        minPrice,
+        minKm,
+        setRangePrice,
+        rangePrice
       }}
     >
       {children}
