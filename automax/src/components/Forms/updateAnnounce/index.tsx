@@ -313,37 +313,37 @@ const FormUpdateAnnounce = () => {
           <div>
             <Body2 weight={500}>1° Imagem da galeria</Body2>
             <Input
-              defaultValue={announce?.image.image1}
+              defaultValue={announce?.images[0]}
               placeholder="Digite aqui..."
               register={register}
               name="image_one"
               disabled={!allCarsOfThisModel.length}
             />
-            {<p className="error">{errors.images?.image1?.message}</p>}
+            {<p className="error">{errors.images?.message}</p>}
           </div>
 
           <div>
             <Body2 weight={500}>2° Imagem da galeria</Body2>
             <Input
-              defaultValue={announce?.image.image2}
+              defaultValue={announce?.images[1]}
               placeholder="Digite aqui..."
               register={register}
               name="image_two"
               disabled={!allCarsOfThisModel.length}
             />
-            {<p className="error">{errors.images?.image2?.message}</p>}
+            {<p className="error">{errors.images?.message}</p>}
           </div>
 
           <div>
             <Body2 weight={500}>3° Imagem da galeria</Body2>
             <Input
-              defaultValue={announce?.image.image3}
+              defaultValue={announce?.images[2]}
               placeholder="Digite aqui..."
               register={register}
               name="image3"
               disabled={!allCarsOfThisModel.length}
             />
-            {<p className="error">{errors.images?.image3?.message}</p>}
+            {<p className="error">{errors.images?.message}</p>}
           </div>
 
           <div className="divAddImg">

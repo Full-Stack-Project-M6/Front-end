@@ -5,7 +5,6 @@ import { IColorResponce } from "./color";
 import { IYearResponce } from "./year";
 import { IModelResponce } from "./model";
 import { IImagemResponse } from "./image";
-import { IBrand } from "./apiCars";
 import { IUser } from "./user";
 
 export interface ICreateAnnounce {
@@ -19,11 +18,7 @@ export interface ICreateAnnounce {
   price: string;
   description: string;
   image_cover: string;
-  images: {
-    image1: string;
-    image2: string;
-    image3: string;
-  };
+  images: string[];
 }
 
 export interface ICreateAnnounceData {
@@ -54,11 +49,7 @@ export interface ICreateResponse {
   price: string;
   description: string;
   image_cover: string;
-  images: {
-    image1: string;
-    image2: string;
-    image3: string;
-  };
+  images: string[];
 }
 
 export interface IUpdateAnnounce {
@@ -73,11 +64,7 @@ export interface IUpdateAnnounce {
   description?: string;
   image_cover?: string;
   published: boolean;
-  images: {
-    image1: string;
-    image2: string;
-    image3: string;
-  };
+  images: string[];
 }
 
 export interface IAnnounce {
@@ -94,7 +81,7 @@ export interface IAnnounce {
   color: IColorResponce;
   year: IYearResponce;
   model: IModelResponce;
-  image: IImagemResponse;
+  images: string[];
 }
 export interface IAnnounceProvider {
   children: ReactNode;
@@ -109,10 +96,10 @@ export interface IAdCard {
   price_FIPE: string;
   published: boolean;
   tag: boolean;
+  images: string[];
   brand: IBrandResponce;
   color: IColorResponce;
   fuel: IFuelResponce;
-  image: IImagemResponse;
   model: IModelResponce;
   year: IYearResponce;
   user: IUser;
@@ -126,11 +113,11 @@ export interface IAnnounceCard {
   price: string;
   price_FIPE: string;
   published: boolean;
+  images: string[];
   tag: boolean;
   brand: IBrandResponce;
   color: IColorResponce;
   fuel: IFuelResponce;
-  image: IImagemResponse;
   model: IModelResponce;
   year: IYearResponce;
   user: IUser;

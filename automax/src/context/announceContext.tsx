@@ -4,7 +4,7 @@ import {
   IAnnounce,
   IAnnounceProvider,
   ICreateAnnounce,
-  ICreateResponse
+  ICreateResponse,
 } from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
 import { IUpdateAnnounce } from "../interfaces/announce";
@@ -48,15 +48,15 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [announce, setAnnounce] = useState<IAnnounceCard>();
   const [idAnnouncer, setIdAnnouncer] = useState("");
   const [listAnnouncer, setListAnnouncer] = useState<any>([]);
-  const [ keyFilter, setKeyFilter ] = useState<string>("")
-  const [ elemToCompare, setElemToCompare ] = useState<string>("")
-  const [ filteredList, setFilteredList ] = useState<IAdCard[] | object[]>([])
-  const fuel = ["", "Flex", "Híbrido", "Életrico"]
+  const [keyFilter, setKeyFilter] = useState<string>("");
+  const [elemToCompare, setElemToCompare] = useState<string>("");
+  const [filteredList, setFilteredList] = useState<IAdCard[] | object[]>([]);
+  const fuel = ["", "Flex", "Híbrido", "Életrico"];
 
   useEffect(() => {
-    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare)
-    setFilteredList(filteredList)
-  }, [keyFilter, elemToCompare])
+    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare);
+    setFilteredList(filteredList);
+  }, [keyFilter, elemToCompare]);
 
   const id_user = localStorage.getItem("@User_id");
 
@@ -64,7 +64,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
     const { data } = await instance.get("/announce");
 
     setListAnnounce(data);
-    setFilteredList(data)
+    setFilteredList(data);
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
@@ -85,6 +85,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
       announceData
     );
 
+    renderListAnnounceUser();
     return data;
   };
 
@@ -124,7 +125,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         elemToCompare,
         setElemToCompare,
         filteredList,
-        setFilteredList
+        setFilteredList,
       }}
     >
       {children}
