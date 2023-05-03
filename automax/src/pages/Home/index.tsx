@@ -15,6 +15,7 @@ import { ListAllAnnounce } from "../../components/ListAllAnnounce";
 import { AnnounceContext } from "../../context/announceContext";
 import { IAdCard } from "../../interfaces/announce";
 import { removeDuplicateItems } from "../../utils/filter";
+import { StyledInput } from "../../components/Inputs/Input/style";
 
 export const Home = () => {
 
@@ -119,15 +120,15 @@ export const Home = () => {
           <div className="km">
             <h2>Km</h2>
             <div>
-              <Button className="negativeHover">{"Mínimo"}</Button>
-              <Button className="negativeHover">{"Máximo"}</Button>
+              <StyledInput placeholder="Mínimo" disabled={true}/>
+              <StyledInput placeholder="Máximo" disabled={true}/>
             </div>
           </div>
           <div className="km">
             <h2>Preço</h2>
             <div>
-              <Button className="negativeHover">{"Mínimo"}</Button>
-              <Button className="negativeHover">{"Máximo"}</Button>
+              <StyledInput placeholder="Mínimo" disabled={true}/>
+              <StyledInput placeholder="Máximo" disabled={true}/>
             </div>
           </div>
         </StyledFiltersAside>

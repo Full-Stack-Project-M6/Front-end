@@ -43,6 +43,7 @@ export const StyledAnnounceList = styled.section`
   display: flex;
   justify-content: space-between;
   padding: 40px 40px 86px 40px;
+  gap: 8px;
 
   aside {
     display: none;
@@ -66,6 +67,9 @@ export const StyledAnnounceList = styled.section`
     font-size: 16px;
     font-weight: 500;
     text-transform: capitalize;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     margin-left: 6px;
 
     cursor: pointer;
@@ -98,6 +102,8 @@ export const StyledFiltersAside = styled.aside`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 8px;
+    width: 80%;
   }
   .km div button {
     width: 100px;
