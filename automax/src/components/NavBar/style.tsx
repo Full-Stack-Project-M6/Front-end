@@ -23,6 +23,7 @@ export const StyledNav = styled.nav<INavBar>`
 
   img {
     width: 125px;
+    cursor: pointer;
   }
   & > div {
     display: none;
