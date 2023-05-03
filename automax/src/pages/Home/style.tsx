@@ -65,6 +65,7 @@ export const StyledAnnounceList = styled.section`
 
     font-size: 16px;
     font-weight: 500;
+    text-transform: capitalize;
     margin-left: 6px;
 
     cursor: pointer;
