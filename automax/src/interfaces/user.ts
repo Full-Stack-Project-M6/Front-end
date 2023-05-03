@@ -78,6 +78,4 @@ export interface IUserContext {
   successRecover: boolean;
   userRecovering: IUser | null;
   updateAddress: (dateForm: IAddress) => Promise<void>;
-  disable: boolean;
-  setDisable: React.Dispatch<React.SetStateAction<boolean>>;
 }

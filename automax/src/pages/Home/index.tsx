@@ -20,11 +20,8 @@ import { StyledInput } from "../../components/Inputs/Input/style";
 export const Home = () => {
 
   const { listAnnounce, fuel , setKeyFilter, setElemToCompare, filteredList} = useContext(AnnounceContext);
-  const { disable } = useContext(UserContext);
 
   const token = localStorage.getItem("@MotorsToken")
-  console.log(!token, "disable")
-
 
   const listBrand = removeDuplicateItems(filteredList, "brand")
   const listModel = removeDuplicateItems(filteredList, "model")
