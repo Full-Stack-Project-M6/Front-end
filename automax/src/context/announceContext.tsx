@@ -1,13 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import {
   IAdCard,
-  IAnnounce,
   IAnnounceProvider,
   ICreateAnnounce,
-  ICreateResponse
+  ICreateResponse,
+  IUpdateAnnounceResponse,
 } from "../interfaces/announce";
 import { instance } from "../services/apiKenzie";
-import { IUpdateAnnounce } from "../interfaces/announce";
 import { IAnnounceCard } from "../interfaces/announce";
 import { filterArray } from "../utils/filter";
 
@@ -22,7 +21,7 @@ interface IAnnounceProviderData {
   setAnnounce: React.Dispatch<React.SetStateAction<IAnnounceCard | undefined>>;
   updateAnnounce: (
     idAnnounce: string | undefined,
-    dataForm: IUpdateAnnounce
+    dataForm: IUpdateAnnounceResponse
   ) => Promise<void>;
   idAnnouncer: string;
   setIdAnnouncer: React.Dispatch<React.SetStateAction<string>>;
@@ -48,15 +47,15 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [announce, setAnnounce] = useState<IAnnounceCard>();
   const [idAnnouncer, setIdAnnouncer] = useState("");
   const [listAnnouncer, setListAnnouncer] = useState<any>([]);
-  const [ keyFilter, setKeyFilter ] = useState<string>("")
-  const [ elemToCompare, setElemToCompare ] = useState<string>("")
-  const [ filteredList, setFilteredList ] = useState<IAdCard[] | object[]>([])
-  const fuel = ["", "Flex", "Híbrido", "Életrico"]
+  const [keyFilter, setKeyFilter] = useState<string>("");
+  const [elemToCompare, setElemToCompare] = useState<string>("");
+  const [filteredList, setFilteredList] = useState<IAdCard[] | object[]>([]);
+  const fuel = ["", "Flex", "Híbrido", "Életrico"];
 
   useEffect(() => {
-    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare)
-    setFilteredList(filteredList)
-  }, [keyFilter, elemToCompare])
+    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare);
+    setFilteredList(filteredList);
+  }, [keyFilter, elemToCompare]);
 
   const id_user = localStorage.getItem("@User_id");
 
@@ -64,7 +63,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
     const { data } = await instance.get("/announce");
 
     setListAnnounce(data);
-    setFilteredList(data)
+    setFilteredList(data);
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
@@ -85,6 +84,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
       announceData
     );
 
+    renderListAnnounceUser();
     return data;
   };
 
@@ -95,7 +95,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
 
   const updateAnnounce = async (
     idAnnounce: string | undefined,
-    dataForm: IUpdateAnnounce
+    dataForm: IUpdateAnnounceResponse
   ) => {
     await instance.patch(`/announce/${idAnnounce}`, dataForm);
     renderListAnnounceUser();
@@ -124,7 +124,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         elemToCompare,
         setElemToCompare,
         filteredList,
-        setFilteredList
+        setFilteredList,
       }}
     >
       {children}
