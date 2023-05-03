@@ -64,6 +64,23 @@ export interface IUpdateAnnounce {
   description?: string;
   image_cover?: string;
   published: boolean;
+  image1: string;
+  image2: string;
+  image3: string;
+}
+
+export interface IUpdateAnnounceResponse {
+  brand?: string;
+  model?: string;
+  year?: string;
+  fuel?: string;
+  kilometer?: string;
+  color?: string;
+  price_FIPE?: string;
+  price?: string;
+  description?: string;
+  image_cover?: string;
+  published: boolean;
   images: string[];
 }
 

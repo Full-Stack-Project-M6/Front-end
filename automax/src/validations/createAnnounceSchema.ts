@@ -15,18 +15,3 @@ export const announceSchema = yup.object().shape({
   image2: yup.string().required("Imagem obrigatória"),
   image3: yup.string().required("Imagem obrigatória"),
 });
-
-export const updateAnnounceSchema = yup.object().shape({
-  brand: yup.string().notRequired(),
-  model: yup.string().notRequired(),
-  year: yup.string().notRequired(),
-  fuel: yup.string().notRequired(),
-  kilometer: yup.string().notRequired(),
-  color: yup.string().notRequired(),
-  price: yup.string().notRequired(),
-  description: yup.string().notRequired(),
-  image_cover: yup.string().notRequired(),
-  image1: yup.string().required("Imagem obrigatória"),
-  image2: yup.string().required("Imagem obrigatória"),
-  image3: yup.string().required("Imagem obrigatória"),
-});
