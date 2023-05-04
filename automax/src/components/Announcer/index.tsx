@@ -4,11 +4,11 @@ import { Body1 } from "../Typography";
 import { StyledAnnouncer } from "./style";
 import { UserContext } from "../../context/userContext";
 import { AnnounceContext } from "../../context/announceContext";
-import { IAdCard } from "../../interfaces/announce";
+import { IAdCard, ICommentResponse } from "../../interfaces/announce";
 
 interface IPropsAnnouncer {
   type?: string;
-  data?: IAdCard;
+  data?: IAdCard | ICommentResponse;
 }
 
 const Announcer = (props: IPropsAnnouncer) => {

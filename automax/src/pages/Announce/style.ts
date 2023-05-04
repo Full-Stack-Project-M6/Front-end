@@ -154,7 +154,7 @@ export const StyleAnnoucePage = styled.div`
 
   .divComments {
     width: 100%;
-    padding: 36px 28px;
+    padding: 0 28px 36px 28px;
     background-color: var(--colors-grey-10);
     border-radius: 4px;
     display: flex;
