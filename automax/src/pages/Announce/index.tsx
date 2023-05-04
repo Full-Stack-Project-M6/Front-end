@@ -2,11 +2,10 @@ import { NavBar } from "../../components/NavBar";
 import { StyleAnnoucePage } from "./style";
 import { Body1, Body2, H5, H6 } from "../../components/Typography";
 import Button from "../../components/Button";
-import Comment from "../../components/Coments/index";
 import Announcer from "../../components/Announcer";
 import { Footer } from "../../components/footer";
 import ModalImageCar from "../../components/Modal/ImageCar";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../../context/modalContext";
 import { AnnounceContext } from "../../context/announceContext";
 import { StyledButton } from "../../components/Button/styles";
@@ -16,12 +15,18 @@ import { IComment } from "../../interfaces/announce";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createCommentSchema } from "../../validations/createCommentSchema";
 import { CommentsContext } from "../../context/commentsContext";
+import { ListComments } from "../../components/ListComments";
 
 export const Announce = () => {
   const { openModal, setOpen, setIndexImg } = useContext(ModalContext);
   const { announce } = useContext(AnnounceContext);
-  const { createComment } = useContext(CommentsContext);
+  const { createComment, listComments } = useContext(CommentsContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(0);
+
+  useEffect(() => {
+    listComments(announce?.id);
+  }, [loading]);
 
   const {
     register,
@@ -34,6 +39,7 @@ export const Announce = () => {
   const submit = async (data: IComment) => {
     try {
       await createComment(announce?.id, data);
+      loading == 0 ? setLoading(1) : setLoading(0);
     } catch (error) {
       console.log(error);
     }
@@ -111,9 +117,7 @@ export const Announce = () => {
             <div>
               <H6>Comentários</H6>
             </div>
-            <Comment />
-            <Comment />
-            <Comment />
+            <ListComments />
           </div>
 
           <div className="divComment">

@@ -38,7 +38,12 @@ export const CommentsProvider = ({ children }: ICommentsProvider) => {
 
   return (
     <CommentsContext.Provider
-      value={{ createComment, commentsList, setCommentsList, listComments }}
+      value={{
+        createComment,
+        commentsList,
+        setCommentsList,
+        listComments,
+      }}
     >
       {children}
     </CommentsContext.Provider>
