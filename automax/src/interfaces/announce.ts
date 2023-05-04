@@ -5,7 +5,7 @@ import { IColorResponce } from "./color";
 import { IYearResponce } from "./year";
 import { IModelResponce } from "./model";
 import { IImagemResponse } from "./image";
-import { IUser } from "./user";
+import { IUser, IUserComment } from "./user";
 
 export interface ICreateAnnounce {
   brand: string;
@@ -142,4 +142,11 @@ export interface IAnnounceCard {
 
 export interface IComment {
   comment: string;
+}
+
+export interface ICommentResponse {
+  id: string;
+  comment: string;
+  createdAt: string;
+  user: IUserComment;
 }

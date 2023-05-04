@@ -52,6 +52,20 @@ export interface IUserLogin {
   password: string;
 }
 
+export interface IUserComment {
+  id: string;
+  name: string;
+  address: {
+    id: string;
+    cep: string;
+    estate: string;
+    city: string;
+    street: string;
+    number: string;
+    complement: string;
+  };
+}
+
 export interface IRecoverUser {
   email: string;
 }
