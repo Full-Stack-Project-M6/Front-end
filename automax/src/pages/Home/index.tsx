@@ -6,20 +6,33 @@ import {
   StyledFiltersAside,
 } from "./style";
 import blacklogo from "../../assets/motorsShop.png";
-import AdCard from "../../components/Cards/AdCard";
 import { Footer } from "../../components/footer";
 import Button from "../../components/Button";
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
+import { useContext, useState } from "react";
 import { ListAllAnnounce } from "../../components/ListAllAnnounce";
 import { AnnounceContext } from "../../context/announceContext";
 import { IAdCard } from "../../interfaces/announce";
 import { removeDuplicateItems } from "../../utils/filter";
+import { StyledInput } from "../../components/Inputs/Input/style";
 
 export const Home = () => {
 
-  const { listAnnounce, fuel , setKeyFilter, setElemToCompare, filteredList} = useContext(AnnounceContext);
+  const {
+    listAnnounce,
+    fuel,
+    setKeyFilter,
+    setElemToCompare,
+    filteredList,
+    setMinPrice,
+    setMinKm,
+    minKm,
+    setRangeKm,
+    minPrice,
+    setRangePrice
+  } = useContext(AnnounceContext);
 
+
+  const token = localStorage.getItem("@MotorsToken")
 
   const listBrand = removeDuplicateItems(filteredList, "brand")
   const listModel = removeDuplicateItems(filteredList, "model")
@@ -119,15 +132,35 @@ export const Home = () => {
           <div className="km">
             <h2>Km</h2>
             <div>
-              <Button className="negativeHover">{"Mínimo"}</Button>
-              <Button className="negativeHover">{"Máximo"}</Button>
+              <StyledInput
+              placeholder="Mínimo"
+              disabled={!token}
+              type="number"
+              onBlur ={(e) => setMinKm(e.target.value)}
+              />
+              <StyledInput
+              placeholder="Máximo"
+              disabled={!token}
+              type="number"
+              onBlur ={(e) => setRangeKm([minKm,e.target.value])}
+              />
             </div>
           </div>
           <div className="km">
             <h2>Preço</h2>
             <div>
-              <Button className="negativeHover">{"Mínimo"}</Button>
-              <Button className="negativeHover">{"Máximo"}</Button>
+              <StyledInput
+              placeholder="Mínimo"
+              disabled={!token}
+              type="number"
+              onBlur ={(e) => setMinPrice(e.target.value)}
+              />
+              <StyledInput
+              placeholder="Máximo"
+              disabled={!token}
+              type="number"
+              onBlur={(e) => setRangePrice([minPrice,e.target.value])}
+              />
             </div>
           </div>
         </StyledFiltersAside>

@@ -15,3 +15,14 @@ export function filterArray(array:object[], keyFilter: string, elemToCompare: st
 
     return filteredList
 }
+
+export function filterArrayByRange(array:object[], keyFilter:string, minAndMaxList: string[]) {
+  const filteredList = array.filter(
+    (elem:any) =>
+    +minAndMaxList[1] == 0 ?
+    true
+    :
+    elem[keyFilter] >= +minAndMaxList[0] && elem[keyFilter] <= +minAndMaxList[1] )
+
+  return filteredList
+}
