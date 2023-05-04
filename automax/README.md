@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+<h1>Projeto Full-Stack e-commerce de carros: AutoMax</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>O Projeto Full-Stack é um e-commerce de carros que tem como objetivo tornar a experiência de compra e venda de carros novos e usados mais fácil e agradável. Como comprador, você pode pesquisar, comparar e comprar carros diretamente na plataforma, enquanto como anunciante, você pode anunciar seus carros para um público amplo e gerenciar seus anúncios com facilidade. Com uma interface amigável e recursos avançados, o projeto oferece uma experiência de usuário otimizada, facilitando a compra e venda de carros para todos. O projeto foi desenvolvido com as tecnologias React, Node.js e Postgres, garantindo alta qualidade e bom desempenho.</p>
 
-## Available Scripts
+<h2>Funcionalidades</h2>
 
-In the project directory, you can run:
+<ul>
+    <li>Autenticação de usuários por meio de tokens, garantindo a segurança das informações pessoais.</li>
+    <li>Cadastro e login de usuários com validação de dados e feedback visual para o usuário.</li>
+    <li>Filtro dinâmico para facilitar a busca de carros pelos usuários.</li>
+    <li>Atualização em tempo real dos dados de um novo anúncio durante o preenchimento do formulário, evitando erros e aumentando a precisão das informações.</li>
+    <li>Sessão de comentários para que os usuários possam interagir entre si e tirar dúvidas.</li>
+    <li>Sessão de recuperação de senha usando o envio de e-mail, permitindo que os usuários redefinam suas senhas facilmente.</li>
+    <li>Dashboard do anunciante, onde ele pode verificar todos os seus anúncios publicados e acompanhar o engajamento de cada um.</li>
+    <li>Sistema de gerenciamento de anúncios com opções de edição e exclusão.</li>
+    <li>Integração com sistema de pagamento para possibilitar a realização de transações seguras e rápidas.</li>
+    <li>Compatibilidade com dispositivos móveis, proporcionando uma experiência de usuário otimizada para todos os usuários.</li>
+</ul>
 
-### `yarn start`
+<h2>Instalação</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<ol>
+    <li>Clone este repositório</li>
+    <li><code>npm install</code></li>
+</ol>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<h2>Como usar</h2>
 
-### `yarn test`
+<ol>
+    <li>Inicie a API local a partir deste repositório: https://github.com/Full-Stack-Project-M6/Back-end</li>
+    <li><code>npm start</code></li>
+    <li>Acesse http://localhost:3000 no navegador</li>
+</ol>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h2>Como contribuir</h2>
 
-### `yarn build`
+<ol>
+    <li>Faça um fork deste repositório</li>
+    <li>Crie uma nova branch <code>git checkout -b minha-nova-feature</code></li>
+    <li>Faça um commit de suas mudanças <code>git commit -am 'Adicionando nova feature'</code></li>
+    <li>Faça um push para a branch <code>git push origin minha-nova-feature</code></li>
+    <li>Abra um Pull Request</li>
+</ol>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>Contatos</h2>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<ul>
+    <li>Email: fernandojunqueira12@gmail.com<br />Github: https://github.com/fernandojunqueira<br />LinkdIn: https://www.linkedin.com/in/fernandojunqueira/</li>
+    <li>Email: <br />Github: <br />LinkdIn: </li>
+    <li>Email: <br />Github: <br />LinkdIn: </li>
+    <li>Email: <br />Github: <br />LinkdIn: </li>
+    <li>Email: <br />Github: <br />LinkdIn: </li>
+</ul>
