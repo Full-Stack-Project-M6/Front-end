@@ -52,11 +52,15 @@ export interface IUserLogin {
   password: string;
 }
 
-export interface IRecoverUser {
+export interface ISendReset {
   email: string;
 }
 
-export interface IRecoverPassword {
+export interface ITokenReset {
+  token: string;
+}
+
+export interface IResetPassword {
   password: string;
   confirmPassword: string;
 }
@@ -73,9 +77,12 @@ export interface IUserContext {
   loading: boolean;
   userLogout: () => void;
   updateUser: (dateForm: IUserUpdate) => void;
-  recoverUser: (data: IRecoverUser) => void;
-  recoverPassword: (data: IRecoverPassword) => void;
+  sendResetToken: (data: ISendReset) => void;
+  resetPassword: (data: IResetPassword) => void;
   successRecover: boolean;
-  userRecovering: IUser | null;
+  userRecoveringToken: string | undefined;
   updateAddress: (dateForm: IAddress) => Promise<void>;
+  setSuccessRecover: React.Dispatch<React.SetStateAction<boolean>>;
+  setUserRecoveringToken: React.Dispatch<React.SetStateAction<string | undefined>>
+  successReset: boolean;
 }

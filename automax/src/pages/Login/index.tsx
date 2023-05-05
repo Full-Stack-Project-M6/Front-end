@@ -37,7 +37,7 @@ export const LoginPage = () => {
                     <label>Senha</label>
                     <Input type="password" register={register} name="password" placeholder="Digitar senha"/>
                     {errors.password && (<p>{errors.password.message}</p>)}
-                    <blockquote>Esqueceu a senha? <a href="/recuperar-senha">clique aqui</a></blockquote>
+                    <blockquote>Esqueceu a senha? <a href="/sendReset"> clique aqui</a></blockquote>
                     <Button type="submit" className="brand1">{"Entrar"}</Button>
                     <p>Ainda não possui conta?</p>
                     <Link to="/register">
