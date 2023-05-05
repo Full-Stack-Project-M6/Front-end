@@ -370,11 +370,7 @@ const FormUpdateAnnounce = () => {
         >
           Excluir anúncio
         </StyledButton>
-        <StyledButton
-          type="submit"
-          className="brand1"
-          onClick={() => closeModal(formUpdateAnnounceSetOpen)}
-        >
+        <StyledButton type="submit" className="brand1">
           Salvar alterações
         </StyledButton>
       </div>
