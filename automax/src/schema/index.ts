@@ -26,11 +26,11 @@ export const registerSchema = yup.object({
   number: yup.string().required('Numero é obrigatório'),
 });
 
-export const recoverUserSchema = yup.object({
+export const sendResetSchema = yup.object({
   email: yup.string().required()
 })
 
-export const recoverPasswordSchema = yup.object({
+export const resetPasswordSchema = yup.object({
   password: yup.string().required(),
   confirmPassword: yup.string().oneOf([yup.ref('password')], 'Senhas não são iguais').required('Confirme a senha')
 })
