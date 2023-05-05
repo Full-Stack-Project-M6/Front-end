@@ -28,6 +28,7 @@ export const StyleModalDeleteAnnounce = styled.div`
 
     button {
       width: max-content;
+      padding: 10px 12px;
     }
   }
 `;
