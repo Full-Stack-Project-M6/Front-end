@@ -1,15 +1,15 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { instance } from "../services/apiKenzie";
 import {
   IUser,
   IUserLogin,
   IUserRequest,
   IUserUpdate,
-  IRecoverUser,
-  IRecoverPassword,
+  ISendReset,
+  IResetPassword,
   IProviderProps,
-  IUserContext,
+  IUserContext
 } from "../interfaces/user";
 import { IAddress } from "../interfaces/address";
 
@@ -18,10 +18,10 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({ children }: IProviderProps) => {
   const [user, setUser] = useState<IUser | undefined>();
   const [loading, setLoading] = useState(true);
-  const [userRecovering, setUserRecovering] = useState<IUser | null>(null);
+  const [userRecoveringToken, setUserRecoveringToken] = useState<string | undefined>(undefined);
   const [successRecover, setSuccessRecover] = useState(false);
+  const [successReset, setSuccessReset] = useState(false);
   const id_user = localStorage.getItem("@User_id");
-  const token = localStorage.getItem("@MotorsToken");
 
   const navigate = useNavigate();
 
@@ -100,27 +100,34 @@ export const UserProvider = ({ children }: IProviderProps) => {
     await instance.patch(`/address/${id_address}`, dateForm);
   };
 
-  const recoverUser = async (email: IRecoverUser) => {
-    setUserRecovering(null);
+  const sendResetToken = async (email: ISendReset) => {
     try {
-      const { data } = await instance.get(`/users/recover_user/${email.email}`);
-      setUserRecovering(data);
+      await instance.post("/users/sendReset", email);
+
+      setSuccessRecover(true);
     } catch (error) {
-      setUserRecovering(null);
       console.log(error);
     }
   };
 
-  const recoverPassword = async (password: IRecoverPassword) => {
+  const resetPassword = async (password: IResetPassword) => {
     try {
       const newPassword = { password: password.password };
+
       await instance.patch(
-        `/users/recover_password/${userRecovering?.id}`,
+        `/users/reset_password/${userRecoveringToken}`,
         newPassword
       );
-      setSuccessRecover(true);
+      console.log("senha alterada com sucesso!");
+      setUserRecoveringToken(undefined);
+      setSuccessReset(true)
     } catch (error) {
       console.log(error);
+    }finally {
+      setTimeout(() => {
+        navigate("/login")
+        setSuccessReset(false)
+      }, 5000)
     }
   };
 
@@ -134,11 +141,14 @@ export const UserProvider = ({ children }: IProviderProps) => {
         loading,
         userLogout,
         updateUser,
-        recoverUser,
-        recoverPassword,
+        sendResetToken,
+        resetPassword,
+        setUserRecoveringToken,
         successRecover,
-        userRecovering,
+        userRecoveringToken,
+        setSuccessRecover,
         updateAddress,
+        successReset
       }}
     >
       {children}

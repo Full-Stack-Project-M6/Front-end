@@ -22,8 +22,8 @@ const ModalImageCar = () => {
       isOpen={modalIsOpen}
       onRequestClose={() => closeModal(setOpen)}
       contentLabel="Example Modal"
-      className="modalContent"
-      overlayClassName="modalOverlay"
+      className="contentImgCar"
+      overlayClassName="overlayImgCar"
     >
       <ModalContentImageCar>
         <ModalHeader>

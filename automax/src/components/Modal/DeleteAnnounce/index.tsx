@@ -3,7 +3,6 @@ import { useContext } from "react";
 import "../style.css";
 import { ModalContext } from "../../../context/modalContext";
 import { Body1 } from "../../Typography";
-import Button from "../../Button";
 import { CloseIcon, StyleModalDeleteAnnounce } from "./style";
 import { StyledButton } from "../../Button/styles";
 import { AnnounceContext } from "../../../context/announceContext";
@@ -19,7 +18,7 @@ const ModalDeleteAnnounce = () => {
       onRequestClose={() => closeModal(deleteAnnounceSetOpen)}
       contentLabel="Example Modal"
       className="modalContent"
-      overlayClassName="modalOverlay"
+      overlayClassName="overlayDelete"
     >
       <StyleModalDeleteAnnounce>
         <div className="divHeader">
