@@ -36,9 +36,9 @@ export const ListComments = () => {
 
   return (
     <ul>
-      <li>
-        {commentsList.map((elm) => {
-          return (
+      {commentsList.map((elm, index) => {
+        return (
+          <li key={index}>
             <StyleComments>
               <div className="divUser">
                 <Announcer data={elm} />
@@ -48,9 +48,9 @@ export const ListComments = () => {
                 <Body2>{elm.comment}</Body2>
               </div>
             </StyleComments>
-          );
-        })}
-      </li>
+          </li>
+        );
+      })}
     </ul>
   );
 };
