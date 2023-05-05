@@ -56,6 +56,20 @@ export interface ISendReset {
   email: string;
 }
 
+export interface IUserComment {
+  id: string;
+  name: string;
+  address: {
+    id: string;
+    cep: string;
+    estate: string;
+    city: string;
+    street: string;
+    number: string;
+    complement: string;
+  };
+}
+
 export interface ITokenReset {
   token: string;
 }
