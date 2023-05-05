@@ -24,3 +24,16 @@
   background-color: var(--colors-grey-opacity);
   z-index: 6;
 }
+
+.overlayDelete {
+  width: 100vw;
+  min-height: 100%;
+  padding: 0px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  background-color: var(--colors-grey-opacity);
+  z-index: 6;
+}
