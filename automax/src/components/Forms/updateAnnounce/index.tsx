@@ -14,12 +14,16 @@ import { IBrand } from "../../../interfaces/apiCars";
 import { getBrands } from "../../../services/getBrand";
 import { getKars } from "../../../services/getCars";
 import { StyledSelect } from "../../Inputs/InputSelect/style";
-import Button from "../../Button";
 
 const FormUpdateAnnounce = () => {
   const fuel = ["", "Flex", "Híbrido", "Életrico"];
 
-  const { closeModal, formUpdateAnnounceSetOpen } = useContext(ModalContext);
+  const {
+    openModal,
+    closeModal,
+    formUpdateAnnounceSetOpen,
+    deleteAnnounceSetOpen,
+  } = useContext(ModalContext);
 
   const [listCars, setListCars] = useState<any[]>([]);
   const [allCarsOfThisModel, setAllCarsOfThisModel] = useState<IBrand[]>([]);
@@ -356,10 +360,23 @@ const FormUpdateAnnounce = () => {
       </div>
 
       <div className="divButton">
-        <Button className="light">Excluir anúncio</Button>
-        <Button type="submit" className="brand1">
+        <StyledButton
+          type="button"
+          className="light"
+          onClick={() => {
+            openModal(deleteAnnounceSetOpen);
+            closeModal(formUpdateAnnounceSetOpen);
+          }}
+        >
+          Excluir anúncio
+        </StyledButton>
+        <StyledButton
+          type="submit"
+          className="brand1"
+          onClick={() => closeModal(formUpdateAnnounceSetOpen)}
+        >
           Salvar alterações
-        </Button>
+        </StyledButton>
       </div>
     </StyledFormUpdateAnnounce>
   );
