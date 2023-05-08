@@ -1,5 +1,5 @@
 import { NavBar } from "../../components/NavBar";
-import { StyleAnnoucePage } from "./style";
+import { StyleAnnoucePage, StyledLink } from "./style";
 import { Body1, Body2, H5, H6 } from "../../components/Typography";
 import Button from "../../components/Button";
 import Announcer from "../../components/Announcer";
@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../../context/modalContext";
 import { AnnounceContext } from "../../context/announceContext";
 import { StyledButton } from "../../components/Button/styles";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { IComment } from "../../interfaces/announce";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -66,7 +66,10 @@ export const Announce = () => {
               </div>
             </div>
             <div>
-              <Button className="brand1">Comprar</Button>
+              <StyledLink
+              target="_blank"
+              to={`https://api.whatsapp.com/send?phone=5548999999999&text=Ol%C3%A1!%20Vim%20por%20meio%20do%20site%20da%20Automax.%20Tenho%20interesse%20no%20${announce?.model.model}%20${announce?.year.year}.%20Ele%20ainda%20est%C3%A1%20dispon%C3%ADvel?`}
+              >Comprar</StyledLink>
             </div>
           </div>
           <div className="divDescription">
