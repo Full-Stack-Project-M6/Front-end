@@ -14,6 +14,7 @@ import { AnnounceContext } from "../../context/announceContext";
 import { IAdCard } from "../../interfaces/announce";
 import { removeDuplicateItems } from "../../utils/filter";
 import { StyledInput } from "../../components/Inputs/Input/style";
+import { StyledButton } from "../../components/Button/styles";
 
 export const Home = () => {
 
@@ -50,6 +51,15 @@ export const Home = () => {
       <StyledAnnounceList>
         <StyledFiltersAside>
           <div>
+            <StyledButton
+            className="outline"
+            onClick={() => {
+              setKeyFilter("")
+              setElemToCompare("")
+            }}
+            >
+            Limpar Filtros
+            </StyledButton>
             <h2>Marca</h2>
             {listBrand && listBrand.map((elem:IAdCard, index: number) => {
               return (
