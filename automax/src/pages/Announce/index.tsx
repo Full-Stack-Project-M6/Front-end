@@ -20,9 +20,9 @@ import { ListComments } from "../../components/ListComments";
 export const Announce = () => {
   const { openModal, setOpen, setIndexImg } = useContext(ModalContext);
   const { announce } = useContext(AnnounceContext);
-  const { createComment, listComments } = useContext(CommentsContext);
+  const { createComment, listComments, loading, setLoading } =
+    useContext(CommentsContext);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(0);
 
   useEffect(() => {
     listComments(announce?.id);
