@@ -9,7 +9,7 @@ import {
   ISendReset,
   IResetPassword,
   IProviderProps,
-  IUserContext
+  IUserContext,
 } from "../interfaces/user";
 import { IAddress } from "../interfaces/address";
 
@@ -18,7 +18,9 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({ children }: IProviderProps) => {
   const [user, setUser] = useState<IUser | undefined>();
   const [loading, setLoading] = useState(true);
-  const [userRecoveringToken, setUserRecoveringToken] = useState<string | undefined>(undefined);
+  const [userRecoveringToken, setUserRecoveringToken] = useState<
+    string | undefined
+  >(undefined);
   const [successRecover, setSuccessRecover] = useState(false);
   const [successReset, setSuccessReset] = useState(false);
   const id_user = localStorage.getItem("@User_id");
@@ -120,15 +122,23 @@ export const UserProvider = ({ children }: IProviderProps) => {
       );
       console.log("senha alterada com sucesso!");
       setUserRecoveringToken(undefined);
-      setSuccessReset(true)
+      setSuccessReset(true);
     } catch (error) {
       console.log(error);
-    }finally {
+    } finally {
       setTimeout(() => {
-        navigate("/login")
-        setSuccessReset(false)
-      }, 5000)
+        navigate("/login");
+        setSuccessReset(false);
+      }, 5000);
     }
+  };
+
+  const deleteUser = async (idUser: string | undefined) => {
+    await instance.delete(`/users/${idUser}`);
+    localStorage.removeItem("@User_id");
+    localStorage.removeItem("@MotorsToken");
+    setUser(undefined);
+    navigate("/");
   };
 
   return (
@@ -148,7 +158,8 @@ export const UserProvider = ({ children }: IProviderProps) => {
         userRecoveringToken,
         setSuccessRecover,
         updateAddress,
-        successReset
+        successReset,
+        deleteUser,
       }}
     >
       {children}

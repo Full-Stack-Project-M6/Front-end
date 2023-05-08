@@ -97,6 +97,9 @@ export interface IUserContext {
   userRecoveringToken: string | undefined;
   updateAddress: (dateForm: IAddress) => Promise<void>;
   setSuccessRecover: React.Dispatch<React.SetStateAction<boolean>>;
-  setUserRecoveringToken: React.Dispatch<React.SetStateAction<string | undefined>>
+  setUserRecoveringToken: React.Dispatch<
+    React.SetStateAction<string | undefined>
+  >;
   successReset: boolean;
+  deleteUser: (idUser: string | undefined) => Promise<void>;
 }
