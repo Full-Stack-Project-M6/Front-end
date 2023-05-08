@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyleAnnoucePage = styled.div`
@@ -336,3 +337,33 @@ export const StyleAnnoucePage = styled.div`
     }
   }
 `;
+
+export const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 146px;
+  height: 48px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: var(--colors-brand-1);
+  color: var(--colors-whiteFixed);
+
+  font-weight: 600;
+  font-size: 16px;
+
+  @media (max-width: 768px){
+  width: 119px;
+  height: 38px;
+
+  font-size: 14 px;
+}
+
+  :hover{
+    background-color: var(--colors-brand-2);
+    color: var(--colors-whiteFixed);
+  }
+`
