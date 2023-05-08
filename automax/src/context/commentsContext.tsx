@@ -1,6 +1,10 @@
 import { ReactNode, createContext, useState } from "react";
 import { instance } from "../services/apiKenzie";
-import { IComment, ICommentResponse } from "../interfaces/announce";
+import {
+  IComment,
+  ICommentResponse,
+  IUpdateComment,
+} from "../interfaces/announce";
 
 interface ICommentsProviderData {
   loading: number;
@@ -14,9 +18,11 @@ interface ICommentsProviderData {
   listComments: (id_announce: string | undefined) => Promise<void>;
   editComment: (
     id_comment: string | undefined,
-    comment: IComment
+    comment: IUpdateComment
   ) => Promise<void>;
   deleteComment: (id_comment: string | undefined) => Promise<void>;
+  idUpdate: string;
+  setIdUpdate: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface ICommentsProvider {
@@ -30,6 +36,7 @@ export const CommentsContext = createContext<ICommentsProviderData>(
 export const CommentsProvider = ({ children }: ICommentsProvider) => {
   const [commentsList, setCommentsList] = useState<ICommentResponse[]>([]);
   const [loading, setLoading] = useState(0);
+  const [idUpdate, setIdUpdate] = useState("");
 
   const createComment = async (
     id_announce: string | undefined,
@@ -46,12 +53,12 @@ export const CommentsProvider = ({ children }: ICommentsProvider) => {
 
   const editComment = async (
     id_comment: string | undefined,
-    comment: IComment
+    comment: IUpdateComment
   ) => {
     const { data } = await instance.patch(
-      `/announce/comment/${id_comment}, comment`
+      `/announce/comment/${id_comment}`,
+      comment
     );
-    setCommentsList(data.comments);
   };
 
   const deleteComment = async (id_comment: string | undefined) => {
@@ -69,6 +76,8 @@ export const CommentsProvider = ({ children }: ICommentsProvider) => {
         listComments,
         editComment,
         deleteComment,
+        idUpdate,
+        setIdUpdate,
       }}
     >
       {children}

@@ -6,11 +6,19 @@ import { CommentsContext } from "../../context/commentsContext";
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 import { UserContext } from "../../context/userContext";
 import { AnnounceContext } from "../../context/announceContext";
+import { ModalContext } from "../../context/modalContext";
 
 export const ListComments = () => {
-  const { commentsList, listComments, deleteComment, loading, setLoading } =
-    useContext(CommentsContext);
+  const {
+    commentsList,
+    listComments,
+    deleteComment,
+    loading,
+    setLoading,
+    setIdUpdate,
+  } = useContext(CommentsContext);
   const { user } = useContext(UserContext);
+  const { setUpdateComment, openModal } = useContext(ModalContext);
   const { announce } = useContext(AnnounceContext);
 
   useEffect(() => {
@@ -57,7 +65,8 @@ export const ListComments = () => {
                   <div className="divEdit">
                     <button
                       onClick={() => {
-                        console.log("e");
+                        openModal(setUpdateComment);
+                        setIdUpdate(elm.id);
                       }}
                     >
                       <BsFillPencilFill />

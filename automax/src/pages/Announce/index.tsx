@@ -16,6 +16,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { createCommentSchema } from "../../validations/createCommentSchema";
 import { CommentsContext } from "../../context/commentsContext";
 import { ListComments } from "../../components/ListComments";
+import ModalUpdateComment from "../../components/Modal/UpdateCommnets";
 
 export const Announce = () => {
   const { openModal, setOpen, setIndexImg } = useContext(ModalContext);
@@ -185,6 +186,7 @@ export const Announce = () => {
         </aside>
       </StyleAnnoucePage>
       <ModalImageCar />
+      <ModalUpdateComment />
       <Footer />
     </>
   );

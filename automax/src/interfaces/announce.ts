@@ -150,3 +150,7 @@ export interface ICommentResponse {
   createdAt: string;
   user: IUserComment;
 }
+
+export interface IUpdateComment {
+  comment: string;
+}
