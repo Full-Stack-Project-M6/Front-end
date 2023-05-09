@@ -15,6 +15,7 @@ const ModalFormCreateAnnounce = () => {
       contentLabel="Example Modal"
       className="modalContent"
       overlayClassName="modalOverlay"
+      ariaHideApp={false}
     >
       <FormCreateAnnounce />
     </Modal>

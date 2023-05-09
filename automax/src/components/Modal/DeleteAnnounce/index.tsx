@@ -19,6 +19,7 @@ const ModalDeleteAnnounce = () => {
       contentLabel="Example Modal"
       className="modalContent"
       overlayClassName="overlayDelete"
+      ariaHideApp={false}
     >
       <StyleModalDeleteAnnounce>
         <div className="divHeader">

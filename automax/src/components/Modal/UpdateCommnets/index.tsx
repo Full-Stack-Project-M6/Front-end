@@ -49,6 +49,7 @@ const ModalUpdateComment = () => {
       contentLabel="Example Modal"
       className="modalContent"
       overlayClassName="overlayDelete"
+      ariaHideApp={false}
     >
       <StyleModalUpdateComment>
         <div className="divHeader">

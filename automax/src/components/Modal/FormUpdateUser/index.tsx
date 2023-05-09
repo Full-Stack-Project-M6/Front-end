@@ -15,6 +15,7 @@ const ModalFormUpdateUser = () => {
       contentLabel="Example Modal"
       className="modalContent"
       overlayClassName="modalOverlay"
+      ariaHideApp={false}
     >
       <FormUpdateUser />
     </Modal>
