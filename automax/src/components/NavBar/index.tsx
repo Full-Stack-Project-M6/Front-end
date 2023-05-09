@@ -45,7 +45,7 @@ export const NavBar = () => {
         )}
         <div>
           {user ? (
-            <button
+            <div
               className="menu"
               onClick={() => setMenuIsOpen((prev) => !prev)}
             >
@@ -78,7 +78,7 @@ export const NavBar = () => {
                   </button>
                 </div>
               )}
-            </button>
+            </div>
           ) : (
             <>
               <Link to="/login">
