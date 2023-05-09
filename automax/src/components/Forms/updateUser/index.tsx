@@ -14,7 +14,7 @@ import { StyledButton } from "../../Button/styles";
 
 const FormUpdateUser = () => {
   const { closeModal, formupdateUserSetOpen } = useContext(ModalContext);
-  const { updateUser, user } = useContext(UserContext);
+  const { updateUser, user, deleteUser } = useContext(UserContext);
 
   const {
     register,
@@ -114,6 +114,14 @@ const FormUpdateUser = () => {
           }}
         >
           Cancelar
+        </StyledButton>
+        <StyledButton
+          className="alert"
+          onClick={() => {
+            deleteUser(user?.id);
+          }}
+        >
+          Excluir Perfil
         </StyledButton>
         <Button type="submit" className="brand1">
           Salvar alterações

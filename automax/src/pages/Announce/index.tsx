@@ -16,13 +16,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { createCommentSchema } from "../../validations/createCommentSchema";
 import { CommentsContext } from "../../context/commentsContext";
 import { ListComments } from "../../components/ListComments";
+import ModalUpdateComment from "../../components/Modal/UpdateCommnets";
 
 export const Announce = () => {
   const { openModal, setOpen, setIndexImg } = useContext(ModalContext);
   const { announce } = useContext(AnnounceContext);
-  const { createComment, listComments } = useContext(CommentsContext);
+  const { createComment, listComments, loading, setLoading } =
+    useContext(CommentsContext);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(0);
 
   useEffect(() => {
     listComments(announce?.id);
@@ -188,6 +189,7 @@ export const Announce = () => {
         </aside>
       </StyleAnnoucePage>
       <ModalImageCar />
+      <ModalUpdateComment />
       <Footer />
     </>
   );

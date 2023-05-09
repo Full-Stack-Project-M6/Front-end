@@ -1,11 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Announcer from "../Announcer";
 import { Body2 } from "../Typography";
 import { StyleComments } from "./style";
 import { CommentsContext } from "../../context/commentsContext";
+import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
+import { UserContext } from "../../context/userContext";
+import { AnnounceContext } from "../../context/announceContext";
+import { ModalContext } from "../../context/modalContext";
 
 export const ListComments = () => {
-  const { commentsList } = useContext(CommentsContext);
+  const {
+    commentsList,
+    listComments,
+    deleteComment,
+    loading,
+    setLoading,
+    setIdUpdate,
+  } = useContext(CommentsContext);
+  const { user } = useContext(UserContext);
+  const { setUpdateComment, openModal } = useContext(ModalContext);
+  const { announce } = useContext(AnnounceContext);
+
+  useEffect(() => {
+    listComments(announce?.id);
+  }, [loading]);
 
   const dateComment = (date_comment: string) => {
     const dateNow = new Date();
@@ -43,6 +61,28 @@ export const ListComments = () => {
               <div className="divUser">
                 <Announcer data={elm} />
                 <p className="date">{dateComment(elm.createdAt)}</p>
+                {elm.user.id == user?.id ? (
+                  <div className="divEdit">
+                    <button
+                      onClick={() => {
+                        openModal(setUpdateComment);
+                        setIdUpdate(elm.id);
+                      }}
+                    >
+                      <BsFillPencilFill />
+                    </button>
+                    <button
+                      onClick={() => {
+                        deleteComment(elm.id);
+                        loading == 0 ? setLoading(1) : setLoading(0);
+                      }}
+                    >
+                      <BsFillTrashFill />
+                    </button>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
               <div className="comment">
                 <Body2>{elm.comment}</Body2>

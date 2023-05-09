@@ -15,6 +15,15 @@ export const StyleComments = styled.div`
       font-size: 0.75rem;
       color: var(--color-grey-3);
     }
+
+    .divEdit {
+      display: flex;
+      gap: 15px;
+
+      button {
+        cursor: pointer;
+      }
+    }
   }
 
   .comment {
