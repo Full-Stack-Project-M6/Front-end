@@ -68,9 +68,11 @@ export const Announce = () => {
             </div>
             <div>
               <StyledLink
-              target="_blank"
-              to={`https://api.whatsapp.com/send?phone=5548999999999&text=Ol%C3%A1!%20Vim%20por%20meio%20do%20site%20da%20Automax.%20Tenho%20interesse%20no%20${announce?.model.model}%20${announce?.year.year}.%20Ele%20ainda%20est%C3%A1%20dispon%C3%ADvel?`}
-              >Comprar</StyledLink>
+                target="_blank"
+                to={`https://api.whatsapp.com/send?phone=5548999999999&text=Ol%C3%A1!%20Vim%20por%20meio%20do%20site%20da%20Automax.%20Tenho%20interesse%20no%20${announce?.model.model}%20${announce?.year.year}.%20Ele%20ainda%20est%C3%A1%20dispon%C3%ADvel?`}
+              >
+                Comprar
+              </StyledLink>
             </div>
           </div>
           <div className="divDescription">
@@ -87,6 +89,7 @@ export const Announce = () => {
                   {announce?.images.map((elm, index) => {
                     return (
                       <div
+                        key={index}
                         onClick={() => {
                           openModal(setOpen);
                           setIndexImg(index);
@@ -157,6 +160,7 @@ export const Announce = () => {
                 {announce?.images.map((elm, index) => {
                   return (
                     <div
+                      key={index}
                       onClick={() => {
                         openModal(setOpen);
                         setIndexImg(index);
