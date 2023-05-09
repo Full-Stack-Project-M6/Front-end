@@ -15,6 +15,7 @@ const ModalFormUpdateAdrress = () => {
       contentLabel="Example Modal"
       className="modalContent"
       overlayClassName="modalOverlay"
+      ariaHideApp={false}
     >
       <FormUpdateAddress />
     </Modal>

@@ -19,7 +19,6 @@ export const StyledNav = styled.nav<INavBar>`
     props.responsive
       ? "2px solid transparent"
       : "2px solid var(--colors-grey-6)"};
-  /* border-bottom: 2px solid var(--colors-grey-6); */
 
   img {
     width: 125px;
@@ -37,6 +36,7 @@ export const StyledNav = styled.nav<INavBar>`
     flex-direction: column;
     position: relative;
     padding-left: 44px;
+    cursor: pointer;
   }
 
   .menu .menu__options {
@@ -46,7 +46,7 @@ export const StyledNav = styled.nav<INavBar>`
 
     position: absolute;
     top: 40px;
-    left: 28px;
+    right: 0px;
     z-index: 1;
 
     background-color: var(--colors-grey-9);

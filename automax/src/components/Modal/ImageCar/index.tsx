@@ -24,6 +24,7 @@ const ModalImageCar = () => {
       contentLabel="Example Modal"
       className="contentImgCar"
       overlayClassName="overlayImgCar"
+      ariaHideApp={false}
     >
       <ModalContentImageCar>
         <ModalHeader>
