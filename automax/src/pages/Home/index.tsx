@@ -29,7 +29,10 @@ export const Home = () => {
     minKm,
     setRangeKm,
     minPrice,
-    setRangePrice
+    setRangePrice,
+    setPage,
+    page,
+    numberOfItems
   } = useContext(AnnounceContext);
 
 
@@ -178,9 +181,29 @@ export const Home = () => {
       </StyledAnnounceList>
       <StyledFilterDiv>
         <Button className="brand1">{"Filtros"}</Button>
-        <div>
-          <span>1 de 45</span>
-          <Button className="brandOpacity">{"Seguinte >"}</Button>
+        <div className="pagination">
+        {page + 1 > 1 ?
+            <button
+            onClick={() => setPage((oldPage) => oldPage - 1)}
+            >
+            &lt; Anterior
+            </button>
+            :
+            <></>
+          }
+          <p>
+            <strong>{page + 1}</strong>de {Math.ceil(numberOfItems/12)}
+          </p>
+          {page + 1 != Math.ceil(numberOfItems/12) ?
+            <button
+            onClick={() => setPage((oldPage) => oldPage + 1)}
+            >
+            Seguinte &gt;
+            </button>
+            :
+            <></>
+          }
+
         </div>
       </StyledFilterDiv>
       <Footer />
