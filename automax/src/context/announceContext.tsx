@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import {
   IAdCard,
   IAnnounceProvider,
+  IAnnounceResponceAll,
   ICreateAnnounce,
   ICreateResponse,
   IUpdateAnnounceResponse,
@@ -85,10 +86,10 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const id_user = localStorage.getItem("@User_id");
 
   const listAllAnnounce = async () => {
-    const { data } = await instance.get("/announce");
+    const { data } = await instance.get<IAnnounceResponceAll>("/announce");
 
-    setListAnnounce(data);
-    setFilteredList(data);
+    setListAnnounce(data.AnnounceRepository);
+    setFilteredList(data.AnnounceRepository);
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
