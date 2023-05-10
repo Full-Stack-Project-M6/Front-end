@@ -154,3 +154,12 @@ export interface ICommentResponse {
 export interface IUpdateComment {
   comment: string;
 }
+
+export interface IAnnounceResponceAll {
+  nextUrl: string | null;
+  previousUrl: string | null;
+  limit: number;
+  offset: number;
+  total: number,
+  AnnounceRepository: IAnnounce[]
+}
