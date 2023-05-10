@@ -46,5 +46,9 @@
 <h2>Contatos</h2>
 
 <ul>
-    <li>Email: fernandojunqueira12@gmail.com<br />Github: https://github.com/fernandojunqueira<br />LinkdIn: https://www.linkedin.com/in/fernandojunqueira/</li>
+    <li>Nome: Fernando Junqueira<br/> Email: fernandojunqueira12@gmail.com<br />Github: https://github.com/fernandojunqueira<br />LinkdIn: https://www.linkedin.com/in/fernandojunqueira/</li>
+      <li>Nome: Mauricio de Sousa<br/> Email: m7uricio.dev@gmail.com<br />Github: https://github.com/M7uricio<br />LinkdIn: https://www.linkedin.com/in/m7uriciodesousa/</li>
+      <li>Nome: Juliana Tissiani Diorio<br/> Email: julianatdiorio@gmail.com<br />Github: https://github.com/JulianaDiorio<br />LinkdIn: https://www.linkedin.com/in/juliana-tissiani-diorio-4b1553165/</li>
+    <li>Nome: Bruno Campos Emygdio De Castro<br/> Email: bruno3p33@gmail.com<br />Github: https://github.com/bruno3p<br />LinkdIn: https://www.linkedin.com/in/bruno-campos-04ab65194/</li>
+    <li>Nome: Lucas Bueno<br/> Email: gelanlucas@gmail.com<br />Github: htttps://github.com/chantilieszs<br />LinkdIn: https://www.linkedin.com/in/lugabusi</li>
 </ul>
