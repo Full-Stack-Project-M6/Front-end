@@ -12,7 +12,7 @@ import { IAnnounceCard } from "../interfaces/announce";
 import { filterArray, filterArrayByRange } from "../utils/filter";
 
 interface IAnnounceProviderData {
-  listAllAnnounce: () => void;
+  listAllAnnounce: (page: number, limit?: number) => Promise<void>;
   listAnnounce: [];
   setListAnnounce: React.Dispatch<any>;
   renderListAnnounceUser: () => void;
@@ -44,6 +44,10 @@ interface IAnnounceProviderData {
   minKm: string;
   setRangePrice: React.Dispatch<React.SetStateAction<string[]>>;
   rangePrice: string[];
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  numberOfItems: number;
+  setNumberOfItems: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -63,6 +67,8 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [minPrice, setMinPrice] = useState("0")
   const [rangeKm, setRangeKm] = useState<string[]>(["0", "0"])
   const [rangePrice, setRangePrice] = useState<string[]>(["0", "0"])
+  const [page, setPage] = useState(0)
+  const [numberOfItems, setNumberOfItems] = useState(0)
   const fuel = ["", "Flex", "Híbrido", "Életrico"]
 
   useEffect(() => {
@@ -85,11 +91,18 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
 
   const id_user = localStorage.getItem("@User_id");
 
-  const listAllAnnounce = async () => {
-    const { data } = await instance.get<IAnnounceResponceAll>("/announce");
+  const listAllAnnounce = async (page: number, limit = 12) => {
+    const { data } = await instance.get<IAnnounceResponceAll>
+    ("/announce", {
+      params: {
+        limit,
+        offset: page * 12
+      }
+    });
 
     setListAnnounce(data.AnnounceRepository);
     setFilteredList(data.AnnounceRepository);
+    setNumberOfItems(data.total)
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
@@ -158,7 +171,11 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         minPrice,
         minKm,
         setRangePrice,
-        rangePrice
+        rangePrice,
+        setPage,
+        page,
+        setNumberOfItems,
+        numberOfItems
       }}
     >
       {children}
