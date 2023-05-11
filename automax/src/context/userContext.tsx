@@ -53,8 +53,9 @@ export const UserProvider = ({ children }: IProviderProps) => {
       await instance.post("/users", userDataRegister);
       toast.success("Conta criada com sucesso!")
       setLoading(true);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message)
     } finally {
       setLoading(false);
       userLogin(data);
@@ -89,15 +90,26 @@ export const UserProvider = ({ children }: IProviderProps) => {
   };
 
   const updateUser = async (dateForm: IUserUpdate) => {
-    const { data } = await instance.patch(`/users/${id_user}`, dateForm);
-    toast.success("Atualização feita com sucesso!")
-    setUser(data);
+    try {
+      const { data } = await instance.patch(`/users/${id_user}`, dateForm);
+      toast.success("Atualização feita com sucesso!")
+      setUser(data);
+    } catch (error: any) {
+      toast.error(error.response.data.message)
+      console.log(error);
+    }
   };
 
   const updateAddress = async (dateForm: IAddress) => {
     const id_address = user?.address.id;
-    toast.success("Atualização feita com sucesso!")
-    await instance.patch(`/address/${id_address}`, dateForm);
+    try {
+      await instance.patch(`/address/${id_address}`, dateForm);
+      toast.success("Atualização feita com sucesso!")
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message)
+    }
+    
   };
 
   const sendResetToken = async (email: ISendReset) => {
@@ -119,11 +131,12 @@ export const UserProvider = ({ children }: IProviderProps) => {
         `/users/reset_password/${userRecoveringToken}`,
         newPassword
       );
-      console.log("senha alterada com sucesso!");
+      toast.success("senha alterada com sucesso!");
       setUserRecoveringToken(undefined);
       setSuccessReset(true);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message)
     } finally {
       setTimeout(() => {
         navigate("/login");
@@ -133,7 +146,12 @@ export const UserProvider = ({ children }: IProviderProps) => {
   };
 
   const deleteUser = async (idUser: string | undefined) => {
-    await instance.delete(`/users/${idUser}`);
+    try {
+      await instance.delete(`/users/${idUser}`);
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message)
+    }
     localStorage.removeItem("@User_id");
     localStorage.removeItem("@MotorsToken");
     setUser(undefined);
