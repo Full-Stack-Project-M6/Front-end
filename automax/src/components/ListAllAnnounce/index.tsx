@@ -1,13 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import AdCard from "../Cards/AdCard";
 import { AnnounceContext } from "../../context/announceContext";
 import { IAdCard } from "../../interfaces/announce";
 
 export const ListAllAnnounce = () => {
-  const { listAllAnnounce, listAnnounce, filteredList } = useContext(AnnounceContext);
+  const { listAllAnnounce, listAnnounce, filteredList, page } = useContext(AnnounceContext);
   useEffect(() => {
-    listAllAnnounce();
-  }, []);
+    listAllAnnounce(page);
+  }, [page]);
 
   return (
     <>
