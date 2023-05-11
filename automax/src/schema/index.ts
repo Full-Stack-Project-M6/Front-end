@@ -11,7 +11,10 @@ export const registerSchema = yup.object({
   cpf: yup.string().required("CPF é obrigatório"),
   cellphone: yup.string().required("Celular é obrigatório"),
   date_birth: yup.string().required("Data de nascimento é obrigatório"),
-  description: yup.string().max(200).required("Descrição é obrigatório"),
+  description: yup
+    .string()
+    .max(200, "Limite máximo de 200 caracteres")
+    .required("Descrição é obrigatório"),
   account_type: yup.boolean().required("Tipo da conta é obrigatório"),
   password: yup.string().required("A senha é obrigatória"),
   confirmPassword: yup

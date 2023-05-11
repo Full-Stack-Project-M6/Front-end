@@ -6,5 +6,8 @@ export const updateUserSchema = yup.object().shape({
   cpf: yup.string().notRequired(),
   cellphone: yup.string().notRequired(),
   date_birth: yup.string().notRequired(),
-  description: yup.string().max(300).notRequired(),
+  description: yup
+    .string()
+    .max(300, "Limite máximo de 300 caracteres")
+    .notRequired(),
 });
