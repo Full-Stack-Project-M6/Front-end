@@ -15,7 +15,7 @@ interface IAnnounceProviderData {
   listAllAnnounce: (page: number, limit?: number) => Promise<void>;
   listAnnounce: [];
   setListAnnounce: React.Dispatch<any>;
-  renderListAnnounceUser: () => void;
+  renderListAnnounceUser: (pageAnnounce: number, limit?: number) => Promise<void>
   listAnnounceUser: [];
   deleteAnnounce: (idAnnounce: string | undefined) => Promise<void>;
   announce: IAnnounceCard | undefined;
@@ -48,6 +48,11 @@ interface IAnnounceProviderData {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   numberOfItems: number;
   setNumberOfItems: React.Dispatch<React.SetStateAction<number>>;
+  numberOfAnnounces: number;
+  setNumberOfAnnounces: React.Dispatch<React.SetStateAction<number>>;
+  pageAnnounce: number;
+  setPageAnnounce: React.Dispatch<React.SetStateAction<number>>;
+  setListAnnounceUser: React.Dispatch<any>;
 }
 
 export const AnnounceContext = createContext<IAnnounceProviderData>(
@@ -68,7 +73,9 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [rangeKm, setRangeKm] = useState<string[]>(["0", "0"])
   const [rangePrice, setRangePrice] = useState<string[]>(["0", "0"])
   const [page, setPage] = useState(0)
+  const [pageAnnounce, setPageAnnounce] = useState(0)
   const [numberOfItems, setNumberOfItems] = useState(0)
+  const [numberOfAnnounces, setNumberOfAnnounces] = useState(0)
   const fuel = ["", "Flex", "Híbrido", "Életrico"]
 
   useEffect(() => {
@@ -107,14 +114,23 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
 
   const renderListAnnouncer = async (id: string | undefined) => {
     const { data } = await instance.get(`/announce/all/${id}`);
-
+    console.log(data)
     setListAnnouncer(data.announce);
+    setNumberOfAnnounces(data.total)
   };
 
-  const renderListAnnounceUser = async () => {
-    const { data } = await instance.get(`/announce/all/${id_user}`);
+  const renderListAnnounceUser = async (pageAnnounce: number, limit:number = 8) => {
+    console.log()
+    const { data } = await instance.get(
+      `/announce/all/${id_user}`,{
+        params: {
+          limit,
+          offset: pageAnnounce * 8
+        }
+      });
 
     setListAnnounceUser(data.announce);
+    setNumberOfAnnounces(data.total)
   };
 
   const createAnnounce = async (announceData: ICreateAnnounce) => {
@@ -123,13 +139,13 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
       announceData
     );
 
-    renderListAnnounceUser();
+    renderListAnnounceUser(pageAnnounce);
     return data;
   };
 
   const deleteAnnounce = async (idAnnounce: string | undefined) => {
     await instance.delete(`/announce/${idAnnounce}`);
-    renderListAnnounceUser();
+    renderListAnnounceUser(pageAnnounce);
   };
 
   const updateAnnounce = async (
@@ -137,7 +153,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
     dataForm: IUpdateAnnounceResponse
   ) => {
     await instance.patch(`/announce/${idAnnounce}`, dataForm);
-    renderListAnnounceUser();
+    renderListAnnounceUser(pageAnnounce);
   };
 
   return (
@@ -175,7 +191,12 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         setPage,
         page,
         setNumberOfItems,
-        numberOfItems
+        numberOfItems,
+        numberOfAnnounces,
+        setNumberOfAnnounces,
+        setPageAnnounce,
+        pageAnnounce,
+        setListAnnounceUser
       }}
     >
       {children}

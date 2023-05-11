@@ -89,6 +89,7 @@ export const StyledShopWindow = styled.section`
       font-size: 18px;
       font-weight: 600;
       margin-left: 12px;
+      margin-right: 12px;
     }
 
     strong {

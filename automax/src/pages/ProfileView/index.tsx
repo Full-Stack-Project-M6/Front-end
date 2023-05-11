@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Button from "../../components/Button";
 import { ListMyAnnounceUser } from "../../components/ListMyAnnounceUser";
 import { NavBar } from "../../components/NavBar";
@@ -14,10 +14,16 @@ import { UserContext } from "../../context/userContext";
 import { ModalContext } from "../../context/modalContext";
 import { StyledButton } from "../../components/Button/styles";
 import ModalFormCreateAnnounce from "../../components/Modal/FormCreateAnnounce";
+import { AnnounceContext } from "../../context/announceContext";
 
 export const ProfileView = () => {
   const { user } = useContext(UserContext);
   const { formAnnounceSetOpen } = useContext(ModalContext);
+  const { pageAnnounce, numberOfAnnounces, setPageAnnounce, renderListAnnounceUser } = useContext(AnnounceContext);
+
+  useEffect(() => {
+    renderListAnnounceUser(pageAnnounce);
+  }, [pageAnnounce]);
 
   return (
     <>
@@ -47,10 +53,27 @@ export const ProfileView = () => {
           </div>
           <ListMyAnnounceUser />
           <div className="pagination">
+          {pageAnnounce + 1 > 1 ?
+            <button
+            onClick={() => setPageAnnounce((oldPage) => oldPage - 1)}
+            >
+            &lt; Anterior
+            </button>
+            :
+            <></>
+          }
             <p>
-              <strong>1</strong>de 2
+              <strong>{pageAnnounce + 1}</strong>de {Math.ceil(numberOfAnnounces/8)}
             </p>
-            <button>Seguinte &gt;</button>
+            {pageAnnounce + 1 != Math.ceil(numberOfAnnounces/8) ?
+            <button
+            onClick={() => setPageAnnounce((oldPage) => oldPage + 1)}
+            >
+            Seguinte &gt;
+            </button>
+            :
+            <></>
+          }
           </div>
         </StyledShopWindow>
       </StylePageProfileView>
