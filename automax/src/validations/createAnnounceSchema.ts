@@ -9,7 +9,7 @@ export const announceSchema = yup.object().shape({
   color: yup.string().required("Cor obrigatória"),
   price_FIPE: yup.string().notRequired(),
   price: yup.string().required("Preço obrigatório"),
-  description: yup.string().required("Descrição obrigatória"),
+  description: yup.string().max(300).required("Descrição obrigatória"),
   image_cover: yup.string().required("Imagem de capa obrigatória"),
   image1: yup.string().notRequired(),
   image2: yup.string().notRequired(),

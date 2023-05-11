@@ -9,7 +9,7 @@ import Input from "../../Inputs/Input";
 import { StyledButton } from "../../Button/styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { updateCommentSchema } from "../../../validations/updateAnnounceSchema";
+import { updateCommentSchema } from "../../../validations/updateCommentSchema";
 import { IUpdateComment } from "../../../interfaces/announce";
 import { CommentsContext } from "../../../context/commentsContext";
 
