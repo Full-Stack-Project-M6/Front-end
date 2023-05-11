@@ -17,7 +17,7 @@ export const NavBar = () => {
   const { formupdateUserSetOpen, formupdateAddressSetOpen } =
     useContext(ModalContext);
   const navigate = useNavigate();
-  
+
   return (
     <>
       <StyledNav responsive={menuMobileIsOpen}>
@@ -73,7 +73,11 @@ export const NavBar = () => {
                   ) : (
                     <></>
                   )}
-                  <button onClick={userLogout}>
+                  <button
+                    onClick={() => {
+                      userLogout();
+                    }}
+                  >
                     <Body1>Sair</Body1>
                   </button>
                 </div>
