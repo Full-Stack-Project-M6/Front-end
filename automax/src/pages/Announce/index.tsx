@@ -24,7 +24,11 @@ export const Announce = () => {
   const { createComment, listComments, loading, setLoading } =
     useContext(CommentsContext);
   const navigate = useNavigate();
-
+  const [inputValue, setInputValue] = useState('');
+  const handleInputCapture = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setInputValue(value);
+  };
   useEffect(() => {
     listComments(announce?.id);
   }, [loading]);
@@ -41,6 +45,7 @@ export const Announce = () => {
     try {
       await createComment(announce?.id, data);
       loading == 0 ? setLoading(1) : setLoading(0);
+      setInputValue('')
     } catch (error) {
       console.log(error);
     }
@@ -135,6 +140,8 @@ export const Announce = () => {
               <input
                 type="text"
                 className="inputComment"
+                value={inputValue}
+                onInputCapture={handleInputCapture}
                 {...register("comment")}
               />
               <StyledButton className="brand1" type="submit">
