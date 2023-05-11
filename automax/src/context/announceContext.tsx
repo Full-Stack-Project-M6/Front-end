@@ -60,49 +60,53 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const [announce, setAnnounce] = useState<IAnnounceCard>();
   const [idAnnouncer, setIdAnnouncer] = useState("");
   const [listAnnouncer, setListAnnouncer] = useState<any>([]);
-  const [ keyFilter, setKeyFilter ] = useState<string>("")
-  const [ elemToCompare, setElemToCompare ] = useState<string>("")
-  const [ filteredList, setFilteredList ] = useState<IAdCard[] | object[]>([])
-  const [minKm, setMinKm] = useState("0")
-  const [minPrice, setMinPrice] = useState("0")
-  const [rangeKm, setRangeKm] = useState<string[]>(["0", "0"])
-  const [rangePrice, setRangePrice] = useState<string[]>(["0", "0"])
-  const [page, setPage] = useState(0)
-  const [numberOfItems, setNumberOfItems] = useState(0)
-  const fuel = ["", "Flex", "Híbrido", "Életrico"]
+  const [keyFilter, setKeyFilter] = useState<string>("");
+  const [elemToCompare, setElemToCompare] = useState<string>("");
+  const [filteredList, setFilteredList] = useState<IAdCard[] | object[]>([]);
+  const [minKm, setMinKm] = useState("0");
+  const [minPrice, setMinPrice] = useState("0");
+  const [rangeKm, setRangeKm] = useState<string[]>(["0", "0"]);
+  const [rangePrice, setRangePrice] = useState<string[]>(["0", "0"]);
+  const [page, setPage] = useState(0);
+  const [numberOfItems, setNumberOfItems] = useState(0);
+  const fuel = ["", "Flex", "Híbrido", "Életrico"];
 
   useEffect(() => {
-    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare)
-    setFilteredList(filteredList)
-
-  }, [keyFilter, elemToCompare])
-
-  useEffect(() => {
-    const filteredListByRangeKm = filterArrayByRange(filteredList, "kilometer", rangeKm)
-    setFilteredList(filteredListByRangeKm)
-
-  }, [rangeKm])
+    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare);
+    setFilteredList(filteredList);
+  }, [keyFilter, elemToCompare]);
 
   useEffect(() => {
-    const filteredListByRangePrice = filterArrayByRange(filteredList, "price", rangePrice)
-    setFilteredList(filteredListByRangePrice)
+    const filteredListByRangeKm = filterArrayByRange(
+      filteredList,
+      "kilometer",
+      rangeKm
+    );
+    setFilteredList(filteredListByRangeKm);
+  }, [rangeKm]);
 
-  }, [rangePrice])
+  useEffect(() => {
+    const filteredListByRangePrice = filterArrayByRange(
+      filteredList,
+      "price",
+      rangePrice
+    );
+    setFilteredList(filteredListByRangePrice);
+  }, [rangePrice]);
 
   const id_user = localStorage.getItem("@User_id");
 
   const listAllAnnounce = async (page: number, limit = 12) => {
-    const { data } = await instance.get<IAnnounceResponceAll>
-    ("/announce", {
+    const { data } = await instance.get<IAnnounceResponceAll>("/announce", {
       params: {
         limit,
-        offset: page * 12
-      }
+        offset: page * 12,
+      },
     });
 
     setListAnnounce(data.AnnounceRepository);
     setFilteredList(data.AnnounceRepository);
-    setNumberOfItems(data.total)
+    setNumberOfItems(data.total);
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
@@ -118,13 +122,13 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   };
 
   const createAnnounce = async (announceData: ICreateAnnounce) => {
-    const { data } = await instance.post<ICreateResponse>(
-      `/announce`,
-      announceData
-    );
-
-    renderListAnnounceUser();
-    return data;
+    try {
+      const { data } = await instance.post(`/announce`, announceData);
+      renderListAnnounceUser();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteAnnounce = async (idAnnounce: string | undefined) => {
@@ -175,7 +179,7 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
         setPage,
         page,
         setNumberOfItems,
-        numberOfItems
+        numberOfItems,
       }}
     >
       {children}

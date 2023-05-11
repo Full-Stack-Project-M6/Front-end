@@ -30,6 +30,7 @@ export interface ICreateAnnounceData {
   color: string;
   price_FIPE: string;
   price: string;
+  tag?: boolean;
   description: string;
   image_cover: string;
   image1: string;
@@ -160,6 +161,6 @@ export interface IAnnounceResponceAll {
   previousUrl: string | null;
   limit: number;
   offset: number;
-  total: number,
-  AnnounceRepository: IAnnounce[]
+  total: number;
+  AnnounceRepository: IAnnounce[];
 }
