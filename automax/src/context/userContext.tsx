@@ -11,6 +11,7 @@ import {
   IProviderProps,
   IUserContext,
 } from "../interfaces/user";
+import { toast } from "react-toastify"
 import { IAddress } from "../interfaces/address";
 
 export const UserContext = createContext({} as IUserContext);
@@ -42,7 +43,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
       setLoading(false);
     }
     userLoad();
-  }, []);
+  }, [{}]);
 
   const userRegister = async (data: IUserRequest) => {
     const { city, cep, street, complement, number, estate, ...user } = data;
@@ -50,6 +51,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
     const userDataRegister = { ...user, address };
     try {
       await instance.post("/users", userDataRegister);
+      toast.success("Conta criada com sucesso!")
       setLoading(true);
     } catch (error) {
       console.log(error);
@@ -59,52 +61,49 @@ export const UserProvider = ({ children }: IProviderProps) => {
     }
   };
 
-  const getUser = async (idUser: string) => {
-    try {
-      const { data } = await instance.get(`/users/${idUser}`);
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const userLogin = async (dataForm: IUserLogin) => {
     try {
       const { data } = await instance.post("/login", dataForm);
 
       instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
 
-      setUser(data.user);
       localStorage.setItem("@User_id", data.user.id);
       localStorage.setItem("@MotorsToken", data.token);
-      navigate("/", { replace: true });
-    } catch (error) {
+      toast.success("Login feito com sucesso")
+      setTimeout(() => {
+        setUser(data.user);
+        navigate("/", { replace: true });
+      }, 1000);
+    } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message)
     }
   };
 
   const userLogout = () => {
-    localStorage.removeItem("@MotorsToken");
-    localStorage.removeItem("@User_id");
     setUser(undefined);
+    localStorage.removeItem("@User_id");
+    localStorage.removeItem("@MotorsToken");
     navigate("/login");
+    window.location.reload();
   };
 
   const updateUser = async (dateForm: IUserUpdate) => {
     const { data } = await instance.patch(`/users/${id_user}`, dateForm);
-
+    toast.success("Atualização feita com sucesso!")
     setUser(data);
   };
 
   const updateAddress = async (dateForm: IAddress) => {
     const id_address = user?.address.id;
-
+    toast.success("Atualização feita com sucesso!")
     await instance.patch(`/address/${id_address}`, dateForm);
   };
 
   const sendResetToken = async (email: ISendReset) => {
     try {
       await instance.post("/users/sendReset", email);
+      toast.success("Email enviado.")
 
       setSuccessRecover(true);
     } catch (error) {
