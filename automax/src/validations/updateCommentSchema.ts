@@ -1,8 +1,8 @@
 import * as yup from "yup";
 
-export const createCommentSchema = yup.object({
+export const updateCommentSchema = yup.object().shape({
   comment: yup
     .string()
     .max(200, "Limite máximo de 200 caracteres")
-    .required("Digite seu comentário"),
+    .required("Comentário obrigatório"),
 });

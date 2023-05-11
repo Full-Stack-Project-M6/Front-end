@@ -74,6 +74,10 @@ const FormCreateAnnounce = () => {
     const images = [image1, image2, image3];
     const announceData = { images, ...rest };
 
+    announceData.price < announceData.price_FIPE
+      ? (announceData.tag = true)
+      : (announceData.tag = false);
+
     try {
       await createAnnounce(announceData);
 

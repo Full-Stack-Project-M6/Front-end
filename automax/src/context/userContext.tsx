@@ -11,6 +11,7 @@ import {
   IProviderProps,
   IUserContext,
 } from "../interfaces/user";
+import { toast } from "react-toastify";
 import { IAddress } from "../interfaces/address";
 
 export const UserContext = createContext({} as IUserContext);
@@ -42,7 +43,7 @@ export const UserProvider = ({ children }: IProviderProps) => {
       setLoading(false);
     }
     userLoad();
-  }, []);
+  }, [{}]);
 
   const userRegister = async (data: IUserRequest) => {
     const { city, cep, street, complement, number, estate, ...user } = data;
@@ -50,21 +51,14 @@ export const UserProvider = ({ children }: IProviderProps) => {
     const userDataRegister = { ...user, address };
     try {
       await instance.post("/users", userDataRegister);
+      toast.success("Conta criada com sucesso!");
       setLoading(true);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
       userLogin(data);
-    }
-  };
-
-  const getUser = async (idUser: string) => {
-    try {
-      const { data } = await instance.get(`/users/${idUser}`);
-      return data;
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -74,37 +68,54 @@ export const UserProvider = ({ children }: IProviderProps) => {
 
       instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
 
-      setUser(data.user);
       localStorage.setItem("@User_id", data.user.id);
       localStorage.setItem("@MotorsToken", data.token);
-      navigate("/", { replace: true });
-    } catch (error) {
+      toast.success("Login feito com sucesso");
+      setTimeout(() => {
+        setUser(data.user);
+        navigate("/", { replace: true });
+      }, 1000);
+    } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 
   const userLogout = () => {
-    localStorage.removeItem("@MotorsToken");
-    localStorage.removeItem("@User_id");
-    setUser(undefined);
+    localStorage.clear();
+    setTimeout(() => {
+      setUser(undefined);
+    }, 500);
+
     navigate("/login");
   };
 
   const updateUser = async (dateForm: IUserUpdate) => {
-    const { data } = await instance.patch(`/users/${id_user}`, dateForm);
-
-    setUser(data);
+    try {
+      const { data } = await instance.patch(`/users/${id_user}`, dateForm);
+      toast.success("Atualização feita com sucesso!");
+      setUser(data);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+      console.log(error);
+    }
   };
 
   const updateAddress = async (dateForm: IAddress) => {
     const id_address = user?.address.id;
-
-    await instance.patch(`/address/${id_address}`, dateForm);
+    try {
+      await instance.patch(`/address/${id_address}`, dateForm);
+      toast.success("Atualização feita com sucesso!");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
   };
 
   const sendResetToken = async (email: ISendReset) => {
     try {
       await instance.post("/users/sendReset", email);
+      toast.success("Email enviado.");
 
       setSuccessRecover(true);
     } catch (error) {
@@ -120,11 +131,12 @@ export const UserProvider = ({ children }: IProviderProps) => {
         `/users/reset_password/${userRecoveringToken}`,
         newPassword
       );
-      console.log("senha alterada com sucesso!");
+      toast.success("senha alterada com sucesso!");
       setUserRecoveringToken(undefined);
       setSuccessReset(true);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toast.error(error.response.data.message);
     } finally {
       setTimeout(() => {
         navigate("/login");
@@ -134,11 +146,15 @@ export const UserProvider = ({ children }: IProviderProps) => {
   };
 
   const deleteUser = async (idUser: string | undefined) => {
-    await instance.delete(`/users/${idUser}`);
-    localStorage.removeItem("@User_id");
-    localStorage.removeItem("@MotorsToken");
-    setUser(undefined);
-    navigate("/");
+    try {
+      await instance.delete(`/users/${idUser}`);
+      localStorage.clear();
+      setUser(undefined);
+      navigate("/");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
   };
 
   return (

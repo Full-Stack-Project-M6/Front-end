@@ -73,7 +73,11 @@ export const NavBar = () => {
                   ) : (
                     <></>
                   )}
-                  <button onClick={userLogout}>
+                  <button
+                    onClick={() => {
+                      userLogout();
+                    }}
+                  >
                     <Body1>Sair</Body1>
                   </button>
                 </div>

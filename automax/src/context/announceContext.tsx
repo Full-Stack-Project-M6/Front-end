@@ -79,37 +79,41 @@ export const AnnounceProvider = ({ children }: IAnnounceProvider) => {
   const fuel = ["", "Flex", "Híbrido", "Életrico"]
 
   useEffect(() => {
-    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare)
-    setFilteredList(filteredList)
-
-  }, [keyFilter, elemToCompare])
-
-  useEffect(() => {
-    const filteredListByRangeKm = filterArrayByRange(filteredList, "kilometer", rangeKm)
-    setFilteredList(filteredListByRangeKm)
-
-  }, [rangeKm])
+    const filteredList = filterArray(listAnnounce, keyFilter, elemToCompare);
+    setFilteredList(filteredList);
+  }, [keyFilter, elemToCompare]);
 
   useEffect(() => {
-    const filteredListByRangePrice = filterArrayByRange(filteredList, "price", rangePrice)
-    setFilteredList(filteredListByRangePrice)
+    const filteredListByRangeKm = filterArrayByRange(
+      filteredList,
+      "kilometer",
+      rangeKm
+    );
+    setFilteredList(filteredListByRangeKm);
+  }, [rangeKm]);
 
-  }, [rangePrice])
+  useEffect(() => {
+    const filteredListByRangePrice = filterArrayByRange(
+      filteredList,
+      "price",
+      rangePrice
+    );
+    setFilteredList(filteredListByRangePrice);
+  }, [rangePrice]);
 
   const id_user = localStorage.getItem("@User_id");
 
   const listAllAnnounce = async (page: number, limit = 12) => {
-    const { data } = await instance.get<IAnnounceResponceAll>
-    ("/announce", {
+    const { data } = await instance.get<IAnnounceResponceAll>("/announce", {
       params: {
         limit,
-        offset: page * 12
-      }
+        offset: page * 12,
+      },
     });
 
     setListAnnounce(data.AnnounceRepository);
     setFilteredList(data.AnnounceRepository);
-    setNumberOfItems(data.total)
+    setNumberOfItems(data.total);
   };
 
   const renderListAnnouncer = async (id: string | undefined) => {
