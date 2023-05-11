@@ -17,7 +17,7 @@ export const NavBar = () => {
   const { formupdateUserSetOpen, formupdateAddressSetOpen } =
     useContext(ModalContext);
   const navigate = useNavigate();
-
+  
   return (
     <>
       <StyledNav responsive={menuMobileIsOpen}>

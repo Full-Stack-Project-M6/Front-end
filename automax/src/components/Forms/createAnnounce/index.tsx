@@ -73,7 +73,8 @@ const FormCreateAnnounce = () => {
     const { image1, image2, image3, ...rest } = data;
     const images = [image1, image2, image3];
     const announceData = { images, ...rest };
-
+    console.log(announceData);
+    
     try {
       await createAnnounce(announceData);
 
