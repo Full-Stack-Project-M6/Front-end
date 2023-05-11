@@ -4,11 +4,11 @@ import MyAnnounceCard from "../Cards/MyAnnounceCard";
 import { AnnounceContext } from "../../context/announceContext";
 
 export const ListMyAnnounceUser = () => {
-  const { listAnnounceUser, renderListAnnounceUser } =
+  const { listAnnounceUser, renderListAnnounceUser, pageAnnounce } =
     useContext(AnnounceContext);
 
   useEffect(() => {
-    renderListAnnounceUser();
+    renderListAnnounceUser(pageAnnounce);
   }, []);
 
   return (

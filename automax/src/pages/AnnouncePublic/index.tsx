@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Button from "../../components/Button";
 import { NavBar } from "../../components/NavBar";
 import { Body1, H5 } from "../../components/Typography";
@@ -13,7 +13,11 @@ import { AnnounceContext } from "../../context/announceContext";
 import { ListAnnouncer } from "../../components/ListAnnouncer";
 
 export const AnnouncePublic = () => {
-  const { announce } = useContext(AnnounceContext);
+  const { announce, pageAnnounce, setPageAnnounce, numberOfAnnounces, renderListAnnounceUser } = useContext(AnnounceContext);
+
+  useEffect(() => {
+    renderListAnnounceUser(pageAnnounce);
+  }, [pageAnnounce]);
 
   return (
     <>
@@ -34,10 +38,27 @@ export const AnnouncePublic = () => {
           </div>
           <ListAnnouncer />
           <div className="pagination">
+          {pageAnnounce + 1 > 1 ?
+            <button
+            onClick={() => setPageAnnounce((oldPage) => oldPage - 1)}
+            >
+            &lt; Anterior
+            </button>
+            :
+            <></>
+          }
             <p>
-              <strong>1</strong>de 2
+              <strong>{pageAnnounce + 1}</strong>de {Math.ceil(numberOfAnnounces/8)}
             </p>
-            <button>Seguinte &gt;</button>
+            {pageAnnounce + 1 != Math.ceil(numberOfAnnounces/8) ?
+            <button
+            onClick={() => setPageAnnounce((oldPage) => oldPage + 1)}
+            >
+            Seguinte &gt;
+            </button>
+            :
+            <></>
+          }
           </div>
         </StyledShopWindow>
       </StylePageAnnouncePublic>
